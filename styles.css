@@ -5,6 +5,12 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw;
+  width: 100%;
+}
+
 :root {
   --primary-gold: #ffd700;
   --primary-black: #000000;
@@ -308,8 +314,8 @@ p {
 
 .categories-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
 }
 
 .category-card {
@@ -1333,10 +1339,46 @@ p {
 @media (max-width: 768px) {
   .nav-menu {
     display: none;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    gap: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+    z-index: 999;
+  }
+
+  .nav-menu.active {
+    display: flex !important;
+  }
+
+  .nav-menu li {
+    width: 100%;
+  }
+
+  .nav-menu a {
+    display: block;
+    padding: 0.75rem 0;
+    font-size: 1.1rem;
   }
 
   .mobile-menu-btn {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    gap: 4px;
+    padding: 0;
   }
 
   .hero-content {
