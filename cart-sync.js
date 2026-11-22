@@ -366,7 +366,7 @@ window._cartSyncWishlistLoaded = true;
     formData.append('action', 'sync_js_cart');
     formData.append('cart_data', JSON.stringify(cart));
     
-    window.location.href = '/checkout/';
+    window.location.href = '/checkout';
   };
 
   window.cartUpdateQty = function (id, delta) {
