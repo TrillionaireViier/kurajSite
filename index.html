@@ -1,229 +1,3892 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KURAJ FASHION - Premium Fashion & Timepieces</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Welcome to the Club - Luxury Fashion</title>
+<link href="/header-styles.css?v=1780265457" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+/* Removed all CSS transitions and animations that cause flickering */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Removed transition: all 0.3s ease */
+}
+
+:root {
+    /* Removed all gold/yellow colors, using only black and white */
+    --primary-color: #ffffff; /* Pure white */
+    --secondary-color: #000000; /* Pure black */
+    --accent-color: #ffffff; /* White accent */
+    --text-dark: #ffffff; /* White text for dark backgrounds */
+    --text-light: #cccccc; /* Light gray for secondary text */
+    --bg-light: #000000; /* Same as bg-dark - seamless black */
+    --bg-dark: #000000; /* Pure black background */
+    --border-color: #333333; /* Dark borders */
+    --shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    /* Added accent color for urgency instead of red */
+    --accent-urgent: #666666; /* Gray for urgency */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background: var(--bg-dark);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Section - Full Screen */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 110px 40px 40px;
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    background: url('/images/rukaj-hero-background.png') center/cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 750px;
+    text-align: center;
+}
+
+/* Hide the separate hero image - background covers full screen */
+.hero-image {
+    display: none;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+.club-text {
+    color: var(--primary-color);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-ctas {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3.5rem;
+    justify-content: center;
+}
+
+.cta-button {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.cta-button.primary {
+    background: var(--primary-color);
+    color: var(--bg-dark);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.cta-button.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(255, 255, 255, 0.3);
+}
+
+.cta-button.secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.cta-button.secondary:hover {
+    background: var(--primary-color);
+    color: var(--bg-dark);
+}
+
+.hero-stats {
+    display: grid;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    gap: 2rem;
+}
+
+.stat-item h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.stat-item p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+}
+
+/* Popular This Week Product Carousel */
+.product-carousel-section {
+    padding: 3rem 0;
+    background: var(--bg-dark);
+}
+
+.section-header-with-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+.section-header-with-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    /* Ensuring heading is visible with strong white color */
+    color: #ffffff !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin: 0;
+}
+
+.section-header-with-cta .view-all-link,
+.section-header-with-cta .cta-button {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    /* Removed transition animation */
+}
+
+.section-header-with-cta .view-all-link:hover,
+.section-header-with-cta .cta-button:hover {
+    color: var(--accent-color);
+}
+
+.section-header-with-cta .section-subtitle {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+.product-carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.carousel-track {
+    display: flex;
+    overflow-x: auto;
+    /* Removed scroll-behavior: smooth to disable scrolling animation */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    flex: 1;
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+}
+
+.carousel-nav {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Removed all transition and transform animations */
+    font-weight: bold;
+    padding: 0;
+    line-height: 1;
+    z-index: 10;
+}
+
+.carousel-nav:hover {
+    background: rgba(255, 255, 255, 1);
+    /* Removed transform: scale(1.1) and box-shadow animation */
+}
+
+.carousel-nav.prev {
+    left: 10px;
+}
+
+.carousel-nav.next {
+    right: 10px;
+}
+
+.product-card-carousel {
+    flex: 0 0 300px; /* Width of each card */
+    margin-right: 20px; /* Space between cards */
+    background: var(--bg-light);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    position: relative;
+    /* Removed all transition animations to prevent flickering */
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card-carousel:hover {
+    /* Removed translateY transform and box-shadow animations to prevent flickering */
+    border-color: var(--primary-color);
+}
+
+.product-card-carousel img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain; background-color: var(--bg-light); padding: 5px;
+}
+
+.product-card-content {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-card-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.product-category {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.price-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.strike-price {
+    text-decoration: line-through;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.sale-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.save-badge {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-color);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.product-badge {
+    display: inline-block;
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+}
+.product-badge.hot {
+    background: #ffffff !important;
+    color: #000000 !important;
+}
+
+.quick-add-btn,
+.wishlist-btn {
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+/* Enhanced product card button layout */
+.product-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+/* Added learn-more-btn styles */
+.learn-more-btn {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    background: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.learn-more-btn:hover {
+    background: var(--primary-color);
+    color: var(--bg-dark);
+    transform: translateY(-2px);
+}
+
+.quick-add-btn {
+    background: #ffffff;
+    color: #000000;
+    margin-top: auto; /* Push to bottom */
+    font-weight: 700;
+    border: 2px solid #ffffff;
+}
+
+.quick-add-btn:hover {
+    background: #ffffff;
+    color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    border: 2px solid #ffffff;
+}
+
+.quick-add-btn.urgent {
+    /* White button with black text */
+    background: #ffffff;
+    color: #000000;
+    font-weight: 700;
+    border: 2px solid #ffffff;
+}
+
+.quick-add-btn.urgent:hover {
+    /* Brighter white on hover */
+    background: #ffffff;
+    color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    border: 2px solid #ffffff;
+}
+
+/* Enhanced wishlist button styling to be more prominent */
+.wishlist-btn {
+    background: transparent;
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.wishlist-btn:hover {
+    background: var(--bg-dark);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.wishlist-btn.active {
+    color: #ff6b6b;
+    background: var(--bg-dark);
+    border-color: #ff6b6b;
+}
+
+
+/* In Stock Section */
+.in-stock-section {
+    padding: 3rem 0;
+    background: var(--bg-light); /* Different background for variety */
+}
+
+.in-stock-section .section-subtitle {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+.in-stock-section .cta-button.primary {
+    background: var(--primary-color);
+    color: var(--bg-dark);
+}
+
+.in-stock-section .cta-button.primary:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.stock-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stock-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    /* Changed from red to gray for urgency */
+    background: var(--accent-urgent);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Featured Collections */
+/* Converted to carousel with navigation arrows */
+.featured-collections {
+    padding: 3rem 0;
+    background: var(--bg-dark);
+}
+
+.featured-collections h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-dark);
+}
+
+/* Converting collections grid to carousel layout */
+.collections-carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.collections-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 20px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    flex: 1;
+}
+
+.collections-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.collections-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Making collection items work in carousel */
+.collection-item {
+    flex: 0 0 350px;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    /* Removed transition animation to prevent flickering */
+    cursor: pointer;
+}
+
+.collection-item:hover {
+    /* Removed translateY transform to prevent flickering */
+    /* Updated hover effect with white glow */
+    box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-color);
+}
+
+.collection-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain; background-color: var(--bg-light); padding: 5px;
+}
+
+.collection-content {
+    padding: 1.5rem;
+}
+
+.collection-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    /* Updated heading color */
+    color: var(--text-dark);
+}
+
+.collection-content p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.view-collection {
+    color: var(--primary-color);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.view-all-container {
+    text-align: center;
+}
+
+.view-all-products-btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    /* Updated button to white background */
+    background: var(--primary-color);
+    color: var(--bg-dark);
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.view-all-products-btn:hover {
+    /* Updated hover effect */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(255, 255, 255, 0.3);
+}
+
+/* Stats Section */
+.luxury-stats {
+    padding: 3rem 0;
+    /* Updated background to card color */
+    background: var(--bg-light);
+}
+
+.luxury-stats h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.luxury-stats > p {
+    color: #ffffff;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.stat h3 {
+    font-size: 3rem;
+    /* Removed gold gradient, using white text */
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.stat p {
+    color: var(--text-light);
+}
+
+/* Craftsmanship */
+.craftsmanship {
+    padding: 3rem 0;
+    /* Updated background to dark */
+    background: var(--bg-dark);
+}
+
+.craftsmanship h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.craftsmanship > .container > p {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+}
+
+.craftsmanship-grid {
+    display: grid;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    gap: 2rem;
+}
+
+.craft-item {
+    /* Updated craft item cards to dark theme */
+    background: var(--bg-light);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.craft-item:hover {
+    border-color: var(--primary-color);
+}
+
+.craft-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+/* Removed emoji icon from first craft-item */
+.craft-item:nth-child(1) .craft-icon {
+    content: ''; /* Placeholder for removed emoji */
+}
+
+/* Kept only essential diamond emoji */
+.craft-item:nth-child(2) .craft-icon {
+    content: ''; /* Diamond emoji */
+}
+
+/* Removed emoji icon from third craft-item */
+.craft-item:nth-child(3) .craft-icon {
+    content: ''; /* Placeholder for removed emoji */
+}
+
+/* Removed emoji icon from fourth craft-item */
+.craft-item:nth-child(4) .craft-icon {
+    content: ''; /* Placeholder for removed emoji */
+}
+
+
+.craft-item h3 {
+    margin-bottom: 0.5rem;
+    /* Updated heading color */
+    color: var(--text-dark);
+}
+
+.craft-item p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Craftsmanship CTA Section */
+.craftsmanship-cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    padding: 30px 0;
+}
+
+.join-club-btn {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 16px 40px;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #ffffff;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    min-width: 300px;
+}
+
+.join-club-btn:hover {
+    background-color: #000000;
+    color: #ffffff;
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* Member Stats */
+.member-stats {
+    padding: 3rem 0;
+    /* Updated background */
+    background: var(--bg-light);
+}
+
+.stats-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.stats-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.stats-left h3 {
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+.stats-right {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.member-stat h3 {
+    font-size: 2.5rem;
+    /* Removed gold gradient, using white text */
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.member-stat p {
+    color: var(--text-light);
+}
+
+/* Earn Section */
+.earn-section {
+    padding: 3rem 0;
+    /* Updated background to dark */
+    background: var(--bg-dark);
+    text-align: center;
+}
+
+.earn-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.earn-section > .container > p {
+    color: var(--text-light);
+    margin-bottom: 3rem;
+}
+
+.earn-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.earn-item {
+    /* Updated earn cards to dark theme */
+    background: var(--bg-light);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.earn-item:hover {
+    border-color: var(--primary-color);
+}
+
+.earn-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+/* Removed emoji icon from all earn-items */
+.earn-item .earn-icon {
+    content: '';
+}
+
+.earn-item h3 {
+    margin-bottom: 0.5rem;
+    /* Updated heading color */
+    color: var(--text-dark);
+}
+
+.earn-item p {
+    color: var(--text-light);
+}
+
+/* VIP Section */
+/* Removed original VIP section and replaced with vip-invitation */
+
+/* Testimonials */
+.testimonials {
+    padding: 3rem 0;
+    /* Updated background to dark */
+    background: var(--bg-dark);
+}
+
+.testimonials h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-dark);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.testimonial {
+    /* Updated testimonial cards to dark theme */
+    background: var(--bg-light);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.stars {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.testimonial p {
+    /* Updated text color */
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.testimonial-author strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    /* Updated author name color */
+    color: var(--text-dark);
+}
+
+.testimonial-author span {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* About Us Section */
+.about-section {
+    padding: 3rem 0;
+    /* Updated background */
+    background: var(--bg-light);
+}
+
+.about-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.about-intro {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.about-grid {
+    display: grid;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.about-item {
+    /* Updated about item cards to dark theme */
+    background: var(--bg-dark);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.about-item:hover {
+    border-color: var(--primary-color);
+}
+
+.about-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+/* Removed emoji icon from all about-items */
+.about-item .about-icon {
+    content: '';
+}
+
+.about-item h3 {
+    margin-bottom: 0.5rem;
+    /* Updated heading color */
+    color: var(--text-dark);
+}
+
+.about-item p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.about-cta {
+    text-align: center;
+}
+
+.about-cta .cta-button {
+    margin-top: 2rem;
+}
+
+/* Invitation Section */
+.invitation-section {
+    padding: 3rem 0;
+    /* Updated background */
+    background: var(--bg-light);
+}
+
+.invitation-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.invitation-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+}
+
+.invitation-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-row input {
+    width: 100%;
+}
+
+.invitation-form input[type="text"],
+.invitation-form input[type="tel"] {
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+    /* Updated input styling for dark theme */
+    background: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+.invitation-form input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    /* Updated label color */
+    color: var(--text-dark);
+}
+
+.form-hint {
+    display: block;
+    color: var(--text-light);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    cursor: pointer;
+    /* Updated checkbox label color */
+    color: var(--text-light);
+}
+
+.checkbox-label input {
+    margin-top: 0.25rem;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 1rem;
+    /* Updated submit button to white background */
+    background: var(--primary-color);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+    /* Updated hover effect */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(255, 255, 255, 0.3);
+}
+
+.form-privacy {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.85rem;
+    margin-top: 1rem;
+}
+
+/* Footer */
+.footer {
+    /* Removed background image from footer */
+    background: #000000;
+    color: white;
+    padding: 4rem 0 2rem;
+    border-top: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Removed overlay as background image is no longer present */
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+}
+
+.footer-content {
+    display: grid;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    /* Updated footer link colors */
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.2s ease;
+}
+
+.footer-section a:hover {
+    color: var(--primary-color);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    /* Updated social icon styling */
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+    border: 1px solid var(--border-color);
+}
+
+.social-icon:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    /* Added padding-bottom for spacing from the end of the page */
+    padding-bottom: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    /* Changed color to white for better visibility */
+    color: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+/* Added styling for footer-bottom paragraph */
+.footer-bottom p {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+/* Added styling for footer links container */
+.footer-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Updated footer-links anchor styling to white */
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+/* Enhanced hover state for better interactivity */
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Wishlist Styles */
+.wishlist-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.wishlist-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.wishlist-sidebar {
+    position: fixed;
+    top: 0;
+    left: -400px;
+    width: 400px;
+    height: 100%;
+    background: var(--bg-light);
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    transition: left 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border-color);
+}
+
+.wishlist-sidebar.active {
+    left: 0;
+}
+
+.sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-header h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.5rem;
+    margin: 0;
+    color: var(--text-dark);
+}
+
+.close-sidebar {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.close-sidebar:hover {
+    color: var(--primary-color);
+}
+
+.sidebar-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.empty-wishlist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+}
+
+.empty-wishlist-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: var(--text-light);
+}
+
+.empty-wishlist p {
+    color: var(--text-light);
+    margin: 0.5rem 0;
+}
+
+.wishlist-content {
+    display: none;
+}
+
+.wishlist-content.active {
+    display: block;
+}
+
+.wishlist-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.wishlist-item {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    background: var(--bg-dark);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.wishlist-item-image {
+    width: 50px;
+    height: 50px;
+    object-fit: contain; background-color: var(--bg-light); padding: 5px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.wishlist-item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.wishlist-item-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-dark);
+}
+
+.wishlist-item-price {
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.wishlist-item-remove {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.wishlist-item-remove:hover {
+    color: var(--primary-color);
+}
+
+.wishlist-footer {
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.wishlist-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.wishlist-total-amount {
+    color: var(--primary-color);
+}
+
+.wishlist-checkout-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--primary-color);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.wishlist-checkout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(255, 255, 255, 0.3);
+    background: var(--accent-color);
+}
+
+.wishlist-continue {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.wishlist-continue:hover {
+    background: var(--bg-dark);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* Cart Styles */
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Updated overlay for dark theme */
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.cart-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100%;
+    /* Updated cart sidebar to dark theme */
+    background: var(--bg-light);
+    box-shadow: -2px 0 20px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--border-color);
+}
+
+.cart-sidebar.active {
+    right: 0;
+}
+
+.cart-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.5rem;
+    margin: 0;
+    /* Updated cart header color */
+    color: var(--text-dark);
+}
+
+.cart-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    /* Updated close button color */
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.cart-close:hover {
+    color: var(--primary-color);
+}
+
+.cart-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.cart-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+}
+
+.cart-empty-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: var(--text-light);
+}
+/* Removed emoji from cart empty state */
+.cart-empty-icon {
+    content: '';
+}
+
+.cart-empty p {
+    /* Updated empty cart text color */
+    color: var(--text-light);
+}
+
+.cart-content {
+    display: none;
+}
+
+.cart-content.active {
+    display: block;
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cart-item {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    /* Updated cart item styling */
+    background: var(--bg-dark);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.cart-item-image {
+    width: 60px;
+    height: 60px;
+    object-fit: contain; background-color: var(--bg-light); padding: 5px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.cart-item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    /* Updated cart item name color */
+    color: var(--text-dark);
+}
+
+.cart-item-price {
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-btn {
+    /* Updated quantity button styling */
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dark);
+}
+
+.quantity-btn:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--bg-dark);
+}
+
+.cart-item-remove {
+    background: none;
+    border: none;
+    /* Updated remove button color */
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.cart-item-remove:hover {
+    color: var(--primary-color);
+}
+
+.cart-footer {
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.cart-total-amount {
+    color: var(--primary-color);
+}
+
+.cart-checkout-btn {
+    width: 100%;
+    padding: 15px;
+    /* Updated checkout button to white background */
+    background: var(--primary-color);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cart-checkout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(255, 255, 255, 0.3);
+    background: var(--accent-color);
+}
+
+.cart-continue {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    /* Updated continue button styling */
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.cart-continue:hover {
+    background: var(--bg-dark);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    /* Updated notification styling */
+    background: var(--bg-light);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--primary-color);
+    z-index: 1001;
+    opacity: 0;
+    transform: translateX(400px);
+    transition: all 0.3s ease;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.notification.success {
+    border-left: 4px solid var(--primary-color);
+}
+
+.notification.error {
+    /* Updated error color */
+    border-left: 4px solid #ef4444;
+}
+
+/* Sticky Bottom CTA Bar */
+.sticky-bottom-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg-dark);
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
+    z-index: 998;
+    padding: 25px 0;
+    border-top: 1px solid var(--border-color);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    display: none; /* Hidden by default, shown by JS */
+}
+
+.sticky-bottom-cta.show {
+    transform: translateY(0);
+    display: block;
+}
+
+/* Sticky Club Banner Styles */
+.sticky-club-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #1a1a1a 0%, #000000 100%);
+    border-top: 1px solid #333333;
+    z-index: 99;
+    padding: 12px 20px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
+    animation: slideUp 0.4s ease-out;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.banner-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.banner-text {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    flex: 1;
+    min-width: 200px;
+}
+
+.banner-cta {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.banner-cta:hover {
+    background-color: #e8e8e8;
+    transform: translateY(-2px);
+}
+
+.banner-close {
+    background: none;
+    border: none;
+    color: #cccccc;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 5px;
+    transition: color 0.3s ease;
+}
+
+.banner-close:hover {
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .banner-text {
+        font-size: 0.85rem;
+        white-space: normal;
+    }
+    
+    .banner-cta {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+    
+    .banner-content {
+        gap: 10px;
+    }
+}
+
+.sticky-cta-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.sticky-cta-text strong {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.sticky-cta-text span {
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+.sticky-cta-content .cta-button.primary.compact {
+    padding: 12px 35px;
+    font-size: 1rem;
+    box-shadow: none; /* Remove shadow for compact */
+    white-space: nowrap;
+}
+
+.sticky-cta-content .cta-button.primary.compact:hover {
+    transform: none; /* No transform for compact */
+}
+
+
+/* VIP Invitation Section (New) */
+.vip-invitation {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%);
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    position: relative;
+    overflow: hidden;
+}
+
+.vip-invitation::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.vip-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.vip-content {
+    text-align: center;
+}
+
+.vip-badge {
+    background: #ffffff;
+    color: #000000;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    display: inline-block;
+    margin: 0 auto 2rem;
+}
+
+.vip-invitation h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+    color: #ffffff;
+}
+
+.vip-subtitle {
+    color: #cccccc;
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vip-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 3rem auto;
+    max-width: 650px;
+}
+
+.vip-benefit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+}
+
+.vip-benefit:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateY(-4px);
+}
+
+.vip-benefit .benefit-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.vip-benefit h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+    color: #ffffff;
+}
+
+.vip-benefit p {
+    color: #aaaaaa;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.vip-cta-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.vip-cta-group .cta-button.large {
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+}
+
+.vip-cta-group .cta-button.primary {
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+}
+
+.vip-cta-group .cta-button.primary:hover {
+    box-shadow: 0 6px 30px rgba(255, 255, 255, 0.25);
+}
+
+.vip-invitation .cta-button.secondary {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+.vip-invitation .cta-button.secondary:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+.vip-guarantee {
+    color: #888888;
+    font-size: 0.85rem;
+    margin-top: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.vip-image {
+    display: none;
+}
+
+.vip-image img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* 100% Authentic Guarantee */
+.guarantee-section {
+    padding: 3rem 0;
+    background: var(--bg-light);
+    text-align: center;
+}
+
+.guarantee-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.guarantee-icon {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.guarantee-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.guarantee-subtitle {
+    color: var(--text-light);
+    font-size: 1.2rem;
+    line-height: 1.7;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .hero {
+        padding: 0 20px;
+        min-height: 100vh;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .collections-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid,
+    .craftsmanship-grid,
+    .earn-grid,
+    .vip-benefits {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .cart-sidebar {
+        width: 100%;
+        right: -100%;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Responsive for new sections */
+    .product-carousel-section,
+    .in-stock-section,
+    .guarantee-section {
+        padding: 4rem 0;
+    }
+
+    .section-header-with-cta {
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .section-header-with-cta h2 {
+        font-size: 2rem;
+    }
+    
+    .product-carousel {
+        padding: 0 10px;
+    }
+
+    .carousel-nav {
+        width: 45px;
+        height: 45px;
+        font-size: 2rem;
+    }
+
+    .product-card-carousel {
+        flex: 0 0 280px; /* Slightly adjust for mobile */
+    }
+
+    .product-card-content {
+        padding: 1rem;
+    }
+
+    .price-display {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .sale-price {
+        font-size: 1.3rem;
+    }
+
+    .quick-add-btn, .wishlist-btn {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .vip-invitation {
+        padding: 4rem 0;
+    }
+
+    .vip-content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .vip-benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .vip-cta-group {
+        flex-direction: column;
+    }
+    
+    .sticky-cta-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .sticky-cta-text strong {
+        font-size: 1rem;
+    }
+
+    .sticky-cta-text span {
+        font-size: 0.8rem;
+    }
+
+    .sticky-cta-content .cta-button.primary.compact {
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    /* Wishlist Sidebar Responsive */
+    .wishlist-sidebar {
+        width: 100%;
+        left: -100%;
+    }
+}
+
+    </style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="/header-styles.css?v=1777800000" rel="stylesheet"/>
+<link href="/cart-styles.css?v=1777800000" rel="stylesheet"/>
+<title>Kuraj Fashion</title>
+<meta content="max-image-preview:large" name="robots"/>
+<link href="//fonts.googleapis.com" rel="dns-prefetch"/>
+<link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/>
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-color]){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" id="halt-fonts-css" media="all" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css?ver=6.0.0" id="font-awesome-css" media="all" rel="stylesheet"/>
+<meta content="WordPress 7.0.2" name="generator"/>
+<style>
+/* Prevent horizontal overflow across all viewports */
+html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+    margin: 0;
+    padding: 0;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+    max-width: 100vw;
+}
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.2rem !important;
+        line-height: 1.2 !important;
+        word-break: break-word !important;
+    }
+    .hero-content p {
+        font-size: 1rem !important;
+        padding: 0 10px !important;
+    }
+    .hero {
+        padding: 95px 16px 40px !important;
+        min-height: auto !important;
+    }
+    .top-announcement-bar {
+        font-size: 0.72rem !important;
+        padding: 6px 10px !important;
+        gap: 6px !important;
+        flex-direction: column !important;
+    }
+    .top-announcement-bar a {
+        margin-left: 0 !important;
+    }
+    .hero-ctas {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
+    }
+    .cta-button {
+        width: 100% !important;
+        text-align: center;
+    }
+    .nav-toggle {
+        display: flex !important;
+    }
+    .nav-menu {
+        position: fixed !important;
+        top: 0 !important;
+        right: -100% !important;
+        width: 82% !important;
+        max-width: 320px !important;
+        height: 100vh !important;
+        background: #0d0d0d !important;
+        flex-direction: column !important;
+        padding: 70px 20px 40px !important;
+        display: flex !important;
+        z-index: 10002 !important;
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    .nav-menu.active {
+        right: 0 !important;
+    }
+}
+</style>
+<script>
+window.toggleMobileMenu = function(e) {
+    if (e && e.stopPropagation) e.stopPropagation();
+    const navMenu = document.getElementById('navMenu') || document.querySelector('.nav-menu');
+    const toggleBtn = document.getElementById('mobile-menu') || document.querySelector('.nav-toggle');
+    let overlay = document.getElementById('mobileMenuOverlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'mobileMenuOverlay';
+        overlay.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(3px);z-index:10001;';
+        overlay.onclick = function() { window.toggleMobileMenu(); };
+        document.body.appendChild(overlay);
+    }
+    const isActive = navMenu && navMenu.classList.toggle('active');
+    if (toggleBtn) toggleBtn.classList.toggle('active', !!isActive);
+    if (overlay) overlay.style.display = isActive ? 'block' : 'none';
+};
+</script>
+
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html">
-                    <img src="images/kuraj-fashion-logo.png" alt="KURAJ FASHION" class="logo-image" />
-                </a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="clothing.html">Clothing</a></li>
-                <li><a href="watches.html">Watches</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="nav-icons">
-                <button class="search-btn" aria-label="Search">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <path d="m21 21-4.35-4.35"></path>
-                    </svg>
-                </button>
-                <button class="cart-btn" aria-label="Shopping Cart">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 22C9.55228 22 10 21.5523 10 21C10 20.4477 9.55228 20 9 20C8.44772 20 8 20.4477 8 21C8 21.5523 8.44772 22 9 22Z"></path>
-                        <path d="M20 22C20.5523 22 21 21.5523 21 21C21 20.4477 20.5523 20 20 20C19.4477 20 19 20.4477 19 21C19 21.5523 19.4477 22 20 22Z"></path>
-                        <path d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6"></path>
-                    </svg>
-                    <span class="cart-count">0</span>
-                </button>
-                <button class="mobile-menu-btn" aria-label="Mobile Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    </nav>
+<header class="header" id="mainHeader">
+<div class="top-announcement-bar" style="background: #000; color: #fff; text-align: center; padding: 4px 15px; font-size: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.2); width: 100%; z-index: 1000; position: relative;">
+    <span class="banner-text"> Join Our Exclusive Club | Get Up to 90% Off Luxury Items &amp; VIP Benefits</span>
+    <a href="/dashboard" style="color: #fff; text-decoration: underline; margin-left: 15px; font-weight: bold; white-space: nowrap;">Sign In to Account or Sign Up</a>
+</div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Luxury Redefined</h1>
-                <p>Discover our exclusive collection of premium fashion and exquisite timepieces, crafted for the discerning individual.</p>
-                <div class="hero-buttons">
-                    <a href="clothing.html" class="btn btn-primary">Shop Clothing</a>
-                    <a href="watches.html" class="btn btn-secondary">Explore Watches</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="images/hero-luxury-fashion.png" alt="Luxury Fashion Model" />
-            </div>
-        </div>
-    </section>
+<nav class="navbar">
+<div class="nav-container">
+<div class="nav-logo">
+<a class="brand-text" href="/">KURAJ FASHION</a>
+</div>
+<ul class="nav-menu" id="navMenu">
+<li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="javascript:void(0)">Our Collections</a>
+<ul class="dropdown-menu">
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/collections/timepieces">Timepieces ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-watches">For Him</a></li>
+<li><a href="/collections/womens-watches">For Her</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/collections/jewelry">Jewelry ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-jewelry">For Him</a></li>
+<li><a href="/collections/womens-jewelry">For Her</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/collections/handbags">Handbags ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-bags">For Him</a></li>
+<li><a href="/collections/womens-handbags">For Her</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/collections/accessories">Accessories ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-accessories">For Him</a></li>
+<li><a href="/collections/womens-accessories">For Her</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/collections/clothing">Clothing ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-apparel">For Him</a></li>
+<li><a href="/collections/womens-apparel">For Her</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/collections/gifts">Gifts ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-gifts">For Him</a></li>
+<li><a href="/collections/womens-gifts">For Her</a></li>
+</ul>
+</li>
+<li><a class="dropdown-item" href="/collections/limited-drops">Limited Drops</a></li>
+<li><a class="dropdown-item" href="/all-products" style="font-weight: bold; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; margin-top: 5px;">All Products</a></li>
+</ul>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="/all-products">For Her / For Him</a>
+<ul class="dropdown-menu">
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/for-her">For Her ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/womens-watches">Timepieces</a></li>
+<li><a href="/collections/womens-jewelry">Jewelry</a></li>
+<li><a href="/collections/womens-handbags">Handbags</a></li>
+<li><a href="/collections/womens-accessories">Accessories</a></li>
+<li><a href="/collections/womens-apparel">Apparel</a></li>
+<li><a href="/collections/womens-gifts">Gifts</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/for-him">For Him ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-watches">Timepieces</a></li>
+<li><a href="/collections/mens-jewelry">Jewelry</a></li>
+<li><a href="/collections/mens-bags">Bags</a></li>
+<li><a href="/collections/mens-accessories">Accessories</a></li>
+<li><a href="/collections/mens-apparel">Apparel</a></li>
+<li><a href="/collections/mens-gifts">Gifts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="nav-item"><a class="nav-link" href="/dashboard">Membership</a></li>
+<li class="nav-item"><a class="nav-link" href="/contact">Contact Us</a></li>
+</ul>
+<div class="nav-actions">
 
-    <!-- Featured Categories -->
-    <section class="featured-categories">
-        <div class="container">
-            <h2 class="section-title">Our Collections</h2>
-            <div class="categories-grid">
-                <div class="category-card">
-                    <div class="category-image">
-                        <img src="images/premium-clothing-collection.png" alt="Premium Clothing Collection" />
-                    </div>
-                    <div class="category-content">
-                        <h3>Premium Clothing</h3>
-                        <p>Exquisite garments crafted from the finest materials</p>
-                        <a href="clothing.html" class="category-link">Explore Collection</a>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <div class="category-image">
-                        <img src="images/luxury-watches-display.png" alt="Luxury Watches Collection" />
-                    </div>
-                    <div class="category-content">
-                        <h3>Luxury Timepieces</h3>
-                        <p>Precision engineering meets timeless elegance</p>
-                        <a href="watches.html" class="category-link">Discover Watches</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="wishlist-icon-container" onclick="window.toggleWishlist()" title="Wishlist">
+<svg class="wishlist-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+<span class="wishlist-badge" id="wishlistCount">0</span>
+</div>
+<div class="cart-icon-container" onclick="toggleCart()" title="Shopping Cart">
+<svg class="cart-icon" fill="none" height="24" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+<span class="cart-badge" id="cartCount">0</span>
+</div>
+<a class="nav-auth-btn sign-in" href="/dashboard" id="profileBtn" style="display:none;">My Account</a>
+<a class="nav-auth-btn sign-in" href="/dashboard" id="signInBtn">Sign In</a>
+<a class="nav-auth-btn sign-up" href="/dashboard" id="signUpBtn">Sign Up</a>
+</div>
+<div class="nav-toggle" id="mobile-menu" onclick="window.toggleMobileMenu()">
+<span class="bar"></span><span class="bar"></span><span class="bar"></span>
+</div>
+</div>
+</nav>
+</header>
 
-    <!-- Featured Products -->
-    <section class="featured-products">
-        <div class="container">
-            <h2 class="section-title">Featured Products</h2>
-            <div class="products-grid" id="featuredProducts">
-                <!-- Products will be loaded dynamically -->
-            </div>
-        </div>
-    </section>
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+<div class="cart-header">
+<h2>Shopping Cart</h2>
+<button class="cart-close" onclick="closeCart()">×</button>
+</div>
+<div class="cart-body">
+<div class="cart-empty" id="cartEmpty">
+<div class="cart-empty-icon">🛍️</div>
+<p>Your cart is empty</p>
+<button class="cta-button" onclick="closeCart()">Continue Shopping</button>
+</div>
+<div class="cart-content" id="cartContent">
+<div class="cart-items" id="cartItems"></div>
+</div>
+</div>
+<div class="cart-footer">
+<div class="cart-total">
+<span class="cart-total-label">Total:</span>
+<span class="cart-total-amount" id="cartTotal">$0.00</span>
+</div>
+<button class="cart-checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout &amp; Pay</button>
+<button class="cart-continue" onclick="closeCart()">Continue Shopping</button>
+</div>
+</div>
+<div class="wishlist-overlay" id="wishlistOverlay" onclick="closeWishlistSidebar()"></div>
+<div class="wishlist-sidebar" id="wishlistSidebar">
+<div class="wishlist-header">
+<h2>Your Wishlist</h2>
+<button class="wishlist-close" onclick="closeWishlistSidebar()">×</button>
+</div>
+<div class="wishlist-body">
+<div class="wishlist-empty" id="wishlistEmpty">
+<div class="wishlist-empty-icon">♡</div>
+<p>Your wishlist is empty</p>
+<button class="cta-button" onclick="closeWishlistSidebar()">Discover Products</button>
+</div>
+<div class="wishlist-content" id="wishlistContent">
+<div class="wishlist-items" id="wishlistItems"></div>
+</div>
+</div>
+<div class="wishlist-footer" id="wishlistFooter" style="display: none;">
+<div class="wishlist-total">
+<span>Total:</span>
+<span class="wishlist-total-amount" id="wishlistTotalAmount">$0.00</span>
+</div>
+<button class="wishlist-checkout-btn" onclick="addAllWishlistToCart()">Checkout Now</button>
+<button class="wishlist-continue" onclick="closeWishlistSidebar()">Continue Shopping</button>
+</div>
+</div>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>The Art of Luxury</h2>
-                    <p>For over three decades, KURAJ FASHION has been synonymous with uncompromising quality and timeless elegance. Our curated collection represents the pinnacle of craftsmanship, bringing together the world's most prestigious brands and emerging talents.</p>
-                    <p>Every piece in our collection is carefully selected for its exceptional quality, innovative design, and enduring appeal. We believe that true luxury lies not just in the materials used, but in the attention to detail and the story behind each creation.</p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <span class="stat-number">30+</span>
-                            <span class="stat-label">Years of Excellence</span>
+<div class="cart-footer">
+<div class="cart-total">
+<span class="cart-total-label">Total:</span>
+<span class="cart-total-amount" id="cartTotal">$0.00</span>
+</div>
+<button class="cart-checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout &amp; Pay</button>
+<button class="cart-continue" onclick="closeCart()">Continue Shopping</button>
+</div>
+<section class="hero">
+<div class="hero-content">
+<h1>Where Luxury <span class="club-text">Meets Exclusivity</span></h1>
+<p>Experience unparalleled access to the world's most coveted luxury collections. Join an elite community where exceptional taste meets extraordinary value.</p>
+<div class="hero-ctas">
+<button class="cta-button primary" onclick="scrollToInvitation()">Join the Club</button>
+<a class="cta-button secondary" href="/all-products">Explore Collections</a>
+</div>
+<div class="hero-stats">
+<div class="stat-item">
+<h3>Expert Curation</h3>
+<p>Handpicked luxury items</p>
+</div>
+<div class="stat-item">
+<h3>Global Network</h3>
+<p>Worldwide exclusive access</p>
+</div>
+<div class="stat-item">
+<h3>Premium Service</h3>
+<p>Personalized experience</p>
+</div>
+<div class="stat-item">
+<h3>Exclusive Deals</h3>
+<p>Members-only pricing</p>
+</div>
+</div>
+</div>
+</section>
+<section class="featured-products" style="padding: 3rem 0; background: var(--bg-light);">
+<div class="container">
+<div class="section-header-with-cta">
+<div>
+<h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #ffffff; margin: 0;">Featured Products</h2>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin-top: 2rem;">
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="HUBLOT Men’s Watch Classic Fusion" src="/images/scraped/hublot_muzhskie_chasy_classic_fusion.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">HUBLOT Men’s Watch Classic Fusion</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$1,661</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('HUBLOT Men’s Watch Classic Fusion', 1661, '/images/scraped/hublot_muzhskie_chasy_classic_fusion.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('HUBLOT Men’s Watch Classic Fusion') + '&amp;price=1661&amp;image=' + encodeURIComponent('/images/scraped/hublot_muzhskie_chasy_classic_fusion.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="CARTIER Men’s Watch Ballon Bleu 42 mm" src="/images/scraped/cartier_muzhskie_chasy_ballon_bleu_42_mm.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">CARTIER Men’s Watch Ballon Bleu 42 mm</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$1,124</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('CARTIER Men’s Watch Ballon Bleu 42 mm', 1124, '/images/scraped/cartier_muzhskie_chasy_ballon_bleu_42_mm.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('CARTIER Men’s Watch Ballon Bleu 42 mm') + '&amp;price=1124&amp;image=' + encodeURIComponent('/images/scraped/cartier_muzhskie_chasy_ballon_bleu_42_mm.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch Cosmograph Daytona 126518LN classic" src="/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch Cosmograph Daytona 126518LN classic</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,300</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch Cosmograph Daytona 126518LN classic', 2300, '/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch Cosmograph Daytona 126518LN classic') + '&amp;price=2300&amp;image=' + encodeURIComponent('/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="VACHERON CONSTANTIN Men’s Watch Fifty Six 4600E" src="/images/scraped/vacheron_constantin_muzhskie_chasy_fifty_six_4600e_.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">VACHERON CONSTANTIN Men’s Watch Fifty Six 4600E</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,300</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('VACHERON CONSTANTIN Men’s Watch Fifty Six 4600E', 2300, '/images/scraped/vacheron_constantin_muzhskie_chasy_fifty_six_4600e_.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('VACHERON CONSTANTIN Men’s Watch Fifty Six 4600E') + '&amp;price=2300&amp;image=' + encodeURIComponent('/images/scraped/vacheron_constantin_muzhskie_chasy_fifty_six_4600e_.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch Submariner 116610LV" src="/images/scraped/rolex_muzhskie_chasy_submariner_116610lv.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch Submariner 116610LV</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,300</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch Submariner 116610LV', 2300, '/images/scraped/rolex_muzhskie_chasy_submariner_116610lv.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch Submariner 116610LV') + '&amp;price=2300&amp;image=' + encodeURIComponent('/images/scraped/rolex_muzhskie_chasy_submariner_116610lv.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="PATEK PHILLIPE Men’s Watch Nautilus 5811" src="/images/scraped/patek_phillipe_muzhskie_chasy_nautilus_5811.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">PATEK PHILLIPE Men’s Watch Nautilus 5811</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,172</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('PATEK PHILLIPE Men’s Watch Nautilus 5811', 2172, '/images/scraped/patek_phillipe_muzhskie_chasy_nautilus_5811.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('PATEK PHILLIPE Men’s Watch Nautilus 5811') + '&amp;price=2172&amp;image=' + encodeURIComponent('/images/scraped/patek_phillipe_muzhskie_chasy_nautilus_5811.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch Datejust M126333" src="/images/scraped/rolex_muzhskie_chasy_datejust.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch Datejust M126333</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$1,853</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch Datejust M126333', 1853, '/images/scraped/rolex_muzhskie_chasy_datejust.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch Datejust M126333') + '&amp;price=1853&amp;image=' + encodeURIComponent('/images/scraped/rolex_muzhskie_chasy_datejust.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch Datejust 41 m126333-0012" src="/images/scraped/rolex_muzhskie_chasy_datejust_41_m126333_0012.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch Datejust 41 m126333-0012</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$1,889</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch Datejust 41 m126333-0012', 1889, '/images/scraped/rolex_muzhskie_chasy_datejust_41_m126333_0012.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch Datejust 41 m126333-0012') + '&amp;price=1889&amp;image=' + encodeURIComponent('/images/scraped/rolex_muzhskie_chasy_datejust_41_m126333_0012.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch Cosmograph Daytona 40 m116500LN-0002" src="/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona_40_m116500ln_0002.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch Cosmograph Daytona 40 m116500LN-0002</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,000</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch Cosmograph Daytona 40 m116500LN-0002', 2000, '/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona_40_m116500ln_0002.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch Cosmograph Daytona 40 m116500LN-0002') + '&amp;price=2000&amp;image=' + encodeURIComponent('/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona_40_m116500ln_0002.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="IWC Men’s Watch Pilot Mark 40 IW327010" src="/images/scraped/cn4cubf742nimnth5h893l2g1q02j37b.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">IWC Men’s Watch Pilot Mark 40 IW327010</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$978</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('IWC Men’s Watch Pilot Mark 40 IW327010', 978, '/images/scraped/cn4cubf742nimnth5h893l2g1q02j37b.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('IWC Men’s Watch Pilot Mark 40 IW327010') + '&amp;price=978&amp;image=' + encodeURIComponent('/images/scraped/cn4cubf742nimnth5h893l2g1q02j37b.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="LOUIS VUITTON Watch Storage Box" src="/images/scraped/41r6anya2qyyz89j4c2707w3fb6kasbl.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">LOUIS VUITTON Watch Storage Box</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,889</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('LOUIS VUITTON Watch Storage Box', 2889, '/images/scraped/41r6anya2qyyz89j4c2707w3fb6kasbl.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('LOUIS VUITTON Watch Storage Box') + '&amp;price=2889&amp;image=' + encodeURIComponent('/images/scraped/41r6anya2qyyz89j4c2707w3fb6kasbl.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch Land-Dweller 40 mm" src="/images/scraped/uzb1t9r5llqfwniz1gxgovy66t1s11wi.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch Land-Dweller 40 mm</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,111</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch Land-Dweller 40 mm', 2111, '/images/scraped/uzb1t9r5llqfwniz1gxgovy66t1s11wi.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch Land-Dweller 40 mm') + '&amp;price=2111&amp;image=' + encodeURIComponent('/images/scraped/uzb1t9r5llqfwniz1gxgovy66t1s11wi.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch Datejust 41 m126334-0026" src="/images/scraped/rolex_muzhskie_chasy_datejust_41_m126334_0026.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch Datejust 41 m126334-0026</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$1,556</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch Datejust 41 m126334-0026', 1556, '/images/scraped/rolex_muzhskie_chasy_datejust_41_m126334_0026.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch Datejust 41 m126334-0026') + '&amp;price=1556&amp;image=' + encodeURIComponent('/images/scraped/rolex_muzhskie_chasy_datejust_41_m126334_0026.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch 42 mm Sky-Dweller Green Dial Oyster Full Set" src="/images/scraped/ekong48b7p3og7nc71hmog81zugaf4we.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch 42 mm Sky-Dweller Green Dial Oyster Full Set</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$1,889</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch 42 mm Sky-Dweller Green Dial Oyster Full Set', 1889, '/images/scraped/ekong48b7p3og7nc71hmog81zugaf4we.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch 42 mm Sky-Dweller Green Dial Oyster Full Set') + '&amp;price=1889&amp;image=' + encodeURIComponent('/images/scraped/ekong48b7p3og7nc71hmog81zugaf4we.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="PATEK PHILLIPE Men’s Watch Aquanaut 5261R" src="/images/scraped/patek_phillipe_muzhskie_chasy_aquanaut_5261r.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">PATEK PHILLIPE Men’s Watch Aquanaut 5261R</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,000</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('PATEK PHILLIPE Men’s Watch Aquanaut 5261R', 2000, '/images/scraped/patek_phillipe_muzhskie_chasy_aquanaut_5261r.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('PATEK PHILLIPE Men’s Watch Aquanaut 5261R') + '&amp;price=2000&amp;image=' + encodeURIComponent('/images/scraped/patek_phillipe_muzhskie_chasy_aquanaut_5261r.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch GMT-Master ll" src="/images/scraped/rolex_muzhskie_chasy_gmt_master_ll.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch GMT-Master ll</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,389</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch GMT-Master ll', 2389, '/images/scraped/rolex_muzhskie_chasy_gmt_master_ll.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch GMT-Master ll') + '&amp;price=2389&amp;image=' + encodeURIComponent('/images/scraped/rolex_muzhskie_chasy_gmt_master_ll.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="PATEK PHILLIPE Men’s Watch Nautilus 5711" src="/images/scraped/patek_phillipe_muzhskie_chasy_nautilus_5711.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">PATEK PHILLIPE Men’s Watch Nautilus 5711</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,000</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('PATEK PHILLIPE Men’s Watch Nautilus 5711', 2000, '/images/scraped/patek_phillipe_muzhskie_chasy_nautilus_5711.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('PATEK PHILLIPE Men’s Watch Nautilus 5711') + '&amp;price=2000&amp;image=' + encodeURIComponent('/images/scraped/patek_phillipe_muzhskie_chasy_nautilus_5711.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch Cosmograph Daytona 126518LN" src="/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona_126518ln.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch Cosmograph Daytona 126518LN</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,889</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch Cosmograph Daytona 126518LN', 2889, '/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona_126518ln.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch Cosmograph Daytona 126518LN') + '&amp;price=2889&amp;image=' + encodeURIComponent('/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona_126518ln.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="PATEK PHILLIPE Men’s Watch 5712/1R-001" src="/images/scraped/patek_phillipe_muzhskie_chasy_5712_1r_001.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">PATEK PHILLIPE Men’s Watch 5712/1R-001</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,444</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('PATEK PHILLIPE Men’s Watch 5712/1R-001', 2444, '/images/scraped/patek_phillipe_muzhskie_chasy_5712_1r_001.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('PATEK PHILLIPE Men’s Watch 5712/1R-001') + '&amp;price=2444&amp;image=' + encodeURIComponent('/images/scraped/patek_phillipe_muzhskie_chasy_5712_1r_001.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="VACHERON CONSTANTIN Men’s Watch Patrimony Automatic" src="/images/scraped/vacheron_constantin_muzhskie_chasy_patrimony_automatic.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">VACHERON CONSTANTIN Men’s Watch Patrimony Automatic</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$1,389</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('VACHERON CONSTANTIN Men’s Watch Patrimony Automatic', 1389, '/images/scraped/vacheron_constantin_muzhskie_chasy_patrimony_automatic.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('VACHERON CONSTANTIN Men’s Watch Patrimony Automatic') + '&amp;price=1389&amp;image=' + encodeURIComponent('/images/scraped/vacheron_constantin_muzhskie_chasy_patrimony_automatic.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="all-products-section" style="padding: 3rem 0; background: var(--bg-dark);">
+<div class="container">
+<div class="section-header-with-cta">
+<div>
+<h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #ffffff; margin: 0;">All Products</h2>
+<p style="color: var(--text-light); margin-top: 0.5rem;">Explore our complete collection of luxury items</p>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin-top: 2rem;">
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="HUBLOT Men’s Watch Classic Fusion" src="/images/scraped/hublot_muzhskie_chasy_classic_fusion.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">HUBLOT Men’s Watch Classic Fusion</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$1,661</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('HUBLOT Men’s Watch Classic Fusion', 1661, '/images/scraped/hublot_muzhskie_chasy_classic_fusion.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('HUBLOT Men’s Watch Classic Fusion') + '&amp;price=1661&amp;image=' + encodeURIComponent('/images/scraped/hublot_muzhskie_chasy_classic_fusion.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="CARTIER Men’s Watch Ballon Bleu 42 mm" src="/images/scraped/cartier_muzhskie_chasy_ballon_bleu_42_mm.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">CARTIER Men’s Watch Ballon Bleu 42 mm</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$1,124</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('CARTIER Men’s Watch Ballon Bleu 42 mm', 1124, '/images/scraped/cartier_muzhskie_chasy_ballon_bleu_42_mm.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('CARTIER Men’s Watch Ballon Bleu 42 mm') + '&amp;price=1124&amp;image=' + encodeURIComponent('/images/scraped/cartier_muzhskie_chasy_ballon_bleu_42_mm.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch Cosmograph Daytona 126518LN classic" src="/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch Cosmograph Daytona 126518LN classic</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,300</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch Cosmograph Daytona 126518LN classic', 2300, '/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch Cosmograph Daytona 126518LN classic') + '&amp;price=2300&amp;image=' + encodeURIComponent('/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="VACHERON CONSTANTIN Men’s Watch Fifty Six 4600E" src="/images/scraped/vacheron_constantin_muzhskie_chasy_fifty_six_4600e_.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">VACHERON CONSTANTIN Men’s Watch Fifty Six 4600E</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,300</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('VACHERON CONSTANTIN Men’s Watch Fifty Six 4600E', 2300, '/images/scraped/vacheron_constantin_muzhskie_chasy_fifty_six_4600e_.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('VACHERON CONSTANTIN Men’s Watch Fifty Six 4600E') + '&amp;price=2300&amp;image=' + encodeURIComponent('/images/scraped/vacheron_constantin_muzhskie_chasy_fifty_six_4600e_.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch Submariner 116610LV" src="/images/scraped/rolex_muzhskie_chasy_submariner_116610lv.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch Submariner 116610LV</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,300</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch Submariner 116610LV', 2300, '/images/scraped/rolex_muzhskie_chasy_submariner_116610lv.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch Submariner 116610LV') + '&amp;price=2300&amp;image=' + encodeURIComponent('/images/scraped/rolex_muzhskie_chasy_submariner_116610lv.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="PATEK PHILLIPE Men’s Watch Nautilus 5811" src="/images/scraped/patek_phillipe_muzhskie_chasy_nautilus_5811.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">PATEK PHILLIPE Men’s Watch Nautilus 5811</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,172</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('PATEK PHILLIPE Men’s Watch Nautilus 5811', 2172, '/images/scraped/patek_phillipe_muzhskie_chasy_nautilus_5811.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('PATEK PHILLIPE Men’s Watch Nautilus 5811') + '&amp;price=2172&amp;image=' + encodeURIComponent('/images/scraped/patek_phillipe_muzhskie_chasy_nautilus_5811.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch Datejust M126333" src="/images/scraped/rolex_muzhskie_chasy_datejust.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch Datejust M126333</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$1,853</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch Datejust M126333', 1853, '/images/scraped/rolex_muzhskie_chasy_datejust.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch Datejust M126333') + '&amp;price=1853&amp;image=' + encodeURIComponent('/images/scraped/rolex_muzhskie_chasy_datejust.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch Datejust 41 m126333-0012" src="/images/scraped/rolex_muzhskie_chasy_datejust_41_m126333_0012.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch Datejust 41 m126333-0012</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$1,889</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch Datejust 41 m126333-0012', 1889, '/images/scraped/rolex_muzhskie_chasy_datejust_41_m126333_0012.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch Datejust 41 m126333-0012') + '&amp;price=1889&amp;image=' + encodeURIComponent('/images/scraped/rolex_muzhskie_chasy_datejust_41_m126333_0012.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch Cosmograph Daytona 40 m116500LN-0002" src="/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona_40_m116500ln_0002.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch Cosmograph Daytona 40 m116500LN-0002</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,000</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch Cosmograph Daytona 40 m116500LN-0002', 2000, '/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona_40_m116500ln_0002.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch Cosmograph Daytona 40 m116500LN-0002') + '&amp;price=2000&amp;image=' + encodeURIComponent('/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona_40_m116500ln_0002.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="IWC Men’s Watch Pilot Mark 40 IW327010" src="/images/scraped/cn4cubf742nimnth5h893l2g1q02j37b.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">IWC Men’s Watch Pilot Mark 40 IW327010</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$978</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('IWC Men’s Watch Pilot Mark 40 IW327010', 978, '/images/scraped/cn4cubf742nimnth5h893l2g1q02j37b.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('IWC Men’s Watch Pilot Mark 40 IW327010') + '&amp;price=978&amp;image=' + encodeURIComponent('/images/scraped/cn4cubf742nimnth5h893l2g1q02j37b.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="LOUIS VUITTON Watch Storage Box" src="/images/scraped/41r6anya2qyyz89j4c2707w3fb6kasbl.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">LOUIS VUITTON Watch Storage Box</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,889</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('LOUIS VUITTON Watch Storage Box', 2889, '/images/scraped/41r6anya2qyyz89j4c2707w3fb6kasbl.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('LOUIS VUITTON Watch Storage Box') + '&amp;price=2889&amp;image=' + encodeURIComponent('/images/scraped/41r6anya2qyyz89j4c2707w3fb6kasbl.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch Land-Dweller 40 mm" src="/images/scraped/uzb1t9r5llqfwniz1gxgovy66t1s11wi.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch Land-Dweller 40 mm</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,111</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch Land-Dweller 40 mm', 2111, '/images/scraped/uzb1t9r5llqfwniz1gxgovy66t1s11wi.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch Land-Dweller 40 mm') + '&amp;price=2111&amp;image=' + encodeURIComponent('/images/scraped/uzb1t9r5llqfwniz1gxgovy66t1s11wi.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch Datejust 41 m126334-0026" src="/images/scraped/rolex_muzhskie_chasy_datejust_41_m126334_0026.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch Datejust 41 m126334-0026</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$1,556</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch Datejust 41 m126334-0026', 1556, '/images/scraped/rolex_muzhskie_chasy_datejust_41_m126334_0026.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch Datejust 41 m126334-0026') + '&amp;price=1556&amp;image=' + encodeURIComponent('/images/scraped/rolex_muzhskie_chasy_datejust_41_m126334_0026.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch 42 mm Sky-Dweller Green Dial Oyster Full Set" src="/images/scraped/ekong48b7p3og7nc71hmog81zugaf4we.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch 42 mm Sky-Dweller Green Dial Oyster Full Set</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$1,889</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch 42 mm Sky-Dweller Green Dial Oyster Full Set', 1889, '/images/scraped/ekong48b7p3og7nc71hmog81zugaf4we.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch 42 mm Sky-Dweller Green Dial Oyster Full Set') + '&amp;price=1889&amp;image=' + encodeURIComponent('/images/scraped/ekong48b7p3og7nc71hmog81zugaf4we.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="PATEK PHILLIPE Men’s Watch Aquanaut 5261R" src="/images/scraped/patek_phillipe_muzhskie_chasy_aquanaut_5261r.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">PATEK PHILLIPE Men’s Watch Aquanaut 5261R</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,000</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('PATEK PHILLIPE Men’s Watch Aquanaut 5261R', 2000, '/images/scraped/patek_phillipe_muzhskie_chasy_aquanaut_5261r.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('PATEK PHILLIPE Men’s Watch Aquanaut 5261R') + '&amp;price=2000&amp;image=' + encodeURIComponent('/images/scraped/patek_phillipe_muzhskie_chasy_aquanaut_5261r.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch GMT-Master ll" src="/images/scraped/rolex_muzhskie_chasy_gmt_master_ll.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch GMT-Master ll</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,389</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch GMT-Master ll', 2389, '/images/scraped/rolex_muzhskie_chasy_gmt_master_ll.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch GMT-Master ll') + '&amp;price=2389&amp;image=' + encodeURIComponent('/images/scraped/rolex_muzhskie_chasy_gmt_master_ll.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="PATEK PHILLIPE Men’s Watch Nautilus 5711" src="/images/scraped/patek_phillipe_muzhskie_chasy_nautilus_5711.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">PATEK PHILLIPE Men’s Watch Nautilus 5711</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,000</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('PATEK PHILLIPE Men’s Watch Nautilus 5711', 2000, '/images/scraped/patek_phillipe_muzhskie_chasy_nautilus_5711.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('PATEK PHILLIPE Men’s Watch Nautilus 5711') + '&amp;price=2000&amp;image=' + encodeURIComponent('/images/scraped/patek_phillipe_muzhskie_chasy_nautilus_5711.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="ROLEX Men’s Watch Cosmograph Daytona 126518LN" src="/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona_126518ln.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">ROLEX Men’s Watch Cosmograph Daytona 126518LN</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,889</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('ROLEX Men’s Watch Cosmograph Daytona 126518LN', 2889, '/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona_126518ln.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('ROLEX Men’s Watch Cosmograph Daytona 126518LN') + '&amp;price=2889&amp;image=' + encodeURIComponent('/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona_126518ln.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="PATEK PHILLIPE Men’s Watch 5712/1R-001" src="/images/scraped/patek_phillipe_muzhskie_chasy_5712_1r_001.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">PATEK PHILLIPE Men’s Watch 5712/1R-001</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$2,444</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('PATEK PHILLIPE Men’s Watch 5712/1R-001', 2444, '/images/scraped/patek_phillipe_muzhskie_chasy_5712_1r_001.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('PATEK PHILLIPE Men’s Watch 5712/1R-001') + '&amp;price=2444&amp;image=' + encodeURIComponent('/images/scraped/patek_phillipe_muzhskie_chasy_5712_1r_001.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+<div style="background: var(--bg-light); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color);">
+<img alt="VACHERON CONSTANTIN Men’s Watch Patrimony Automatic" src="/images/scraped/vacheron_constantin_muzhskie_chasy_patrimony_automatic.webp" style="width: 100%; height: 250px; object-fit: contain; background-color: var(--bg-light); padding: 5px;"/>
+<div style="padding: 18px;">
+<h3 style="margin: 0 0 8px 0; color: #ffffff; font-size: 1rem;">VACHERON CONSTANTIN Men’s Watch Patrimony Automatic</h3>
+<p style="color: var(--text-light); font-size: 0.85rem; margin: 0 0 12px 0;">Timepieces</p>
+<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+<span style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">$1,389</span>
+</div>
+<div style="display: flex; gap: 10px;">
+<button onclick="addToCart('VACHERON CONSTANTIN Men’s Watch Patrimony Automatic', 1389, '/images/scraped/vacheron_constantin_muzhskie_chasy_patrimony_automatic.webp')" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Buy Now</button>
+
+</div>
+<button onclick="window.location.href='/product?title=' + encodeURIComponent('VACHERON CONSTANTIN Men’s Watch Patrimony Automatic') + '&amp;price=1389&amp;image=' + encodeURIComponent('/images/scraped/vacheron_constantin_muzhskie_chasy_patrimony_automatic.webp')" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;margin-top:10px;transition:all 0.2s;" onmouseover="this.style.background=\'#fff\';this.style.color=\'#000\';" onmouseout="this.style.background=\'transparent\';this.style.color=\'#fff\';">Learn More</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="featured-collections" id="collections">
+<div class="container">
+<h2>Featured Collections</h2>
+<div class="collections-carousel-wrapper">
+<button class="carousel-nav prev" onclick="scrollCarousel('collections', -1)">‹</button>
+<div class="collections-carousel" id="collectionsCarousel">
+<div class="collection-item">
+<img alt="Jewelry &amp; Watches" src="images/jewelry-womens.jpg"/>
+<div class="collection-content">
+<h3>Jewelry &amp; Watches</h3>
+<p>Timeless pieces and exquisite timepieces</p>
+<a class="view-collection" href="/collections/timepieces">View Collection</a>
+</div>
+</div>
+<div class="collection-item">
+<img alt="Clothing" src="images/clothing-collection.jpeg"/>
+<div class="collection-content">
+<h3>Clothing</h3>
+<p>Designer apparel and haute couture</p>
+<a class="view-collection" href="/collections/clothing">View Collection</a>
+</div>
+</div>
+<div class="collection-item">
+<img alt="Accessories" src="images/luxury-accessories.png"/>
+<div class="collection-content">
+<h3>Accessories</h3>
+<p>Premium handbags, belts, and essentials</p>
+<a class="view-collection" href="/collections/accessories">View Collection</a>
+</div>
+</div>
+<div class="collection-item">
+<img alt="Home Décor" src="images/home-decor.png"/>
+<div class="collection-content">
+<h3>Home Décor</h3>
+<p>Elegant furnishings and curated pieces</p>
+<a class="view-collection" href="/collections/home-decor">View Collection</a>
+</div>
+</div>
+<div class="collection-item">
+<img alt="Gifts" src="images/gifts-collection.jpeg"/>
+<div class="collection-content">
+<h3>Gifts</h3>
+<p>Curated luxury gifts for every occasion</p>
+<a class="view-collection" href="/collections/gifts">View Collection</a>
+</div>
+</div>
+<div class="collection-item">
+<img alt="Limited Drops" src="images/rolex-datejust-steel-mop.jpg"/>
+<div class="collection-content">
+<h3>Limited Drops</h3>
+<p>Exclusive limited edition pieces</p>
+<a class="view-collection" href="/collections/limited-drops">View Collection</a>
+</div>
+</div>
+</div>
+<button class="carousel-nav next" onclick="scrollCarousel('collections', 1)">›</button>
+</div>
+</div>
+</section>
+<section class="luxury-stats">
+<div class="container">
+<h2>Luxury without the markup</h2>
+<p style="color: #ffffff !important;">Direct sourcing and relationships with luxury brands allow us to offer authentic pieces at exceptional value</p>
+<div class="stats-grid">
+<div class="stat">
+<h3>50%</h3>
+<p>Average savings on luxury items</p>
+</div>
+<div class="stat">
+<h3>7+</h3>
+<p>Years of luxury expertise</p>
+</div>
+<div class="stat">
+<h3>100%</h3>
+<p>Authenticity guaranteed</p>
+</div>
+</div>
+</div>
+</section>
+<section class="craftsmanship">
+<div class="container">
+<h2>Unrivaled Craftsmanship</h2>
+<p>Every piece in our collection represents the pinnacle of luxury craftsmanship</p>
+<div class="craftsmanship-grid">
+<div class="craft-item">
+<div class="craft-icon"></div>
+<h3>Expert Craftsmanship</h3>
+<p>Master artisans with decades of experience</p>
+</div>
+<div class="craft-item">
+<div class="craft-icon"></div>
+<h3>Quality Control</h3>
+<p>Rigorous authentication and quality standards</p>
+</div>
+<div class="craft-item">
+<div class="craft-icon"></div>
+<h3>Precise Sourcing</h3>
+<p>Direct relationships with luxury manufacturers</p>
+</div>
+<div class="craft-item">
+<div class="craft-icon"></div>
+<h3>Worldwide Standards</h3>
+<p>International luxury certification standards</p>
+</div>
+</div>
+<div class="craftsmanship-cta">
+<a class="join-club-btn" href="/#vip">Join Our Private Club</a>
+</div>
+</div>
+</section>
+<section class="member-stats">
+<div class="container">
+<div class="stats-content">
+<div class="stats-left">
+<h2>We are proud. We are the finest.</h2>
+<h3>Who appreciate true craftsmanship</h3>
+</div>
+<div class="stats-right">
+<div class="member-stat">
+<h3>10k+</h3>
+<p>Satisfied members worldwide</p>
+</div>
+<div class="member-stat">
+<h3>5yr</h3>
+<p>Average membership duration</p>
+</div>
+<div class="member-stat">
+<h3>99%</h3>
+<p>Member satisfaction rate</p>
+</div>
+<div class="member-stat">
+<h3>7+</h3>
+<p>Countries served globally</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="vip-invitation" id="vip">
+<div class="container">
+<div class="vip-content-wrapper">
+<div class="vip-content">
+<span class="vip-badge">EXCLUSIVE INVITATION</span>
+<h2>Join the Kuraj VIP Club</h2>
+<p class="vip-subtitle">Get instant access to exclusive deals, early product launches, and VIP-only events</p>
+<div class="vip-benefits-grid">
+<div class="vip-benefit">
+<div class="benefit-icon"></div>
+<h3>Up to 90% Off</h3>
+<p>Members save an average of $5,000 per purchase</p>
+</div>
+<div class="vip-benefit">
+<div class="benefit-icon"></div>
+<h3>First Access</h3>
+<p>Shop limited drops 48 hours before anyone else</p>
+</div>
+<div class="vip-benefit">
+<div class="benefit-icon"></div>
+<h3>Exclusive Gifts</h3>
+<p>Receive luxury welcome gifts worth $500+</p>
+</div>
+<div class="vip-benefit">
+<div class="benefit-icon"></div>
+<h3>Free Shipping</h3>
+<p>Complimentary worldwide express delivery</p>
+</div>
+</div>
+<div class="vip-cta-group">
+<button class="cta-button primary large" onclick="window.location.href='/contact'">Join VIP Club — Free</button>
+<button class="cta-button secondary" onclick="window.location.href='/about'">Learn More</button>
+</div>
+<p class="vip-guarantee">✓ No credit card required • Cancel anytime • Join 10,000+ VIP members</p>
+</div>
+<div class="vip-image">
+<img alt="VIP Club Benefits" src="images/vip-benefits.jpg"/>
+</div>
+</div>
+</div>
+</section>
+<section class="guarantee-section">
+<div class="container">
+<div class="guarantee-content">
+<div class="guarantee-icon"></div>
+<h2>100% Authentic Guarantee</h2>
+<p class="guarantee-subtitle">We stand behind the authenticity of every luxury item we offer. Shop with absolute confidence knowing that all our products are rigorously verified.</p>
+</div>
+</div>
+</section>
+<section class="testimonials">
+<div class="container">
+<h2>What Our Members Say</h2>
+<div class="testimonials-grid">
+<div class="testimonial">
+<div class="stars">★★★★★</div>
+<p>"The quality and authenticity of every piece is unmatched. True luxury at its finest."</p>
+<div class="testimonial-author">
+<strong>Michael Chen</strong>
+<span>VIP Member</span>
+</div>
+</div>
+<div class="testimonial">
+<div class="stars">★★★★★</div>
+<p>"Being part of this exclusive club has transformed my luxury shopping experience completely."</p>
+<div class="testimonial-author">
+<strong>Sophia Williams</strong>
+<span>Executive Member</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="about-section" id="about">
+<div class="container">
+<h2>About Kuraj Fashion</h2>
+<p class="about-intro">Your gateway to luxury fashion at a fraction of the cost</p>
+<div class="about-grid">
+<div class="about-item">
+<div class="about-icon"></div>
+<h3>Exceptional Value</h3>
+<p>Why pay inflated retail markups? Our curated luxury pieces offer exceptional aesthetics and authentic craftsmanship at prices that make sense. Save thousands while enjoying premier luxury.</p>
+</div>
+<div class="about-item">
+<div class="about-icon"></div>
+<h3>Same Quality</h3>
+<p>Made with premium materials and expert craftsmanship, our pieces mirror the originals in every detail. No one can tell the difference, but your wallet certainly will.</p>
+</div>
+<div class="about-item">
+<div class="about-icon"></div>
+<h3>Smart Investment</h3>
+<p>Pre-owned and certified luxury items retain lasting heritage. Our curated collection lets you acquire timeless pieces without unnecessary showroom depreciation.</p>
+</div>
+<div class="about-item">
+<div class="about-icon"></div>
+<h3>Accessible Luxury</h3>
+<p>Luxury fashion should be for everyone, not just the ultra-wealthy. We democratize style by making high-end designs accessible to all.</p>
+</div>
+</div>
+<div class="about-cta">
+<a class="cta-button primary" href="/about">Learn More About Us</a>
+</div>
+</div>
+</section>
+<section class="invitation-section" id="contact">
+<div class="container">
+<h2>Request an Invitation</h2>
+<p class="invitation-subtitle">Join our exclusive community and unlock luxury benefits</p>
+<form class="invitation-form" id="invitationForm">
+<div class="form-row">
+<input name="firstName" placeholder="First Name" required="" type="text"/>
+<input name="lastName" placeholder="Last Name" required="" type="text"/>
+</div>
+<div class="form-row">
+<input name="phone" placeholder="Phone Number" required="" type="tel"/>
+</div>
+<div class="form-group">
+<label for="promoCode">Promo Code (Optional)</label>
+<input id="promoCode" name="promoCode" placeholder="Enter your promo code" type="text"/>
+<small class="form-hint">Have a promo code? Enter it here for exclusive benefits</small>
+</div>
+<div class="form-group">
+<label for="referralCode">Referral Code (Optional)</label>
+<input id="referralCode" name="referralCode" placeholder="Enter referral code" type="text"/>
+<small class="form-hint">Referred by a member? Enter their code here</small>
+</div>
+<div class="form-group">
+<label class="checkbox-label newsletter-checkbox">
+<input checked="" name="newsletter" type="checkbox" value="yes"/>
+<span>Yes, I want to receive exclusive offers, luxury insights, and early access to new collections</span>
+</label>
+</div>
+<button class="submit-button" type="submit">Request Invitation</button>
+<p class="form-privacy">By submitting this form, you agree to our Privacy Policy and Terms of Service</p>
+</form>
+</div>
+</section>
+<footer class="footer">
+<div class="container">
+<div class="footer-content" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px;">
+<div class="footer-section" style="flex: 1; min-width: 250px;">
+<h3>KURAJ FASHION</h3>
+<p>Redefining luxury through exclusive access and unparalleled craftsmanship.</p>
+<div style="margin-top: 20px;">
+<h4 style="margin-bottom: 10px;">Contact Us</h4>
+<p style="margin: 0; color: #999;">Email: support@kurajfashion.com</p>
+<p style="margin: 0; color: #999;">Phone: +1 (800) 587-2584</p>
+<p style="margin: 0; color: #999;">Hours: Mon-Sun: 8AM-10PM EST</p>
+</div>
+</div>
+<div class="footer-section" style="flex: 1; min-width: 150px;">
+<h4>Collections</h4>
+<ul>
+<li><a href="/collections/timepieces">Timepieces</a></li>
+<li><a href="/collections/jewelry">Jewelry</a></li>
+<li><a href="/collections/handbags">Handbags</a></li>
+<li><a href="/collections/accessories">Accessories</a></li>
+<li><a href="/collections/clothing">Clothing</a></li>
+<li><a href="/collections/home-decor">Home Décor</a></li>
+<li><a href="/collections/gifts">Gifts</a></li>
+<li><a href="/collections/limited-drops">Limited Drops</a></li>
+</ul>
+</div>
+<div class="footer-section" style="flex: 1; min-width: 150px;">
+<h4>For Him/For Her</h4>
+<ul>
+<li><a href="/for-him">For Him</a></li>
+<li><a href="/for-her">For Her</a></li>
+<li><a href="/all-products">All Products</a></li>
+</ul>
+<h4 style="margin-top: 20px;">Earn with Us</h4>
+<ul>
+<li><a href="/dashboard">Join the Club</a></li>
+<li><a href="/dashboard">VIP Benefits</a></li>
+<li><a href="/dashboard">Referral Program</a></li>
+<li><a href="/contact">Member Support</a></li>
+</ul>
+</div>
+<div class="footer-section" style="flex: 1; min-width: 150px;">
+<h4>About</h4>
+<ul>
+<li><a href="/about">About Us</a></li>
+<li><a href="javascript:void(0)">Our Collections</a></li>
+<li><a href="/dashboard">Membership</a></li>
+<li><a href="/contact">Contact Us</a></li>
+</ul>
+<h4 style="margin-top: 20px;">Support</h4>
+<ul>
+<li><a href="/contact">Contact Us</a></li>
+<li><a href="/legal/authentication">Authentication</a></li>
+<li><a href="/legal/shipping">Shipping</a></li>
+<li><a href="/legal/returns">Returns</a></li>
+</ul>
+</div>
+<div class="footer-section" style="flex: 1; min-width: 150px;">
+<h4>Policies</h4>
+<ul>
+<li><a href="/legal/privacy-policy">Privacy Policy</a></li>
+<li><a href="/legal/terms-of-service">Terms of Service</a></li>
+<li><a href="/legal/terms-conditions">Terms &amp; Conditions</a></li>
+<li><a href="/legal/cookie-notices">Cookie Notices</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 30px;">
+<p>© 2025 Kuraj Fashion. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script src="cart.js"></script>
+<script src="script.js"></script>
+<script>
+        function scrollToInvitation() {
+            document.getElementById('contact').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        function toggleCart() {
+            const cartOverlay = document.getElementById('cartOverlay');
+            const cartSidebar = document.getElementById('cartSidebar');
+            cartOverlay.classList.toggle('active');
+            cartSidebar.classList.toggle('active');
+        }
+
+        function closeCart() {
+            const cartOverlay = document.getElementById('cartOverlay');
+            const cartSidebar = document.getElementById('cartSidebar');
+            cartOverlay.classList.remove('active');
+            cartSidebar.classList.remove('active');
+        }
+
+        function closeStickyBanner() {
+            const banner = document.getElementById('stickyBanner');
+            if(banner) banner.style.display = 'none';
+        }
+
+        // Hide banner if user is logged in
+        function checkBannerVisibility() {
+            const currentUser = localStorage.getItem('currentUser');
+            const stickyBanner = document.getElementById('stickyBanner');
+            if(!stickyBanner) return;
+            
+            if (currentUser) {
+                // User is logged in - hide banner
+                stickyBanner.style.display = 'none';
+            } else {
+                // User is not logged in - show banner
+                stickyBanner.style.display = 'block';
+            }
+        }
+        
+        // Check on page load
+        checkBannerVisibility();
+        
+        // Listen for login/logout changes
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'currentUser') {
+                checkBannerVisibility();
+            }
+        });
+        
+        // Check every second in case of changes in same tab
+        setInterval(checkBannerVisibility, 1000);
+
+        // Make banner stick and hide/show on scroll
+        let lastScrollY = 0;
+        
+        window.addEventListener('scroll', () => {
+            const stickyBanner = document.getElementById('stickyBanner');
+            if(!stickyBanner) return;
+            
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > 300) {
+                // Hide banner when user scrolls down more than 300px
+                stickyBanner.style.opacity = '0';
+                stickyBanner.style.pointerEvents = 'none';
+            } else {
+                // Show banner when user scrolls back to top
+                stickyBanner.style.opacity = '1';
+                stickyBanner.style.pointerEvents = 'auto';
+            }
+            
+            lastScrollY = currentScrollY;
+        }, { passive: true });
+
+        function proceedToCheckout() {
+            let cartItems = JSON.parse(localStorage.getItem('luxuryCart')) || JSON.parse(localStorage.getItem('cartItems')) || [];
+            
+            if (cartItems.length === 0) {
+                showNotification('Your cart is empty. Please add items before checkout.', 'error');
+                return;
+            }
+
+            // Store cart items in session for checkout
+            sessionStorage.setItem('checkoutItems', JSON.stringify(cartItems));
+            
+            // Redirect to checkout page
+            window.location.href = '/checkout';
+        }
+
+        // Function to add items to cart (basic implementation)
+        function addToCart(name, price, imageUrl) {
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const existingItemIndex = cartItems.findIndex(item => item.name === name);
+
+            if (existingItemIndex > -1) {
+                cartItems[existingItemIndex].quantity += 1;
+            } else {
+                cartItems.push({ name, price, imageUrl, quantity: 1 });
+            }
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            updateCartUI();
+            showNotification('Item added to cart!', 'success');
+        }
+
+        // Function to update cart UI (display items, total)
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            const cartTotalElement = document.getElementById('cartTotal');
+            const cartEmptyElement = document.getElementById('cartEmpty');
+            const cartContentElement = document.getElementById('cartContent');
+            const cartCountBadge = document.getElementById('cartCount');
+
+            cartItemsContainer.innerHTML = '';
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            let total = 0;
+
+            if (cartItems.length === 0) {
+                cartEmptyElement.style.display = 'flex';
+                cartContentElement.style.display = 'none';
+            } else {
+                cartEmptyElement.style.display = 'none';
+                cartContentElement.style.display = 'block';
+                cartItems.forEach((item, index) => {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('cart-item');
+                    const imageUrl = item.imageUrl || item.image || 'images/images/scraped/LF1017-300x300.jpg';
+                    itemElement.innerHTML = `
+                        <img src="${imageUrl}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                            <div class="cart-item-quantity">
+                                <button class="quantity-btn" onclick="updateCartItem(${index}, -1)">-</button>
+                                <span>${item.quantity}</span>
+                                <button class="quantity-btn" onclick="updateCartItem(${index}, 1)">+</button>
+                            </div>
                         </div>
-                        <div class="stat">
-                            <span class="stat-number">500+</span>
-                            <span class="stat-label">Luxury Brands</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">50K+</span>
-                            <span class="stat-label">Satisfied Clients</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <img src="images/boutique-interior.png" alt="Luxury Store Interior" />
-                </div>
-            </div>
-        </div>
-    </section>
+                        <button class="cart-item-remove" onclick="removeItemFromCart(${index})">&times;</button>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                    total += item.price * item.quantity;
+                });
+            }
+            cartTotalElement.textContent = `$${total.toFixed(2)}`;
+            cartCountBadge.textContent = cartItems.length;
+        }
 
-    <!-- Newsletter -->
-    <section class="newsletter">
-        <div class="container">
-            <div class="newsletter-content">
-                <h2>Stay in Style</h2>
-                <p>Be the first to know about our latest collections, exclusive events, and special offers.</p>
-                <form class="newsletter-form" id="newsletterForm">
-                    <input type="email" placeholder="Enter your email address" required>
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form>
-            </div>
-        </div>
-    </section>
+        // Function to update quantity of an item in cart
+        function updateCartItem(index, change) {
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            cartItems[index].quantity += change;
+            if (cartItems[index].quantity <= 0) {
+                cartItems.splice(index, 1); // Remove item if quantity is 0 or less
+            }
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            updateCartUI();
+        }
 
-    <!-- Footer -->
-    <footer class="footer" id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>KURAJ FASHION</h3>
-                    <p>Redefining luxury through exceptional quality and timeless design.</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Instagram">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="Facebook">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="Twitter">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Collections</h4>
-                    <ul>
-                        <li><a href="clothing.html">Premium Clothing</a></li>
-                        <li><a href="watches.html">Luxury Watches</a></li>
-                        <li><a href="#">Accessories</a></li>
-                        <li><a href="#">Limited Editions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Customer Care</h4>
-                    <ul>
-                        <li><a href="#">Size Guide</a></li>
-                        <li><a href="#">Shipping & Returns</a></li>
-                        <li><a href="#">Care Instructions</a></li>
-                        <li><a href="#">Contact Support</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <div class="contact-info">
-                        <p>📍 123 Luxury Avenue, Fashion District</p>
-                        <p>📞 +1 (555) 123-4567</p>
-                        <p>✉️ hello@luxestore.com</p>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 KURAJ FASHION. All rights reserved. | Privacy Policy | Terms of Service</p>
-            </div>
-        </div>
-    </footer>
+        // Function to remove an item from cart
+        function removeItemFromCart(index) {
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            cartItems.splice(index, 1);
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            updateCartUI();
+            showNotification('Item removed from cart', 'success');
+        }
 
-    <!-- Shopping Cart Modal -->
-    <div class="cart-modal" id="cartModal">
-        <div class="cart-content">
-            <div class="cart-header">
-                <h3>Shopping Cart</h3>
-                <button class="close-cart" aria-label="Close Cart">&times;</button>
-            </div>
-            <div class="cart-items" id="cartItems">
-                <!-- Cart items will be populated here -->
-            </div>
-            <div class="cart-footer">
-                <div class="cart-total">
-                    <strong>Total: $<span id="cartTotal">0.00</span></strong>
-                </div>
-                <button class="btn btn-primary checkout-btn">Proceed to Checkout</button>
-            </div>
-        </div>
-    </div>
+        // Function to show notifications
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.classList.add('notification', type, 'show');
+            notification.textContent = message;
+            document.body.appendChild(notification);
 
-    <script src="script.js"></script>
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Function to toggle wishlist button state
+        function toggleWishlist(button) {
+            button.classList.toggle('active');
+            
+            // Get product info from the card
+            const card = button.closest('.product-card-carousel') || button.closest('.product-card');
+            const name = card.querySelector('h3').textContent;
+            const priceText = card.querySelector('.sale-price').textContent.replace('$', '').replace(',', '');
+            const price = parseFloat(priceText);
+            const imageUrl = card.querySelector('img').src;
+            
+            // Call the new wishlist.js function
+            if (typeof addToWishlist === 'function') {
+                addToWishlist(name, price, imageUrl);
+                showNotification(button.classList.contains('active') ? 'Added to wishlist' : 'Removed from wishlist', 'success');
+            }
+        }
+
+        function scrollCarousel(carouselId, direction) {
+            const carousel = document.getElementById(`${carouselId}Carousel`);
+            const scrollAmount = carousel.clientWidth * 0.8; // Scroll by 80% of visible width
+            /* Removed behavior: 'smooth' to make carousel navigation instant instead of animated */
+            carousel.scrollBy({ left: direction * scrollAmount });
+        }
+
+        // Initialize cart UI on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartUI();
+
+            // Show sticky bottom CTA on scroll (example logic)
+            const stickyBottomCta = document.getElementById('stickyBottomCta');
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                if (stickyBottomCta) {
+                    if (window.scrollY > 500) {
+                        stickyBottomCta.classList.add('show');
+                    } else {
+                        stickyBottomCta.classList.remove('show');
+                    }
+                }
+                // Optionally hide after some time if user is not interacting
+                // scrollTimeout = setTimeout(() => {
+                //     if (window.scrollY > 500) {
+                //         stickyBottomCta.classList.remove('show');
+                //     }
+                // }, 5000);
+            });
+        });
+
+        let wishlist = [];
+
+        function updateWishlistCount() {
+            // Get count from the new wishlist.js system
+            const count = window.wishlistItems ? window.wishlistItems.length : 0;
+            const badge = document.getElementById('wishlistCount');
+            if (badge) {
+                badge.textContent = count;
+            }
+        }
+
+        function toggleWishlistSidebar() {
+            const sidebar = document.getElementById('wishlistSidebar');
+            const overlay = document.getElementById('wishlistOverlay');
+            sidebar.classList.toggle('active'); /* Changed to 'active' to match CSS */
+            overlay.classList.toggle('active');
+            renderWishlist();
+        }
+
+        function closeWishlistSidebar() {
+            const sidebar = document.getElementById('wishlistSidebar');
+            const overlay = document.getElementById('wishlistOverlay');
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        function renderWishlist() {
+            // This is now handled by wishlist.js updateWishlistSidebar()
+            // Just call that function if it exists
+            if (typeof updateWishlistSidebar === 'function') {
+                updateWishlistSidebar();
+            }
+        }
+
+        function updateWishlistTotal() {
+            // Calculate total from wishlist.js data
+            const total = (window.wishlistItems || []).reduce((sum, item) => sum + (item.price || 0), 0);
+            const totalEl = document.getElementById('wishlistTotalAmount');
+            if (totalEl) {
+                totalEl.textContent = '$' + total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
+        }
+
+        function addAllWishlistToCart() {
+            const items = window.wishlistItems || [];
+            if (items.length === 0) {
+                showNotification('Your wishlist is empty', 'error');
+                return;
+            }
+
+            // Add each wishlist item to cart
+            items.forEach(item => {
+                if (typeof addToCart === 'function') {
+                    addToCart(item.name, item.price, item.image);
+                }
+            });
+
+            showNotification(`Added ${items.length} items to cart`, 'success');
+            closeWishlistSidebar();
+        }
+
+        function removeFromWishlist(itemId) {
+            // This is handled by wishlist.js, but provide a backup
+            if (typeof window.removeFromWishlist !== 'function') {
+                window.removeFromWishlist = function(id) {
+                    window.wishlistItems = (window.wishlistItems || []).filter(item => item.id !== id);
+                    localStorage.setItem('wishlist', JSON.stringify(window.wishlistItems));
+                    updateWishlistCount();
+                    updateWishlistTotal();
+                    renderWishlist();
+                };
+            }
+            window.removeFromWishlist(itemId);
+            renderWishlist();
+            showNotification('Removed from wishlist', 'success');
+        }
+
+        // Initialize wishlist count on page load
+        updateWishlistCount();
+    </script>
+<script src="hash-router.js"></script>
+<script src="router.js"></script>
+<script src="footer-injector.js?v=999"></script>
+<div class="sticky-club-banner" id="stickyBanner">
+<div class="banner-content">
+<a class="banner-cta" href="/#vip">Become a Member — Join Now</a>
+<button class="banner-close" onclick="closeStickyBanner()">×</button>
+</div>
+</div>
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/kuraj/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script src="/footer-injector.js?v=999"></script>
+
+<script src="/header-injector.js?v=1783866855"></script>
+<script src="/cart-sync.js?v=1783866855"></script>
 </body>
 </html>

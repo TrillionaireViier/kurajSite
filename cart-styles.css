@@ -549,13 +549,12 @@
   }
 }
 
-/* Ensure cart footer is visible in cart modal and sidebar */
+/* Hide cart footer by default - only show inside cart sidebar */
 .cart-footer {
-    display: block !important;
+    display: none !important;
 }
 
-.cart-sidebar .cart-footer,
-.cart-modal .cart-footer {
+.cart-sidebar .cart-footer {
     display: block !important;
     padding: 20px;
     border-top: 1px solid #333333;

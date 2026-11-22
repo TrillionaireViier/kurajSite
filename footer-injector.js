@@ -22,11 +22,6 @@ window.addEventListener("DOMContentLoaded", () => {
       .footer .footer-section ul li a:hover { color: #ffffff; }
       .footer .footer-bottom { border-top: 1px solid #333; padding-top: 2rem; text-align: center; }
       .footer .footer-bottom p { color: #666; font-size: 0.85rem; }
-      @media (max-width: 540px) {
-        .footer .footer-content { flex-direction: column !important; gap: 24px !important; }
-        .footer .footer-section { min-width: 100% !important; }
-      }
-
     `;
     document.head.appendChild(style);
   }

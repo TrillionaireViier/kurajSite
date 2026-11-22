@@ -3,64 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policies | KURAJ FASHION</title>
-    <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="/styles.css?v=1783850048">
-    <link rel="stylesheet" href="/header-styles.css?v=1783850048">
-    <link rel="stylesheet" href="/cart-styles.css?v=1783850048">
+    <title>Clothing - Luxury Collection | Kuraj Fashion</title>
+    <link rel="stylesheet" href="/header-styles.css?v=1784124384">
+    <link rel="stylesheet" href="/styles.css?v=1784124384">
+    <link rel="stylesheet" href="/cart-styles.css?v=1784124384">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-        <style>
-        :root { --primary-color: #ffffff; }
-        *, *::before, *::after { box-sizing: border-box; }
-        html, body {
-            overflow-x: hidden !important;
-            max-width: 100vw;
-            margin: 0;
-            padding: 0;
-            background-color: #000000;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+<style>
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #000000;
+            --bg-dark: #0a0a0a;
+            --bg-light: #1a1a1a;
+            --text-light: #cccccc;
+            --accent: #ffffff;
         }
-        .policy-container {
-            max-width: 860px;
-            width: 100%;
-            margin: 120px auto 60px;
-            padding: 0 24px;
-            box-sizing: border-box;
-            color: #ffffff;
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--primary-color);
+        }
+
+        .header {
+            margin-top: 0;
+        }
+
+        .all-products-hero {
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--secondary-color) 100%);
+            padding: 80px 40px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+            margin-top: 100px;
+        }
+
+        .all-products-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .all-products-hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
             line-height: 1.8;
-            overflow-wrap: break-word;
-            word-break: break-word;
         }
-        .policy-container h1 {
-            font-family: "Playfair Display", serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            color: #ffffff;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
+
+        .products-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 60px 40px;
         }
-        .policy-container h2 {
-            font-family: "Playfair Display", serif;
-            font-size: clamp(1.3rem, 3.5vw, 1.8rem);
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            color: #ffffff;
-            line-height: 1.3;
+
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            gap: 20px;
         }
-        .policy-container p {
-            margin-bottom: 1.2rem;
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 1rem;
+
+        .products-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin: 0;
+            color: var(--primary-color);
         }
+
+        .filter-controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            border: 2px solid transparent;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .product-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin: 0 0 10px 0;
+            color: var(--primary-color);
+        }
+
+        .product-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin: 0 0 15px 0;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .product-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .add-to-cart,
+        .view-details {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .add-to-cart {
+            background-color: var(--accent);
+            color: var(--secondary-color);
+        }
+
+        .add-to-cart:hover {
+            background-color: #e0c061;
+            transform: translateY(-2px);
+        }
+
+        .view-details {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .view-details:hover {
+            background-color: var(--accent);
+            color: var(--secondary-color);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .pagination button,
+        .pagination a {
+            padding: 10px 15px;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            border: 2px solid transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .pagination button:hover,
+        .pagination a:hover,
+        .pagination .active {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        @media (max-width: 1024px) {
+            .products-container {
+                padding: 40px 30px;
+            }
+
+            .all-products-hero {
+                padding: 60px 30px;
+            }
+
+            .all-products-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 20px;
+            }
+        }
+
         @media (max-width: 768px) {
-            .policy-container {
-                margin: 95px auto 40px;
-                padding: 0 16px;
+            .products-container {
+                padding: 30px 20px;
+            }
+
+            .all-products-hero {
+                padding: 40px 20px;
+                margin-top: 80px;
+            }
+
+            .all-products-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .all-products-hero p {
+                font-size: 1rem;
+            }
+
+            .products-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .filter-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 15px;
+            }
+
+            .product-card {
+                border-radius: 6px;
+            }
+
+            .product-image {
+                height: 200px;
+            }
+
+            .product-info {
+                padding: 15px;
+            }
+
+            .product-info h3 {
+                font-size: 1rem;
+            }
+
+            .product-info p {
+                font-size: 0.8rem;
+            }
+
+            .product-price {
+                font-size: 1.1rem;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .add-to-cart,
+            .view-details {
+                width: 100%;
             }
         }
     </style>
 </head>
-<body class="bg-black">
+<body>
 
 <header class="header" id="mainHeader">
 <div class="top-announcement-bar" style="background: #000; color: #fff; text-align: center; padding: 4px 15px; font-size: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.2); width: 100%; z-index: 1000; position: relative;">
@@ -174,114 +425,8 @@
 </nav>
 </header>
 
-    <main class="policy-container">
-        <h1>Privacy Policies</h1>
-        <p>Last Updated: December 2025</p>
+<script src="/script.js"></script>
 
-        <div class="container">
-            <div class="page-hero">
-                <h2>Privacy Policy</h2>
-                <p class="page-subtitle">Your privacy is our priority. Learn how we protect and handle your personal information.</p>
-                <p class="page-date">Last updated: December 2025</p>
-            </div>
-
-            <div class="policy-grid">
-                <div class="policy-card">
-                    <div class="policy-icon"></div>
-                    <h2>Introduction</h2>
-                    <p>At Kuraj Fashion, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or make a purchase from us.</p>
-                </div>
-
-                <div class="policy-card">
-                    <div class="policy-icon"></div>
-                    <h2>Information We Collect</h2>
-                    <p>We collect information that you provide directly to us, including:</p>
-                    <ul class="policy-list">
-                        <li><strong>Personal Information:</strong> Name, email address, phone number, shipping address, and billing information</li>
-                        <li><strong>Account Information:</strong> Username, password, and membership preferences</li>
-                        <li><strong>Transaction Information:</strong> Purchase history, payment details, and order information</li>
-                        <li><strong>Communication Data:</strong> Your correspondence with us, including customer service inquiries</li>
-                        <li><strong>Usage Information:</strong> How you interact with our website, including pages visited and products viewed</li>
-                    </ul>
-                </div>
-
-                <div class="policy-card">
-                    <div class="policy-icon"></div>
-                    <h2>How We Use Your Information</h2>
-                    <p>We use the information we collect to:</p>
-                    <ul class="policy-list">
-                        <li>Process and fulfill your orders</li>
-                        <li>Communicate with you about your purchases and account</li>
-                        <li>Provide customer support and respond to your inquiries</li>
-                        <li>Send you marketing communications (with your consent)</li>
-                        <li>Improve our website, products, and services</li>
-                        <li>Detect and prevent fraud and security threats</li>
-                        <li>Comply with legal obligations</li>
-                    </ul>
-                </div>
-
-                <div class="policy-card">
-                    <div class="policy-icon"></div>
-                    <h2>Information Sharing</h2>
-                    <p>We do not sell your personal information. We may share your information with:</p>
-                    <ul class="policy-list">
-                        <li><strong>Service Providers:</strong> Third-party companies that help us operate our business (payment processors, shipping companies, etc.)</li>
-                        <li><strong>Legal Requirements:</strong> When required by law or to protect our rights</li>
-                        <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
-                    </ul>
-                </div>
-
-                <div class="policy-card">
-                    <div class="policy-icon"></div>
-                    <h2>Data Security</h2>
-                    <p>We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
-                </div>
-
-                <div class="policy-card">
-                    <div class="policy-icon"></div>
-                    <h2>Your Rights</h2>
-                    <p>You have the right to:</p>
-                    <ul class="policy-list">
-                        <li>Access the personal information we hold about you</li>
-                        <li>Request correction of inaccurate information</li>
-                        <li>Request deletion of your personal information</li>
-                        <li>Opt-out of marketing communications</li>
-                        <li>Object to processing of your personal information</li>
-                        <li>Request data portability</li>
-                    </ul>
-                </div>
-
-                <div class="policy-card">
-                    <div class="policy-icon"></div>
-                    <h2>Cookies and Tracking</h2>
-                    <p>We use cookies and similar tracking technologies to enhance your browsing experience, analyze website traffic, and personalize content. You can control cookies through your browser settings. For more information, please see our <a href="cookies" class="policy-link">Cookie Policy</a>.</p>
-                </div>
-
-                <div class="policy-card">
-                    <div class="policy-icon"></div>
-                    <h2>Children's Privacy</h2>
-                    <p>Our services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children.</p>
-                </div>
-
-                <div class="policy-card">
-                    <div class="policy-icon"></div>
-                    <h2>Changes to This Policy</h2>
-                    <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the "Last updated" date.</p>
-                </div>
-            </div>
-
-            <div class="policy-cta">
-                <h3>Questions About Privacy?</h3>
-                <p>If you have any questions or concerns about our privacy practices, please contact us.</p>
-                <a href="index#contact" class="cta-button">Contact Us</a>
-            </div>
-        </div>
-    </main>
-
-    
-
-    <script src="../script.js"></script>
-    <script src="../header-injector.js?v=1783865360"></script>
 <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
@@ -301,8 +446,7 @@
         <div class="cart-footer">
             <div class="cart-total">
                 <span class="cart-total-label">Total:</span>
-                <span class="cart-total-amount" id="cartTotal">
-.00</span>
+                <span class="cart-total-amount" id="cartTotal">$0.00</span>
             </div>
             <button class="cart-continue" onclick="closeCart()">Continue Shopping</button>
         </div>
@@ -324,10 +468,18 @@
                 <div class="wishlist-items" id="wishlistItems"></div>
             </div>
         </div>
-    </div>    <!-- Footer -->
-<script src="/cart-sync.js?v=1783859609"></script>
+    </div>
 
-    <footer class="footer">
+
+<div style="min-height: 60vh; display: flex; align-items: center; justify-content: center; background: var(--bg-dark); padding: 40px 20px;">
+    <div style="text-align: center; max-width: 600px; padding: 60px 40px; background: rgba(255,255,255,0.02); border-radius: 16px; border: 1px dashed rgba(255,255,255,0.15);">
+        <h1 style="font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 20px; color: #fff; letter-spacing: 2px;">Coming Soon</h1>
+        <p style="color: #999; font-size: 1.1rem; margin-bottom: 40px; line-height: 1.6; font-family: 'Inter', sans-serif;">We are curating an exclusive collection for this category. Stay tuned for luxury additions that will elevate your style.</p>
+        <a href="/all-products" style="display: inline-block; padding: 16px 36px; background: #fff; color: #000; text-decoration: none; border-radius: 30px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: transform 0.3s ease, box-shadow 0.3s ease;">Explore All Products</a>
+    </div>
+</div>
+
+<footer class="footer">
     <div class="container">
         <div class="footer-content" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px;">
             
@@ -405,6 +557,8 @@
         </div>
     </div>
 </footer>
+<script src="/reviews.js?v=4"></script>
+<script src="/header-injector.js?v=1783866855"></script>
 <script src="/footer-injector.js?v=999"></script>
 </body>
 </html>

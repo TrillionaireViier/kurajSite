@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Designer Handbags - Kuraj Fashion</title>
+<link href="/header-styles.css?v=1784124384" rel="stylesheet"/>
+<link href="/styles.css?v=1784124384" rel="stylesheet"/>
+<link href="/cart-styles.css?v=1784124384" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #000000;
+            --bg-dark: #0a0a0a;
+            --bg-light: #1a1a1a;
+            --text-light: #cccccc;
+            --accent: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--primary-color);
+        }
+
+        .header {
+            margin-top: 0;
+        }
+
+        .all-products-hero {
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--secondary-color) 100%);
+            padding: 80px 40px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+            margin-top: 100px;
+        }
+
+        .all-products-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .all-products-hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .products-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .products-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin: 0;
+            color: var(--primary-color);
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            border: 2px solid transparent;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .product-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin: 0 0 10px 0;
+            color: var(--primary-color);
+        }
+
+        .product-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin: 0 0 15px 0;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .product-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .add-to-cart,
+        .view-details {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .add-to-cart {
+            background-color: var(--accent);
+            color: var(--secondary-color);
+        }
+
+        .add-to-cart:hover {
+            background-color: #e0c061;
+            transform: translateY(-2px);
+        }
+
+        .view-details {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .view-details:hover {
+            background-color: var(--accent);
+            color: var(--secondary-color);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .pagination button,
+        .pagination a {
+            padding: 10px 15px;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            border: 2px solid transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .pagination button:hover,
+        .pagination a:hover,
+        .pagination .active {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        @media (max-width: 1024px) {
+            .products-container {
+                padding: 40px 30px;
+            }
+
+            .all-products-hero {
+                padding: 60px 30px;
+            }
+
+            .all-products-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .products-container {
+                padding: 30px 20px;
+            }
+
+            .all-products-hero {
+                padding: 40px 20px;
+                margin-top: 80px;
+            }
+
+            .all-products-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .all-products-hero p {
+                font-size: 1rem;
+            }
+
+            .products-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .filter-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 15px;
+            }
+
+            .product-card {
+                border-radius: 6px;
+            }
+
+            .product-image {
+                height: 200px;
+            }
+
+            .product-info {
+                padding: 15px;
+            }
+
+            .product-info h3 {
+                font-size: 1rem;
+            }
+
+            .product-info p {
+                font-size: 0.8rem;
+            }
+
+            .product-price {
+                font-size: 1.1rem;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .add-to-cart,
+            .view-details {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<header class="header" id="mainHeader">
+<div class="top-announcement-bar" style="background: #000; color: #fff; text-align: center; padding: 4px 15px; font-size: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.2); width: 100%; z-index: 1000; position: relative;">
+<span class="banner-text"> Join Our Exclusive Club | Get Up to 90% Off Luxury Items &amp; VIP Benefits</span>
+<a href="/dashboard" style="color: #fff; text-decoration: underline; margin-left: 15px; font-weight: bold; white-space: nowrap;">Sign In to Account or Sign Up</a>
+</div>
+<nav class="navbar">
+<div class="nav-container">
+<div class="nav-logo">
+<a class="brand-text" href="/">KURAJ FASHION</a>
+</div>
+<ul class="nav-menu" id="navMenu">
+<li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="javascript:void(0)">Our Collections</a>
+<ul class="dropdown-menu">
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/collections/timepieces">Timepieces ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-watches">For Him</a></li>
+<li><a href="/collections/womens-watches">For Her</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/collections/jewelry">Jewelry ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-jewelry">For Him</a></li>
+<li><a href="/collections/womens-jewelry">For Her</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/collections/handbags">Handbags ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-bags">For Him</a></li>
+<li><a href="/collections/womens-handbags">For Her</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/collections/accessories">Accessories ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-accessories">For Him</a></li>
+<li><a href="/collections/womens-accessories">For Her</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/collections/clothing">Clothing ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-apparel">For Him</a></li>
+<li><a href="/collections/womens-apparel">For Her</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/collections/gifts">Gifts ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-gifts">For Him</a></li>
+<li><a href="/collections/womens-gifts">For Her</a></li>
+</ul>
+</li>
+<li><a class="dropdown-item" href="/collections/limited-drops">Limited Drops</a></li>
+<li><a class="dropdown-item" href="/all-products" style="font-weight: bold; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; margin-top: 5px;">All Products</a></li>
+</ul>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="/all-products">For Her / For Him</a>
+<ul class="dropdown-menu">
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/for-her">For Her ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/womens-watches">Timepieces</a></li>
+<li><a href="/collections/womens-jewelry">Jewelry</a></li>
+<li><a href="/collections/womens-handbags">Handbags</a></li>
+<li><a href="/collections/womens-accessories">Accessories</a></li>
+<li><a href="/collections/womens-apparel">Apparel</a></li>
+<li><a href="/collections/womens-gifts">Gifts</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/for-him">For Him ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-watches">Timepieces</a></li>
+<li><a href="/collections/mens-jewelry">Jewelry</a></li>
+<li><a href="/collections/mens-bags">Bags</a></li>
+<li><a href="/collections/mens-accessories">Accessories</a></li>
+<li><a href="/collections/mens-apparel">Apparel</a></li>
+<li><a href="/collections/mens-gifts">Gifts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="nav-item"><a class="nav-link" href="/dashboard">Membership</a></li>
+<li class="nav-item"><a class="nav-link" href="/contact">Contact Us</a></li>
+</ul>
+<div class="nav-actions">
+<div class="wishlist-icon-container" onclick="window.toggleWishlist()" title="Wishlist">
+<svg class="wishlist-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="wishlist-badge" id="wishlistCount">0</span>
+</div>
+<div class="cart-icon-container" onclick="toggleCart()" title="Shopping Cart">
+<svg class="cart-icon" fill="none" height="24" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+<span class="cart-badge" id="cartCount">0</span>
+</div>
+<a class="nav-auth-btn sign-in" href="/dashboard" id="signInBtn">Sign In</a>
+<a class="nav-auth-btn sign-up" href="/dashboard" id="signUpBtn">Sign Up</a>
+</div>
+<div class="nav-toggle" id="mobile-menu" onclick="document.getElementById('navMenu').classList.toggle('active')">
+<span class="bar"></span><span class="bar"></span><span class="bar"></span>
+</div>
+</div>
+</nav>
+</header>
+<section class="products-section" style="padding: 60px 20px; background: #0a0a0a;">
+<div class="container" style="max-width: 1300px; margin: 0 auto;">
+<h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; text-align: center; margin-bottom: 40px; color: #fff;">Featured Handbags</h2>
+<div class="products-grid">
+<div class="product-card" data-category="all handbags women" onclick="window.location.href='/product?title=Рюкзак Hermes Hac A Dos RN2222&amp;price=279500 руб.&amp;image=/images/scraped/photo_2_2023-04-18_14-13-58-300x300.jpg'">
+    <img src="/images/scraped/photo_2_2023-04-18_14-13-58-300x300.jpg" alt="Рюкзак Hermes Hac A Dos RN2222" class="product-image" style="width: 100%; height: 280px; object-fit: cover;">
+    <button class="wishlist-btn-floating" title="Add to Wishlist" onclick="event.stopPropagation(); addToWishlist('Рюкзак Hermes Hac A Dos RN2222', '279500 руб.', '/images/scraped/photo_2_2023-04-18_14-13-58-300x300.jpg'); showNotification('Added to wishlist!', 'success');">♡</button>
+    <div class="product-info">
+        <h3 class="product-title">Рюкзак Hermes Hac A Dos RN2222</h3>
+        <p class="product-price">279500 руб.</p>
+        <div class="product-actions" style="display:flex;margin-top:10px;flex-direction:column;gap:10px;">
+            <div style="display:flex; gap:10px;">
+                <button style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;" onclick="event.stopPropagation(); addToCart('Рюкзак Hermes Hac A Dos RN2222', '279500 руб.', '/images/scraped/photo_2_2023-04-18_14-13-58-300x300.jpg'); proceedToCheckout();">Buy Now</button>
+                <button style="flex:1;padding:10px;background:#fff;color:#000;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;" onclick="event.stopPropagation(); addToCart('Рюкзак Hermes Hac A Dos RN2222', '279500 руб.', '/images/scraped/photo_2_2023-04-18_14-13-58-300x300.jpg'); showNotification('Added to cart!', 'success');">Add to Cart</button>
+            </div>
+            <button onclick="event.stopPropagation(); window.location.href='/product?title=Рюкзак Hermes Hac A Dos RN2222&amp;price=279500 руб.&amp;image=/images/scraped/photo_2_2023-04-18_14-13-58-300x300.jpg'" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.5);border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:background 0.2s;">Learn More</button>
+        </div>
+    </div>
+</div>
+<div class="product-card" data-category="all bags handbags men women" onclick="window.location.href='/product?title=Рюкзак Chrome Hearts&amp;price=Цена по запросу&amp;image=https://static.yeezyunique.ru/products/1kun3rihhu1y3u2/img_0.webp'">
+    <img src="https://static.yeezyunique.ru/products/1kun3rihhu1y3u2/img_0.webp" alt="Рюкзак Chrome Hearts" class="product-image" style="width: 100%; height: 280px; object-fit: cover;">
+    <button class="wishlist-btn-floating" title="Add to Wishlist" onclick="event.stopPropagation(); addToWishlist('Рюкзак Chrome Hearts', 'Цена по запросу', 'https://static.yeezyunique.ru/products/1kun3rihhu1y3u2/img_0.webp'); showNotification('Added to wishlist!', 'success');">♡</button>
+    <div class="product-info">
+        <h3 class="product-title">Рюкзак Chrome Hearts</h3>
+        <p class="product-price">Цена по запросу</p>
+        <div class="product-actions" style="display:flex;margin-top:10px;flex-direction:column;gap:10px;">
+            <div style="display:flex; gap:10px;">
+                <button style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;" onclick="event.stopPropagation(); addToCart('Рюкзак Chrome Hearts', 'Цена по запросу', 'https://static.yeezyunique.ru/products/1kun3rihhu1y3u2/img_0.webp'); proceedToCheckout();">Buy Now</button>
+                <button style="flex:1;padding:10px;background:#fff;color:#000;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;" onclick="event.stopPropagation(); addToCart('Рюкзак Chrome Hearts', 'Цена по запросу', 'https://static.yeezyunique.ru/products/1kun3rihhu1y3u2/img_0.webp'); showNotification('Added to cart!', 'success');">Add to Cart</button>
+            </div>
+            <button onclick="event.stopPropagation(); window.location.href='/product?title=Рюкзак Chrome Hearts&amp;price=Цена по запросу&amp;image=https://static.yeezyunique.ru/products/1kun3rihhu1y3u2/img_0.webp'" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.5);border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:background 0.2s;">Learn More</button>
+        </div>
+    </div>
+</div>
+<div class="product-card" data-category="all bags handbags men women" onclick="window.location.href='/product?title=Поясная сумка Chrome Hearts&amp;price=Цена по запросу&amp;image=https://static.yeezyunique.ru/products/eavhlltkngr9gac/img_0.webp'">
+    <img src="https://static.yeezyunique.ru/products/eavhlltkngr9gac/img_0.webp" alt="Поясная сумка Chrome Hearts" class="product-image" style="width: 100%; height: 280px; object-fit: cover;">
+    <button class="wishlist-btn-floating" title="Add to Wishlist" onclick="event.stopPropagation(); addToWishlist('Поясная сумка Chrome Hearts', 'Цена по запросу', 'https://static.yeezyunique.ru/products/eavhlltkngr9gac/img_0.webp'); showNotification('Added to wishlist!', 'success');">♡</button>
+    <div class="product-info">
+        <h3 class="product-title">Поясная сумка Chrome Hearts</h3>
+        <p class="product-price">Цена по запросу</p>
+        <div class="product-actions" style="display:flex;margin-top:10px;flex-direction:column;gap:10px;">
+            <div style="display:flex; gap:10px;">
+                <button style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;" onclick="event.stopPropagation(); addToCart('Поясная сумка Chrome Hearts', 'Цена по запросу', 'https://static.yeezyunique.ru/products/eavhlltkngr9gac/img_0.webp'); proceedToCheckout();">Buy Now</button>
+                <button style="flex:1;padding:10px;background:#fff;color:#000;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;" onclick="event.stopPropagation(); addToCart('Поясная сумка Chrome Hearts', 'Цена по запросу', 'https://static.yeezyunique.ru/products/eavhlltkngr9gac/img_0.webp'); showNotification('Added to cart!', 'success');">Add to Cart</button>
+            </div>
+            <button onclick="event.stopPropagation(); window.location.href='/product?title=Поясная сумка Chrome Hearts&amp;price=Цена по запросу&amp;image=https://static.yeezyunique.ru/products/eavhlltkngr9gac/img_0.webp'" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.5);border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:background 0.2s;">Learn More</button>
+        </div>
+    </div>
+</div>
+<div class="product-card" data-category="all bags handbags men women" onclick="window.location.href='/product?title=Сумка через плечо Chrome Hearts&amp;price=Цена по запросу&amp;image=https://static.yeezyunique.ru/products/00jixueswhejb1r/img_0.webp'">
+    <img src="https://static.yeezyunique.ru/products/00jixueswhejb1r/img_0.webp" alt="Сумка через плечо Chrome Hearts" class="product-image" style="width: 100%; height: 280px; object-fit: cover;">
+    <button class="wishlist-btn-floating" title="Add to Wishlist" onclick="event.stopPropagation(); addToWishlist('Сумка через плечо Chrome Hearts', 'Цена по запросу', 'https://static.yeezyunique.ru/products/00jixueswhejb1r/img_0.webp'); showNotification('Added to wishlist!', 'success');">♡</button>
+    <div class="product-info">
+        <h3 class="product-title">Сумка через плечо Chrome Hearts</h3>
+        <p class="product-price">Цена по запросу</p>
+        <div class="product-actions" style="display:flex;margin-top:10px;flex-direction:column;gap:10px;">
+            <div style="display:flex; gap:10px;">
+                <button style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;" onclick="event.stopPropagation(); addToCart('Сумка через плечо Chrome Hearts', 'Цена по запросу', 'https://static.yeezyunique.ru/products/00jixueswhejb1r/img_0.webp'); proceedToCheckout();">Buy Now</button>
+                <button style="flex:1;padding:10px;background:#fff;color:#000;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;" onclick="event.stopPropagation(); addToCart('Сумка через плечо Chrome Hearts', 'Цена по запросу', 'https://static.yeezyunique.ru/products/00jixueswhejb1r/img_0.webp'); showNotification('Added to cart!', 'success');">Add to Cart</button>
+            </div>
+            <button onclick="event.stopPropagation(); window.location.href='/product?title=Сумка через плечо Chrome Hearts&amp;price=Цена по запросу&amp;image=https://static.yeezyunique.ru/products/00jixueswhejb1r/img_0.webp'" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.5);border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:background 0.2s;">Learn More</button>
+        </div>
+    </div>
+</div>
+<div class="product-card" data-category="all bags handbags men women" onclick="window.location.href='/product?title=Сумка Chrome Hearts&amp;price=Цена по запросу&amp;image=https://static.yeezyunique.ru/products/2forleo05avb10h/img_0.webp'">
+    <img src="https://static.yeezyunique.ru/products/2forleo05avb10h/img_0.webp" alt="Сумка Chrome Hearts" class="product-image" style="width: 100%; height: 280px; object-fit: cover;">
+    <button class="wishlist-btn-floating" title="Add to Wishlist" onclick="event.stopPropagation(); addToWishlist('Сумка Chrome Hearts', 'Цена по запросу', 'https://static.yeezyunique.ru/products/2forleo05avb10h/img_0.webp'); showNotification('Added to wishlist!', 'success');">♡</button>
+    <div class="product-info">
+        <h3 class="product-title">Сумка Chrome Hearts</h3>
+        <p class="product-price">Цена по запросу</p>
+        <div class="product-actions" style="display:flex;margin-top:10px;flex-direction:column;gap:10px;">
+            <div style="display:flex; gap:10px;">
+                <button style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;" onclick="event.stopPropagation(); addToCart('Сумка Chrome Hearts', 'Цена по запросу', 'https://static.yeezyunique.ru/products/2forleo05avb10h/img_0.webp'); proceedToCheckout();">Buy Now</button>
+                <button style="flex:1;padding:10px;background:#fff;color:#000;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;" onclick="event.stopPropagation(); addToCart('Сумка Chrome Hearts', 'Цена по запросу', 'https://static.yeezyunique.ru/products/2forleo05avb10h/img_0.webp'); showNotification('Added to cart!', 'success');">Add to Cart</button>
+            </div>
+            <button onclick="event.stopPropagation(); window.location.href='/product?title=Сумка Chrome Hearts&amp;price=Цена по запросу&amp;image=https://static.yeezyunique.ru/products/2forleo05avb10h/img_0.webp'" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.5);border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:background 0.2s;">Learn More</button>
+        </div>
+    </div>
+</div>
+<div class="product-card" data-category="all bags handbags men women" onclick="window.location.href='/product?title=Дорожная сумка Chrome Hearts&amp;price=Цена по запросу&amp;image=https://static.yeezyunique.ru/products/56r3xscnlzi6u0a/img_0.webp'">
+    <img src="https://static.yeezyunique.ru/products/56r3xscnlzi6u0a/img_0.webp" alt="Дорожная сумка Chrome Hearts" class="product-image" style="width: 100%; height: 280px; object-fit: cover;">
+    <button class="wishlist-btn-floating" title="Add to Wishlist" onclick="event.stopPropagation(); addToWishlist('Дорожная сумка Chrome Hearts', 'Цена по запросу', 'https://static.yeezyunique.ru/products/56r3xscnlzi6u0a/img_0.webp'); showNotification('Added to wishlist!', 'success');">♡</button>
+    <div class="product-info">
+        <h3 class="product-title">Дорожная сумка Chrome Hearts</h3>
+        <p class="product-price">Цена по запросу</p>
+        <div class="product-actions" style="display:flex;margin-top:10px;flex-direction:column;gap:10px;">
+            <div style="display:flex; gap:10px;">
+                <button style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;" onclick="event.stopPropagation(); addToCart('Дорожная сумка Chrome Hearts', 'Цена по запросу', 'https://static.yeezyunique.ru/products/56r3xscnlzi6u0a/img_0.webp'); proceedToCheckout();">Buy Now</button>
+                <button style="flex:1;padding:10px;background:#fff;color:#000;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;" onclick="event.stopPropagation(); addToCart('Дорожная сумка Chrome Hearts', 'Цена по запросу', 'https://static.yeezyunique.ru/products/56r3xscnlzi6u0a/img_0.webp'); showNotification('Added to cart!', 'success');">Add to Cart</button>
+            </div>
+            <button onclick="event.stopPropagation(); window.location.href='/product?title=Дорожная сумка Chrome Hearts&amp;price=Цена по запросу&amp;image=https://static.yeezyunique.ru/products/56r3xscnlzi6u0a/img_0.webp'" style="width:100%;padding:10px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.5);border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:background 0.2s;">Learn More</button>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</section>
+<script src="/cart.js?v=1777756802"></script>
+<script src="/wishlist.js?v=1779297218"></script>
+<script src="/script.js?v=1777756802"></script>
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+<div class="cart-header">
+<h2>Shopping Cart</h2>
+<button class="cart-close" onclick="closeCart()">×</button>
+</div>
+<div class="cart-body">
+<div class="cart-empty" id="cartEmpty">
+<div class="cart-empty-icon">◇</div>
+<p>Your cart is empty</p>
+<button class="cta-button" onclick="closeCart()">Continue Shopping</button>
+</div>
+<div class="cart-content" id="cartContent">
+<div class="cart-items" id="cartItems"></div>
+</div>
+</div>
+<div class="cart-footer">
+<div class="cart-total">
+<span class="cart-total-label">Total:</span>
+<span class="cart-total-amount" id="cartTotal">$0.00</span>
+</div>
+<button class="cart-checkout-btn" onclick="proceedToCheckout()">Checkout</button>
+<button class="cart-continue" onclick="closeCart()">Continue Shopping</button>
+</div>
+</div>
+<div class="wishlist-overlay" id="wishlistOverlay" onclick="closeWishlistSidebar()"></div>
+<div class="wishlist-sidebar" id="wishlistSidebar">
+<div class="wishlist-header">
+<h2>Your Wishlist</h2>
+<button class="wishlist-close" onclick="closeWishlistSidebar()">×</button>
+</div>
+<div class="wishlist-body">
+<div class="wishlist-empty" id="wishlistEmpty">
+<div class="wishlist-empty-icon">♡</div>
+<p>Your wishlist is empty</p>
+<button class="cta-button" onclick="closeWishlistSidebar()">Discover Products</button>
+</div>
+<div class="wishlist-content" id="wishlistContent">
+<div class="wishlist-items" id="wishlistItems"></div>
+</div>
+</div>
+</div>
+<section class="collections-hero">
+<div class="hero-content">
+<h1>Luxury <span class="club-text">Handbags</span></h1>
+<p>Discover our curated collection of designer handbags featuring iconic styles, premium leather craftsmanship, and timeless elegance.</p>
+</div>
+<div class="hero-image">
+<img alt="Luxury Handbags Collection" src="/images/luxury-handbags-hero.png"/>
+</div>
+</section>
+<section class="value-proposition">
+<div class="container">
+<div class="value-content">
+<h2>Designer quality. Direct pricing.</h2>
+<p class="value-subline">Same craftsmanship. Up to 80% less.</p>
+<div class="value-badges">
+<div class="value-badge">
+<div class="badge-icon"></div>
+<h3>Premium Leather</h3>
+<p>Genuine Italian and French leather materials</p>
+</div>
+<div class="value-badge">
+<div class="badge-icon"></div>
+<h3>Iconic Designs</h3>
+<p>Classic and contemporary styles</p>
+</div>
+<div class="value-badge">
+<div class="badge-icon"></div>
+<h3>Expert Craftsmanship</h3>
+<p>Handcrafted by master artisans</p>
+</div>
+</div>
+<a class="cta-button" href="/all-products">Shop Handbags</a>
+</div>
+</div>
+</section>
+<section class="collections-grid-section">
+<div class="container">
+<h2>Handbag Styles</h2>
+<div class="collections-grid">
+<div class="collection-item">
+<img alt="Tote Bags" src="/images/luxury-handbags-hero.png"/>
+<div class="collection-content">
+<h3>Tote Bags</h3>
+<p>Spacious and sophisticated everyday luxury</p>
+<a class="view-collection" href="/product-designer-handbag">Shop Now</a>
+</div>
+</div>
+<div class="collection-item">
+<img alt="Shoulder Bags" src="/images/luxury-bags.png"/>
+<div class="collection-content">
+<h3>Shoulder Bags</h3>
+<p>Classic elegance meets modern style</p>
+<a class="view-collection" href="/all-products">Shop Now</a>
+</div>
+</div>
+<div class="collection-item">
+<img alt="Crossbody Bags" src="/images/bags-mens.jpg"/>
+<div class="collection-content">
+<h3>Crossbody Bags</h3>
+<p>Hands-free luxury for on-the-go</p>
+<a class="view-collection" href="/all-products">Shop Now</a>
+</div>
+</div>
+<div class="collection-item">
+<img alt="Clutches" src="/images/luxury-handbags-hero.png"/>
+<div class="collection-content">
+<h3>Clutches</h3>
+<p>Evening elegance and special occasions</p>
+<a class="view-collection" href="/all-products">Shop Now</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="cta-section">
+<div class="container">
+<h2>Find Your Perfect Handbag</h2>
+<p>Explore our complete collection of luxury handbags crafted for discerning tastes.</p>
+<div class="cta-buttons">
+<a class="cta-button primary" href="/all-products">Browse All Handbags</a>
+<a class="cta-button secondary" href="/index#contact">Request Consultation</a>
+</div>
+</div>
+</section>
+<script src="/cart.js?v=1777756802"></script>
+<script src="/wishlist.js?v=1779297218"></script>
+<script src="/script.js?v=1777756802"></script>
+<!-- Footer -->
+<script src="/cart-sync.js?v=1783859609"></script>
+<footer class="footer">
+<div class="container">
+<div class="footer-content" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px;">
+<div class="footer-section" style="flex: 1; min-width: 250px;">
+<h3>KURAJ FASHION</h3>
+<p>Redefining luxury through exclusive access and unparalleled craftsmanship.</p>
+<div style="margin-top: 20px;">
+<h4 style="margin-bottom: 10px;">Contact Us</h4>
+<p style="margin: 0; color: #999;">Email: support@kurajfashion.com</p>
+<p style="margin: 0; color: #999;">Phone: +1 (800) 587-2584</p>
+<p style="margin: 0; color: #999;">Hours: Mon-Sun: 8AM-10PM EST</p>
+</div>
+</div>
+<div class="footer-section" style="flex: 1; min-width: 150px;">
+<h4>Collections</h4>
+<ul>
+<li><a href="/collections/timepieces">Timepieces</a></li>
+<li><a href="/collections/jewelry">Jewelry</a></li>
+<li><a href="/collections/handbags">Handbags</a></li>
+<li><a href="/collections/accessories">Accessories</a></li>
+<li><a href="/collections/clothing">Clothing</a></li>
+<li><a href="/collections/home-decor">Home Décor</a></li>
+<li><a href="/collections/gifts">Gifts</a></li>
+<li><a href="/collections/limited-drops">Limited Drops</a></li>
+</ul>
+</div>
+<div class="footer-section" style="flex: 1; min-width: 150px;">
+<h4>For Him/For Her</h4>
+<ul>
+<li><a href="/for-him">For Him</a></li>
+<li><a href="/for-her">For Her</a></li>
+<li><a href="/all-products">All Products</a></li>
+</ul>
+<h4 style="margin-top: 20px;">Earn with Us</h4>
+<ul>
+<li><a href="/dashboard">Join the Club</a></li>
+<li><a href="/dashboard">VIP Benefits</a></li>
+<li><a href="/dashboard">Referral Program</a></li>
+<li><a href="/contact">Member Support</a></li>
+</ul>
+</div>
+<div class="footer-section" style="flex: 1; min-width: 150px;">
+<h4>About</h4>
+<ul>
+<li><a href="/about">About Us</a></li>
+<li><a href="javascript:void(0)">Our Collections</a></li>
+<li><a href="/dashboard">Membership</a></li>
+<li><a href="/contact">Contact Us</a></li>
+</ul>
+<h4 style="margin-top: 20px;">Support</h4>
+<ul>
+<li><a href="/contact">Contact Us</a></li>
+<li><a href="/legal/authentication">Authentication</a></li>
+<li><a href="/legal/shipping">Shipping</a></li>
+<li><a href="/legal/returns">Returns</a></li>
+</ul>
+</div>
+<div class="footer-section" style="flex: 1; min-width: 150px;">
+<h4>Policies</h4>
+<ul>
+<li><a href="/legal/privacy-policy">Privacy Policy</a></li>
+<li><a href="/legal/terms-of-service">Terms of Service</a></li>
+<li><a href="/legal/terms-conditions">Terms &amp; Conditions</a></li>
+<li><a href="/legal/cookie-notices">Cookie Notices</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 30px;">
+<p>© 2025 Kuraj Fashion. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script src="/reviews.js?v=3"></script>
+<!-- Global Cart and Wishlist Logic -->
+<script src="/wishlist.js"></script>
+<script src="/header-injector.js?v=1783866855"></script>
+<script src="/footer-injector.js?v=999"></script>
+</body>
+</html>

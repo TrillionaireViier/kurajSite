@@ -22,48 +22,48 @@ window.loadHeader = function() {
 <a class="nav-link dropdown-toggle" href="javascript:void(0)">Our Collections</a>
 <ul class="dropdown-menu">
 <li class="dropdown-submenu">
-<a class="dropdown-item" href="/collections/watches.html">Watches ›</a>
+<a class="dropdown-item" href="/collections/watches">Watches ›</a>
 <ul class="dropdown-menu">
-<li><a href="/collections/mens-watches.html">For Him</a></li>
-<li><a href="/collections/womens-watches.html">For Her</a></li>
+<li><a href="/collections/mens-watches">For Him</a></li>
+<li><a href="/collections/womens-watches">For Her</a></li>
 </ul>
 </li>
 <li class="dropdown-submenu">
-<a class="dropdown-item" href="/collections/jewelry.html">Jewelry ›</a>
+<a class="dropdown-item" href="/collections/jewelry">Jewelry ›</a>
 <ul class="dropdown-menu">
-<li><a href="/collections/mens-jewelry.html">For Him</a></li>
-<li><a href="/collections/womens-jewelry.html">For Her</a></li>
+<li><a href="/collections/mens-jewelry">For Him</a></li>
+<li><a href="/collections/womens-jewelry">For Her</a></li>
 </ul>
 </li>
 <li class="dropdown-submenu">
-<a class="dropdown-item" href="/collections/handbags.html">Handbags ›</a>
+<a class="dropdown-item" href="/collections/handbags">Handbags ›</a>
 <ul class="dropdown-menu">
-<li><a href="/collections/mens-bags.html">For Him</a></li>
-<li><a href="/collections/womens-handbags.html">For Her</a></li>
+<li><a href="/collections/mens-bags">For Him</a></li>
+<li><a href="/collections/womens-handbags">For Her</a></li>
 </ul>
 </li>
 <li class="dropdown-submenu">
-<a class="dropdown-item" href="/collections/accessories.html">Accessories ›</a>
+<a class="dropdown-item" href="/collections/accessories">Accessories ›</a>
 <ul class="dropdown-menu">
-<li><a href="/collections/mens-accessories.html">For Him</a></li>
-<li><a href="/collections/womens-accessories.html">For Her</a></li>
+<li><a href="/collections/mens-accessories">For Him</a></li>
+<li><a href="/collections/womens-accessories">For Her</a></li>
 </ul>
 </li>
 <li class="dropdown-submenu">
-<a class="dropdown-item" href="/collections/clothing.html">Clothing ›</a>
+<a class="dropdown-item" href="/collections/clothing">Clothing ›</a>
 <ul class="dropdown-menu">
-<li><a href="/collections/mens-apparel.html">For Him</a></li>
-<li><a href="/collections/womens-apparel.html">For Her</a></li>
+<li><a href="/collections/mens-apparel">For Him</a></li>
+<li><a href="/collections/womens-apparel">For Her</a></li>
 </ul>
 </li>
 <li class="dropdown-submenu">
-<a class="dropdown-item" href="/collections/gifts.html">Gifts ›</a>
+<a class="dropdown-item" href="/collections/gifts">Gifts ›</a>
 <ul class="dropdown-menu">
-<li><a href="/collections/mens-gifts.html">For Him</a></li>
-<li><a href="/collections/womens-gifts.html">For Her</a></li>
+<li><a href="/collections/mens-gifts">For Him</a></li>
+<li><a href="/collections/womens-gifts">For Her</a></li>
 </ul>
 </li>
-<li><a class="dropdown-item" href="/collections/limited-drops.html">Limited Drops</a></li>
+<li><a class="dropdown-item" href="/collections/limited-drops">Limited Drops</a></li>
 <li><a class="dropdown-item" href="/all-products" style="font-weight: bold; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; margin-top: 5px;">All Products</a></li>
 </ul>
 </li>
@@ -73,33 +73,29 @@ window.loadHeader = function() {
 <li class="dropdown-submenu">
 <a class="dropdown-item" href="/for-her">For Her ›</a>
 <ul class="dropdown-menu">
-<li><a href="/collections/womens-watches.html">Watches</a></li>
-<li><a href="/collections/womens-jewelry.html">Jewelry</a></li>
-<li><a href="/collections/womens-handbags.html">Handbags</a></li>
-<li><a href="/collections/womens-accessories.html">Accessories</a></li>
-<li><a href="/collections/womens-apparel.html">Apparel</a></li>
-<li><a href="/collections/womens-gifts.html">Gifts</a></li>
+<li><a href="/collections/womens-watches">Watches</a></li>
+<li><a href="/collections/womens-jewelry">Jewelry</a></li>
+<li><a href="/collections/womens-handbags">Handbags</a></li>
+<li><a href="/collections/womens-accessories">Accessories</a></li>
+<li><a href="/collections/womens-apparel">Apparel</a></li>
+<li><a href="/collections/womens-gifts">Gifts</a></li>
 </ul>
 </li>
 <li class="dropdown-submenu">
 <a class="dropdown-item" href="/for-him">For Him ›</a>
 <ul class="dropdown-menu">
-<li><a href="/collections/mens-watches.html">Watches</a></li>
-<li><a href="/collections/mens-jewelry.html">Jewelry</a></li>
-<li><a href="/collections/mens-bags.html">Bags</a></li>
-<li><a href="/collections/mens-accessories.html">Accessories</a></li>
-<li><a href="/collections/mens-apparel.html">Apparel</a></li>
-<li><a href="/collections/mens-gifts.html">Gifts</a></li>
+<li><a href="/collections/mens-watches">Watches</a></li>
+<li><a href="/collections/mens-jewelry">Jewelry</a></li>
+<li><a href="/collections/mens-bags">Bags</a></li>
+<li><a href="/collections/mens-accessories">Accessories</a></li>
+<li><a href="/collections/mens-apparel">Apparel</a></li>
+<li><a href="/collections/mens-gifts">Gifts</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="/dashboard">Membership</a></li>
 <li class="nav-item"><a class="nav-link" href="/contact">Contact Us</a></li>
-<li class="nav-item mobile-menu-auth">
-  <a class="nav-auth-btn sign-in" href="/dashboard">Sign In</a>
-  <a class="nav-auth-btn sign-up" href="/dashboard">Join the Club</a>
-</li>
 </ul>
 <div class="nav-actions">
 
@@ -111,10 +107,11 @@ window.loadHeader = function() {
 <svg class="cart-icon" fill="none" height="24" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
 <span class="cart-badge" id="cartCount">0</span>
 </div>
+<a class="nav-auth-btn sign-in" href="/dashboard" id="profileBtn" style="display:none;">My Account</a>
 <a class="nav-auth-btn sign-in" href="/dashboard" id="signInBtn">Sign In</a>
 <a class="nav-auth-btn sign-up" href="/dashboard" id="signUpBtn">Sign Up</a>
 </div>
-<div class="nav-toggle" id="mobile-menu" onclick="window.toggleMobileMenu()">
+<div class="nav-toggle" id="mobile-menu" onclick="document.getElementById('navMenu').classList.toggle('active')">
 <span class="bar"></span><span class="bar"></span><span class="bar"></span>
 </div>
 </div>
@@ -257,50 +254,50 @@ if (document.readyState === 'loading') {
     window.loadHeader();
 }
 
-// Toggle mobile menu with backdrop & overflow lock
-window.toggleMobileMenu = function() {
+// Toggle mobile menu with backdrop and accordion support
+window.toggleMobileMenu = function(e) {
+    if (e && e.stopPropagation) e.stopPropagation();
     const navMenu = document.getElementById('navMenu');
     const mobileMenu = document.getElementById('mobile-menu');
-    let backdrop = document.querySelector('.mobile-nav-backdrop');
-    if (!backdrop) {
-        backdrop = document.createElement('div');
-        backdrop.className = 'mobile-nav-backdrop';
-        backdrop.onclick = window.toggleMobileMenu;
-        document.body.appendChild(backdrop);
+    let overlay = document.getElementById('mobileMenuOverlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'mobileMenuOverlay';
+        overlay.style.cssText = "display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(3px);z-index:10000;";
+        overlay.onclick = function() { window.toggleMobileMenu(); };
+        document.body.appendChild(overlay);
     }
     const isActive = navMenu && navMenu.classList.toggle('active');
-    if (mobileMenu) mobileMenu.classList.toggle('active');
-    if (backdrop) backdrop.classList.toggle('active', !!isActive);
-    if (isActive) {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = '';
-    }
+    if (mobileMenu) mobileMenu.classList.toggle('active', isActive);
+    if (overlay) overlay.style.display = isActive ? "block" : "none";
 };
 
-// Mobile Accordion support for touch screens
+// Dropdown click handlers for mobile
 document.addEventListener('click', function(e) {
-    if (window.innerWidth <= 1080) {
-        const toggle = e.target.closest('.dropdown-toggle');
-        if (toggle) {
+    if (window.innerWidth <= 900) {
+        const dropdownToggle = e.target.closest('.dropdown > .dropdown-toggle');
+        if (dropdownToggle) {
             e.preventDefault();
-            const parent = toggle.closest('.dropdown');
+            const parent = dropdownToggle.closest('.dropdown');
             if (parent) parent.classList.toggle('active');
             return;
         }
-        const subToggle = e.target.closest('.dropdown-submenu > a');
-        if (subToggle) {
+        const submenuToggle = e.target.closest('.dropdown-submenu > a');
+        if (submenuToggle && submenuToggle.textContent.includes('›')) {
             e.preventDefault();
-            const subParent = subToggle.closest('.dropdown-submenu');
-            if (subParent) subParent.classList.toggle('active');
+            const parent = submenuToggle.closest('.dropdown-submenu');
+            if (parent) parent.classList.toggle('active');
             return;
         }
-        const regularLink = e.target.closest('.nav-menu a');
-        if (regularLink && !regularLink.classList.contains('dropdown-toggle')) {
-            const navMenu = document.getElementById('navMenu');
-            if (navMenu && navMenu.classList.contains('active')) {
-                window.toggleMobileMenu();
-            }
+    }
+    const navMenu = document.getElementById('navMenu');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (navMenu && navMenu.classList.contains('active')) {
+        if (!navMenu.contains(e.target) && (!mobileMenu || !mobileMenu.contains(e.target))) {
+            navMenu.classList.remove('active');
+            if (mobileMenu) mobileMenu.classList.remove('active');
+            const overlay = document.getElementById('mobileMenuOverlay');
+            if (overlay) overlay.style.display = "none";
         }
     }
 });

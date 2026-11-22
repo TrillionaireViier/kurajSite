@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Kuraj Fashion</title>
+    <link rel="stylesheet" href="/styles.css?v=1783850048">
+    <link rel="stylesheet" href="/header-styles.css?v=1783850048">
+    <link rel="stylesheet" href="/cart-styles.css?v=1783850048">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #000000;
+            --bg-dark: #0a0a0a;
+            --bg-light: #1a1a1a;
+            --text-light: #cccccc;
+            --accent: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--primary-color);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            margin-top: 100px;
+        }
+
+        .page-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .page-hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--secondary-color) 100%);
+            border-radius: 8px;
+            border-bottom: 4px solid var(--accent);
+            margin-bottom: 50px;
+        }
+
+        .page-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin: 0 0 15px 0;
+            color: var(--primary-color);
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .policy-grid {
+            display: grid;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .policy-card {
+            background-color: var(--bg-light);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .policy-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .policy-card p,
+        .policy-card ul {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin: 0 0 15px 0;
+        }
+
+        .policy-card ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .policy-card li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .policy-card li:before {
+            content: "▪";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        .footer {
+            background-color: var(--secondary-color);
+            border-top: 2px solid var(--accent);
+            margin-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-content {
+                padding: 40px 15px;
+            }
+
+            .policy-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header" id="mainHeader">
+<div class="top-announcement-bar" style="background: #000; color: #fff; text-align: center; padding: 4px 15px; font-size: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.2); width: 100%; z-index: 1000; position: relative;">
+    <span class="banner-text"> Join Our Exclusive Club | Get Up to 90% Off Luxury Items &amp; VIP Benefits</span>
+    <a href="/dashboard" style="color: #fff; text-decoration: underline; margin-left: 15px; font-weight: bold; white-space: nowrap;">Sign In to Account or Sign Up</a>
+</div>
+
+<nav class="navbar">
+<div class="nav-container">
+<div class="nav-logo">
+<a class="brand-text" href="/">KURAJ FASHION</a>
+</div>
+<ul class="nav-menu" id="navMenu">
+<li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="javascript:void(0)">Our Collections</a>
+<ul class="dropdown-menu">
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/collections/timepieces">Timepieces ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-watches">For Him</a></li>
+<li><a href="/collections/womens-watches">For Her</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/collections/jewelry">Jewelry ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-jewelry">For Him</a></li>
+<li><a href="/collections/womens-jewelry">For Her</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/collections/handbags">Handbags ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-bags">For Him</a></li>
+<li><a href="/collections/womens-handbags">For Her</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/collections/accessories">Accessories ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-accessories">For Him</a></li>
+<li><a href="/collections/womens-accessories">For Her</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/collections/clothing">Clothing ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-apparel">For Him</a></li>
+<li><a href="/collections/womens-apparel">For Her</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/collections/gifts">Gifts ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-gifts">For Him</a></li>
+<li><a href="/collections/womens-gifts">For Her</a></li>
+</ul>
+</li>
+<li><a class="dropdown-item" href="/collections/limited-drops">Limited Drops</a></li>
+<li><a class="dropdown-item" href="/all-products" style="font-weight: bold; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; margin-top: 5px;">All Products</a></li>
+</ul>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="/all-products">For Her / For Him</a>
+<ul class="dropdown-menu">
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/for-her">For Her ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/womens-watches">Timepieces</a></li>
+<li><a href="/collections/womens-jewelry">Jewelry</a></li>
+<li><a href="/collections/womens-handbags">Handbags</a></li>
+<li><a href="/collections/womens-accessories">Accessories</a></li>
+<li><a href="/collections/womens-apparel">Apparel</a></li>
+<li><a href="/collections/womens-gifts">Gifts</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item" href="/for-him">For Him ›</a>
+<ul class="dropdown-menu">
+<li><a href="/collections/mens-watches">Timepieces</a></li>
+<li><a href="/collections/mens-jewelry">Jewelry</a></li>
+<li><a href="/collections/mens-bags">Bags</a></li>
+<li><a href="/collections/mens-accessories">Accessories</a></li>
+<li><a href="/collections/mens-apparel">Apparel</a></li>
+<li><a href="/collections/mens-gifts">Gifts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="nav-item"><a class="nav-link" href="/dashboard">Membership</a></li>
+<li class="nav-item"><a class="nav-link" href="/contact">Contact Us</a></li>
+</ul>
+<div class="nav-actions">
+
+<div class="wishlist-icon-container" onclick="window.toggleWishlist()" title="Wishlist">
+<svg class="wishlist-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+<span class="wishlist-badge" id="wishlistCount">0</span>
+</div>
+<div class="cart-icon-container" onclick="toggleCart()" title="Shopping Cart">
+<svg class="cart-icon" fill="none" height="24" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+<span class="cart-badge" id="cartCount">0</span>
+</div>
+<a class="nav-auth-btn sign-in" href="/dashboard" id="signInBtn">Sign In</a>
+<a class="nav-auth-btn sign-up" href="/dashboard" id="signUpBtn">Sign Up</a>
+</div>
+<div class="nav-toggle" id="mobile-menu" onclick="document.getElementById('navMenu').classList.toggle('active')">
+<span class="bar"></span><span class="bar"></span><span class="bar"></span>
+</div>
+</div>
+</nav>
+</header>
+
+
+    <section class="page-content">
+        <div class="container">
+            <div class="page-hero">
+                <h1>Terms of Service</h1>
+                <p class="page-subtitle">Please read these terms carefully before using our services.</p>
+                <p class="page-date">Last updated: January 2025</p>
+            </div>
+
+            <div class="policy-grid">
+                <div class="policy-card">
+                    <div class="policy-icon"></div>
+                    <h2>Agreement to Terms</h2>
+                    <p>By accessing or using Kuraj Fashion's website and services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.</p>
+                </div>
+
+                <div class="policy-card">
+                    <div class="policy-icon"></div>
+                    <h2>Membership and Account</h2>
+                    <ul class="policy-list">
+                        <li>You must be at least 18 years old to create an account and make purchases</li>
+                        <li>You are responsible for maintaining the confidentiality of your account credentials</li>
+                        <li>You agree to provide accurate and complete information when creating an account</li>
+                        <li>You are responsible for all activities that occur under your account</li>
+                        <li>We reserve the right to suspend or terminate accounts that violate these terms</li>
+                    </ul>
+                </div>
+
+                <div class="policy-card">
+                    <div class="policy-icon"></div>
+                    <h2>Product Information and Pricing</h2>
+                    <ul class="policy-list">
+                        <li>We strive to provide accurate product descriptions and pricing</li>
+                        <li>All prices are subject to change without notice</li>
+                        <li>We reserve the right to limit quantities and refuse service</li>
+                        <li>Product availability is not guaranteed until payment is confirmed</li>
+                        <li>All luxury items are authenticated and come with certificates of authenticity</li>
+                    </ul>
+                </div>
+
+                <div class="policy-card">
+                    <div class="policy-icon"></div>
+                    <h2>Orders and Payment</h2>
+                    <ul class="policy-list">
+                        <li>All orders are subject to acceptance and availability</li>
+                        <li>We accept major credit cards and other payment methods as displayed</li>
+                        <li>Payment must be received before order processing</li>
+                        <li>We reserve the right to cancel orders for any reason</li>
+                        <li>Promotional codes and discounts are subject to terms and conditions</li>
+                    </ul>
+                </div>
+
+                <div class="policy-card">
+                    <div class="policy-icon"></div>
+                    <h2>Shipping and Delivery</h2>
+                    <ul class="policy-list">
+                        <li>Shipping times are estimates and not guaranteed</li>
+                        <li>Risk of loss passes to you upon delivery to the carrier</li>
+                        <li>You are responsible for providing accurate shipping information</li>
+                        <li>International orders may be subject to customs duties and taxes</li>
+                        <li>See our <a href="shipping" class="policy-link">Shipping Policy</a> for detailed information</li>
+                    </ul>
+                </div>
+
+                <div class="policy-card">
+                    <div class="policy-icon"></div>
+                    <h2>Returns and Refunds</h2>
+                    <ul class="policy-list">
+                        <li>Returns must be initiated within the applicable return window</li>
+                        <li>Items must be in original condition with all tags and packaging</li>
+                        <li>Refunds will be issued to the original payment method</li>
+                        <li>Some items may be non-returnable as specified</li>
+                        <li>See our <a href="returns" class="policy-link">Returns Policy</a> for complete details</li>
+                    </ul>
+                </div>
+
+                <div class="policy-card">
+                    <div class="policy-icon"></div>
+                    <h2>Intellectual Property</h2>
+                    <p>All content on this website, including text, graphics, logos, images, and software, is the property of Kuraj Fashion and protected by copyright and trademark laws. You may not reproduce, distribute, or create derivative works without our express written permission.</p>
+                </div>
+
+                <div class="policy-card">
+                    <div class="policy-icon"></div>
+                    <h2>Prohibited Activities</h2>
+                    <p>You agree not to:</p>
+                    <ul class="policy-list">
+                        <li>Use our services for any illegal purpose</li>
+                        <li>Attempt to gain unauthorized access to our systems</li>
+                        <li>Interfere with the proper functioning of our website</li>
+                        <li>Impersonate any person or entity</li>
+                        <li>Collect or harvest information about other users</li>
+                        <li>Transmit viruses or malicious code</li>
+                    </ul>
+                </div>
+
+                <div class="policy-card">
+                    <div class="policy-icon"></div>
+                    <h2>Limitation of Liability</h2>
+                    <p>To the fullest extent permitted by law, Kuraj Fashion shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of our services.</p>
+                </div>
+
+                <div class="policy-card">
+                    <div class="policy-icon"></div>
+                    <h2>Dispute Resolution</h2>
+                    <p>Any disputes arising from these terms or your use of our services shall be resolved through binding arbitration in accordance with applicable laws. You waive your right to participate in class action lawsuits.</p>
+                </div>
+
+                <div class="policy-card">
+                    <div class="policy-icon"></div>
+                    <h2>Changes to Terms</h2>
+                    <p>We reserve the right to modify these Terms of Service at any time. Changes will be effective immediately upon posting. Your continued use of our services constitutes acceptance of the modified terms.</p>
+                </div>
+            </div>
+
+            <div class="policy-cta">
+                <h3>Questions About Our Terms?</h3>
+                <p>If you have any questions about these Terms of Service, please contact us.</p>
+                <a href="index#contact" class="cta-button">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script src="../script.js"></script>
+    <script src="../header-injector.js?v=1783865360"></script>
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Shopping Cart</h2>
+            <button class="cart-close" onclick="closeCart()">&times;</button>
+        </div>
+        <div class="cart-body">
+            <div class="cart-empty" id="cartEmpty">
+                <div class="cart-empty-icon">◇</div>
+                <p>Your cart is empty</p>
+                <button class="cta-button" onclick="closeCart()">Continue Shopping</button>
+            </div>
+            <div class="cart-content" id="cartContent">
+                <div class="cart-items" id="cartItems"></div>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total:</span>
+                <span class="cart-total-amount" id="cartTotal">
+.00</span>
+            </div>
+            <button class="cart-continue" onclick="closeCart()">Continue Shopping</button>
+        </div>
+    </div>
+
+    <div class="wishlist-overlay" id="wishlistOverlay" onclick="closeWishlistSidebar()"></div>
+    <div class="wishlist-sidebar" id="wishlistSidebar">
+        <div class="wishlist-header">
+            <h2>Your Wishlist</h2>
+            <button class="wishlist-close" onclick="closeWishlistSidebar()">&times;</button>
+        </div>
+        <div class="wishlist-body">
+            <div class="wishlist-empty" id="wishlistEmpty">
+                <div class="wishlist-empty-icon">♡</div>
+                <p>Your wishlist is empty</p>
+                <button class="cta-button" onclick="closeWishlistSidebar()">Discover Products</button>
+            </div>
+            <div class="wishlist-content" id="wishlistContent">
+                <div class="wishlist-items" id="wishlistItems"></div>
+            </div>
+        </div>
+    </div>    <!-- Footer -->
+<script src="/cart-sync.js?v=1783859609"></script>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-content" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px;">
+            
+            <div class="footer-section" style="flex: 1; min-width: 250px;">
+                <h3>KURAJ FASHION</h3>
+                <p>Redefining luxury through exclusive access and unparalleled craftsmanship.</p>
+                <div style="margin-top: 20px;">
+                    <h4 style="margin-bottom: 10px;">Contact Us</h4>
+                    <p style="margin: 0; color: #999;">Email: support@kurajfashion.com</p>
+                    <p style="margin: 0; color: #999;">Phone: +1 (800) 587-2584</p>
+                    <p style="margin: 0; color: #999;">Hours: Mon-Sun: 8AM-10PM EST</p>
+                </div>
+            </div>
+
+            <div class="footer-section" style="flex: 1; min-width: 150px;">
+                <h4>Collections</h4>
+                <ul>
+                    <li><a href="/collections/timepieces">Timepieces</a></li>
+                    <li><a href="/collections/jewelry">Jewelry</a></li>
+                    <li><a href="/collections/handbags">Handbags</a></li>
+                    <li><a href="/collections/accessories">Accessories</a></li>
+                    <li><a href="/collections/clothing">Clothing</a></li>
+                    <li><a href="/collections/home-decor">Home Décor</a></li>
+                    <li><a href="/collections/gifts">Gifts</a></li>
+                    <li><a href="/collections/limited-drops">Limited Drops</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section" style="flex: 1; min-width: 150px;">
+                <h4>For Him/For Her</h4>
+                <ul>
+                    <li><a href="/for-him">For Him</a></li>
+                    <li><a href="/for-her">For Her</a></li>
+                    <li><a href="/all-products">All Products</a></li>
+                </ul>
+                <h4 style="margin-top: 20px;">Earn with Us</h4>
+                <ul>
+                    <li><a href="/dashboard">Join the Club</a></li>
+                    <li><a href="/dashboard">VIP Benefits</a></li>
+                    <li><a href="/dashboard">Referral Program</a></li>
+                    <li><a href="/contact">Member Support</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section" style="flex: 1; min-width: 150px;">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="javascript:void(0)">Our Collections</a></li>
+                    <li><a href="/dashboard">Membership</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                </ul>
+                <h4 style="margin-top: 20px;">Support</h4>
+                <ul>
+                    <li><a href="/contact">Contact Us</a></li>
+                    <li><a href="/legal/authentication">Authentication</a></li>
+                    <li><a href="/legal/shipping">Shipping</a></li>
+                    <li><a href="/legal/returns">Returns</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section" style="flex: 1; min-width: 150px;">
+                <h4>Policies</h4>
+                <ul>
+                    <li><a href="/legal/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/legal/terms-of-service">Terms of Service</a></li>
+                    <li><a href="/legal/terms-conditions">Terms & Conditions</a></li>
+                    <li><a href="/legal/cookie-notices">Cookie Notices</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="footer-bottom" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 30px;">
+            <p>&copy; 2025 Kuraj Fashion. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<script src="/footer-injector.js?v=999"></script>
+</body>
+</html>
