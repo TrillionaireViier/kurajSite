@@ -303,9 +303,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const navMenu = document.querySelector(".nav-menu")
 
   if (mobileMenu && navMenu) {
-    mobileMenu.addEventListener("click", () => {
-      mobileMenu.classList.toggle("active")
-      navMenu.classList.toggle("active")
+    mobileMenu.addEventListener("click", (e) => {
+      e.stopPropagation()
+      if (typeof window.toggleMobileMenu === "function") {
+        window.toggleMobileMenu(e)
+      } else {
+        mobileMenu.classList.toggle("active")
+        navMenu.classList.toggle("active")
+      }
     })
 
     // Close mobile menu when clicking on a link

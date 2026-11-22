@@ -255,8 +255,12 @@ if (document.readyState === 'loading') {
 }
 
 // Toggle mobile menu with backdrop and accordion support
+let lastHeaderToggle = 0;
 window.toggleMobileMenu = function(e) {
     if (e && e.stopPropagation) e.stopPropagation();
+    const now = Date.now();
+    if (now - lastHeaderToggle < 250) return;
+    lastHeaderToggle = now;
     const navMenu = document.getElementById('navMenu');
     const mobileMenu = document.getElementById('mobile-menu');
     let overlay = document.getElementById('mobileMenuOverlay');

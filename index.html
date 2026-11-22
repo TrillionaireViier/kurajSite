@@ -60,7 +60,7 @@ a {
     max-width: 100%;
     width: 100%;
     margin: 0;
-    background: url('/images/rukaj-hero-background.png') center/cover no-repeat;
+    background: radial-gradient(ellipse at top, #1c1c24 0%, #0c0c0e 70%, #050507 100%);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -2368,8 +2368,12 @@ html, body {
 }
 </style>
 <script>
+let lastMobileToggle = 0;
 window.toggleMobileMenu = function(e) {
     if (e && e.stopPropagation) e.stopPropagation();
+    const now = Date.now();
+    if (now - lastMobileToggle < 250) return;
+    lastMobileToggle = now;
     const navMenu = document.getElementById('navMenu') || document.querySelector('.nav-menu');
     const toggleBtn = document.getElementById('mobile-menu') || document.querySelector('.nav-toggle');
     let overlay = document.getElementById('mobileMenuOverlay');
