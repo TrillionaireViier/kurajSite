@@ -8,53 +8,284 @@
     <link rel="stylesheet" href="/header-styles.css?v=1783850048">
     <link rel="stylesheet" href="/cart-styles.css?v=1783850048">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-        <style>
-        :root { --primary-color: #ffffff; }
-        *, *::before, *::after { box-sizing: border-box; }
-        html, body {
-            overflow-x: hidden !important;
-            max-width: 100vw;
+    <style>
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #000000;
+            --bg-dark: #0a0a0a;
+            --bg-light: #1a1a1a;
+            --text-light: #cccccc;
+            --accent: #ffffff;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #000000;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
-        .policy-container {
-            max-width: 860px;
-            width: 100%;
-            margin: 120px auto 60px;
-            padding: 0 24px;
             box-sizing: border-box;
-            color: #ffffff;
-            line-height: 1.8;
-            overflow-wrap: break-word;
-            word-break: break-word;
         }
-        .policy-container h1 {
-            font-family: "Playfair Display", serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            color: #ffffff;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--primary-color);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
         }
-        .policy-container h2 {
-            font-family: "Playfair Display", serif;
-            font-size: clamp(1.3rem, 3.5vw, 1.8rem);
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            color: #ffffff;
-            line-height: 1.3;
+
+        .policy-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-top: 100px;
         }
-        .policy-container p {
-            margin-bottom: 1.2rem;
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 1rem;
+
+        .policy-container > h1 {
+            display: none;
         }
+
+        .policy-container > p {
+            display: none;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .page-hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--secondary-color) 100%);
+            border-radius: 8px;
+            border-bottom: 4px solid var(--accent);
+            margin-bottom: 60px;
+        }
+
+        .page-hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .page-date {
+            font-size: 0.95rem;
+            color: #888;
+        }
+
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .policy-card {
+            background-color: var(--bg-light);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .policy-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.1);
+        }
+
+        .policy-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .policy-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .policy-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .policy-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .policy-list li {
+            padding: 8px 0;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            border-bottom: 1px solid #333;
+        }
+
+        .policy-list li:last-child {
+            border-bottom: none;
+        }
+
+        .policy-link {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .policy-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .policy-cta {
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--secondary-color) 100%);
+            padding: 50px 30px;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 4px solid var(--accent);
+            margin-top: 60px;
+        }
+
+        .policy-cta h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .policy-cta p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--secondary-color);
+            padding: 12px 35px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .footer {
+            margin-top: 80px;
+            background-color: var(--secondary-color);
+            border-top: 2px solid var(--accent);
+        }
+
+        .footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            padding: 40px 20px;
+        }
+
+        .footer-section h3,
+        .footer-section h4 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .footer-section a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
         @media (max-width: 768px) {
             .policy-container {
-                margin: 95px auto 40px;
-                padding: 0 16px;
+                margin-top: 80px;
+            }
+
+            .page-hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .policy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .policy-cta {
+                padding: 30px 20px;
+            }
+
+            .policy-cta h3 {
+                font-size: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
             }
         }
     </style>
