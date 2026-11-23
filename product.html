@@ -1263,7 +1263,7 @@ function buildRelated(currentTitle, currentPrice, currentImage) {
                 <span style="background: rgba(255,255,255,0.2); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">-70%</span>
             </div>
             <div style="display: flex; gap: 10px; margin-top: auto;">
-                <button onclick="event.stopPropagation(); addToCart('${cleanTitle}', ${p.price}, '${cleanImg}'); proceedToCheckout();" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;margin-right:10px;">Buy Now</button>
+                <button onclick="event.stopPropagation(); addToCart('${cleanTitle}', ${p.price}, '${cleanImg}'); if(typeof toggleCart==='function')toggleCart();" style="flex:1;padding:10px;background:#000;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;margin-right:10px;">Buy Now</button>
 <button onclick="addToCart('${cleanTitle}', ${p.price}, '${cleanImg}')" style="flex:1;padding:10px;background:#fff;color:#000;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:transform 0.2s;">Add to Cart</button>
                 <button onclick="addToWishlist('${cleanTitle}', ${p.price}, '${cleanImg}')" style="width:38px;height:38px;border-radius:6px;background:rgba(255,255,255,0.05);color:#fff;border:1px solid rgba(255,255,255,0.2);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;">♡</button>
             </div>

@@ -351,6 +351,14 @@ window._cartSyncWishlistLoaded = true;
     }
   };
 
+  // Buy now (adds to cart and opens cart drawer)
+  window.buyNow = function (name, price, image, qty) {
+    window.addToCart(name, price, image, qty);
+    if (typeof window.toggleCart === 'function') {
+      window.toggleCart();
+    }
+  };
+
   // Cart qty / remove
   window.proceedToCheckout = function() {
     const cart = getCart();
