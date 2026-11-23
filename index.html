@@ -2376,17 +2376,8 @@ window.toggleMobileMenu = function(e) {
     lastMobileToggle = now;
     const navMenu = document.getElementById('navMenu') || document.querySelector('.nav-menu');
     const toggleBtn = document.getElementById('mobile-menu') || document.querySelector('.nav-toggle');
-    let overlay = document.getElementById('mobileMenuOverlay');
-    if (!overlay) {
-        overlay = document.createElement('div');
-        overlay.id = 'mobileMenuOverlay';
-        overlay.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(2px);z-index:99998;';
-        overlay.onclick = function() { window.toggleMobileMenu(); };
-        document.body.appendChild(overlay);
-    }
     const isActive = navMenu && navMenu.classList.toggle('active');
     if (toggleBtn) toggleBtn.classList.toggle('active', !!isActive);
-    if (overlay) overlay.style.display = isActive ? 'block' : 'none';
 };
 </script>
 

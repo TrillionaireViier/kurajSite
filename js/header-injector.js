@@ -270,7 +270,7 @@ if (document.readyState === 'loading') {
     window.loadHeader();
 }
 
-// Toggle mobile menu with backdrop and accordion support
+// Toggle mobile menu without darkening overlay
 window.__lastHeaderToggle = window.__lastHeaderToggle || 0;
 window.toggleMobileMenu = function(e) {
     if (e && e.stopPropagation) e.stopPropagation();
@@ -279,17 +279,8 @@ window.toggleMobileMenu = function(e) {
     window.__lastHeaderToggle = now;
     const navMenu = document.getElementById('navMenu');
     const mobileMenu = document.getElementById('mobile-menu');
-    let overlay = document.getElementById('mobileMenuOverlay');
-    if (!overlay) {
-        overlay = document.createElement('div');
-        overlay.id = 'mobileMenuOverlay';
-        overlay.style.cssText = "display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(2px);z-index:99998;";
-        overlay.onclick = function() { window.toggleMobileMenu(); };
-        document.body.appendChild(overlay);
-    }
     const isActive = navMenu && navMenu.classList.toggle('active');
     if (mobileMenu) mobileMenu.classList.toggle('active', isActive);
-    if (overlay) overlay.style.display = isActive ? "block" : "none";
 };
 
 // Dropdown click handlers for mobile

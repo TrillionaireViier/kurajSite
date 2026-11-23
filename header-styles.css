@@ -401,12 +401,10 @@ body {
   }
 
   #mobileMenuOverlay {
-    position: fixed !important;
-    inset: 0 !important;
-    background: rgba(0, 0, 0, 0.6) !important;
-    backdrop-filter: blur(2px) !important;
-    -webkit-backdrop-filter: blur(2px) !important;
-    z-index: 99998 !important;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
   }
 
   .nav-toggle {
@@ -420,7 +418,22 @@ body {
     flex-shrink: 0 !important;
     order: 99 !important;
     z-index: 100000 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
     -webkit-tap-highlight-color: transparent !important;
+  }
+
+  .nav-toggle:focus,
+  .nav-toggle:active,
+  .nav-toggle:hover {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
   }
 
   .nav-menu {
