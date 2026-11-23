@@ -1,5 +1,10 @@
 /* Optimized header styles without flickering transitions */
 
+/* Universal Box-Sizing & Mobile Overflow Prevention */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* Header Base Styles */
 .header {
   background: #000000 !important;
@@ -13,20 +18,37 @@
 }
 
 .top-announcement-bar {
+  box-sizing: border-box !important;
   background: #000000 !important;
   color: #ffffff !important;
   text-align: center;
   padding: 6px 15px;
   font-size: 0.8rem;
   border-bottom: 1px solid rgba(255,255,255,0.15) !important;
-  width: 100%;
+  width: 100% !important;
   position: relative;
   z-index: 10001;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 12px;
   flex-wrap: wrap;
+}
+
+.top-announcement-bar .banner-text {
+  letter-spacing: 0.3px;
+}
+
+.top-announcement-bar a {
+  color: #ffffff !important;
+  text-decoration: underline !important;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.top-announcement-bar a:hover {
+  color: #d4af37 !important;
 }
 
 .navbar {
@@ -314,13 +336,37 @@ body {
 
 /* Mobile Responsive */
 @media (max-width: 900px) {
+  .top-announcement-bar {
+    padding: 6px 10px !important;
+    font-size: 0.72rem !important;
+    line-height: 1.35 !important;
+    gap: 4px !important;
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+
+  .top-announcement-bar .banner-text {
+    display: block !important;
+    max-width: 100% !important;
+    font-size: 0.72rem !important;
+    line-height: 1.3 !important;
+    word-break: normal !important;
+  }
+
+  .top-announcement-bar a {
+    margin-left: 0 !important;
+    display: inline-block !important;
+    font-size: 0.72rem !important;
+    margin-top: 2px !important;
+  }
+
   .nav-container {
     padding: 0 16px;
     height: 60px;
   }
 
   body {
-    padding-top: 95px !important;
+    padding-top: 125px !important;
   }
 
   .brand-text {

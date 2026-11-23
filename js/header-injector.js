@@ -247,6 +247,22 @@ const sidebarsHTML = `
 
 }; // Close window.loadHeader
 
+// Dynamic header offset adjustment to prevent any fixed-header overlap
+window.adjustHeaderOffset = function() {
+    const header = document.getElementById('mainHeader') || document.querySelector('.header');
+    if (header) {
+        document.body.style.paddingTop = header.offsetHeight + 'px';
+    }
+};
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', window.adjustHeaderOffset);
+} else {
+    window.adjustHeaderOffset();
+}
+window.addEventListener('resize', window.adjustHeaderOffset);
+window.addEventListener('load', window.adjustHeaderOffset);
+setTimeout(window.adjustHeaderOffset, 150);
+
 // Execute immediately if DOM is ready, else wait for DOMContentLoaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', window.loadHeader);

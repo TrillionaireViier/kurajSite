@@ -488,13 +488,195 @@
     font-size: 0.7rem;
 }
 
+/* Single Product Page Responsive Layout */
+.product-details {
+    padding: 30px 20px 60px;
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.product-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.product-images {
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.main-image {
+    width: 100%;
+    background: #111111;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.main-image img, #mainProductImage {
+    max-width: 100%;
+    max-height: 520px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.product-breadcrumb {
+    font-size: 0.85rem;
+    color: #888888;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.product-breadcrumb a {
+    color: #cccccc;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.product-breadcrumb a:hover {
+    color: #ffffff;
+}
+
+#productName {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #ffffff;
+    margin-bottom: 12px;
+    line-height: 1.25;
+}
+
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.stars {
+    color: #d4af37;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+.rating-count {
+    color: #888888;
+    font-size: 0.85rem;
+}
+
+.price-comparison-large {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 25px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.price-row .label {
+    color: #999999;
+    font-size: 0.95rem;
+}
+
+.original-price-large {
+    text-decoration: line-through;
+    color: #777777;
+    font-size: 1.1rem;
+}
+
+.our-price-large {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.savings-badge {
+    display: inline-block;
+    background: #d4af37;
+    color: #000000;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.product-description, .product-features {
+    margin-bottom: 25px;
+    line-height: 1.6;
+    color: #cccccc;
+}
+
+.product-description h3, .product-features h3 {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.product-features ul {
+    padding-left: 20px;
+}
+
+.product-features li {
+    margin-bottom: 6px;
+    color: #aaaaaa;
+}
+
+@media (max-width: 900px) {
+    .product-details {
+        padding: 15px 16px 40px;
+    }
+    .product-layout {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    #productName {
+        font-size: 1.6rem;
+    }
+    .main-image {
+        padding: 15px;
+    }
+    .main-image img, #mainProductImage {
+        max-height: 380px;
+    }
+    .product-actions {
+        flex-direction: column;
+    }
+    .add-to-cart-btn, .buy-now-btn {
+        width: 100%;
+        min-width: unset;
+    }
+    .product-guarantees {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
     </style>
 </head>
 <body>
 <header class="header" id="mainHeader">
-<div class="top-announcement-bar" style="background: #000; color: #fff; text-align: center; padding: 4px 15px; font-size: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.2); width: 100%; z-index: 1000; position: relative;">
-    <span class="banner-text"> Join Our Exclusive Club | Get Up to 90% Off Luxury Items &amp; VIP Benefits</span>
-    <a href="/dashboard" style="color: #fff; text-decoration: underline; margin-left: 15px; font-weight: bold; white-space: nowrap;">Sign In to Account or Sign Up</a>
+<div class="top-announcement-bar">
+    <span class="banner-text">Join Our Exclusive Club | Get Up to 90% Off Luxury Items &amp; VIP Benefits</span>
+    <a href="/dashboard">Sign In to Account or Sign Up</a>
 </div>
 <nav class="navbar">
 <div class="nav-container">
@@ -594,7 +776,7 @@
 <a class="nav-auth-btn sign-in" href="/dashboard" id="signInBtn">Sign In</a>
 <a class="nav-auth-btn sign-up" href="/dashboard" id="signUpBtn">Sign Up</a>
 </div>
-<div class="nav-toggle" id="mobile-menu" onclick="document.getElementById('navMenu').classList.toggle('active')">
+<div class="nav-toggle" id="mobile-menu" onclick="window.toggleMobileMenu(event)">
 <span class="bar"></span><span class="bar"></span><span class="bar"></span>
 </div>
 </div>
@@ -651,7 +833,6 @@
 <div class="product-images">
 <div class="main-image">
 <img alt="Product" id="mainProductImage" src=""/>
-</div>
 </div>
 </div>
 <!-- Info -->
@@ -724,6 +905,7 @@
 <div class="guarantee-item">
 <span class="guarantee-icon"></span>
 <span>Secure Payment</span>
+</div>
 </div>
 </div>
 </div>
@@ -1044,5 +1226,7 @@ document.addEventListener('click', function(e) {
 });
 </script>
 <script src="/footer-injector.js?v=999"></script>
+<script src="/header-injector.js?v=20260527"></script>
+<script src="/cart-sync.js?v=20260527"></script>
 </body>
 </html>
