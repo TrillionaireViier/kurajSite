@@ -2985,11 +2985,52 @@ button.wishlist-btn-floating {
     transform: scale(1.1) !important;
 }
 
-/* Fix product buttons alignment */
+/* Fix product buttons alignment across all cards */
 .product-buttons {
   display: flex;
   gap: 10px;
   margin-top: auto;
   margin-bottom: 10px;
   align-items: center;
+}
+
+div[style*="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))"] > div,
+.product-card {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+}
+
+div[style*="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))"] > div > div[style*="padding: 18px"],
+.product-card .product-info {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+    box-sizing: border-box !important;
+}
+
+div[style*="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))"] h3,
+.product-card h3 {
+    min-height: 2.8em !important;
+    max-height: 2.8em !important;
+    line-height: 1.4 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    margin: 0 0 8px 0 !important;
+}
+
+div[style*="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))"] > div > div[style*="padding: 18px"] > div[style*="display: flex; gap: 10px"] {
+    margin-top: auto !important;
+}
+
+div[style*="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))"] button,
+.product-card button {
+    height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
 }
