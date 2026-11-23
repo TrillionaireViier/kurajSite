@@ -3034,3 +3034,12 @@ div[style*="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))"] butto
     justify-content: center !important;
     box-sizing: border-box !important;
 }
+
+.guarantee-icon svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    display: block;
+}
