@@ -2,6 +2,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
+    { "source": "/collections/watches", "destination": "/collections/watches.html" },
     { "source": "/checkout", "destination": "/checkout.html" },
     { "source": "/all-products", "destination": "/all-products.html" },
     { "source": "/about", "destination": "/about.html" },
