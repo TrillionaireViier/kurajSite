@@ -283,7 +283,7 @@ window.toggleMobileMenu = function(e) {
     if (!overlay) {
         overlay = document.createElement('div');
         overlay.id = 'mobileMenuOverlay';
-        overlay.style.cssText = "display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(3px);z-index:10000;";
+        overlay.style.cssText = "display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(2px);z-index:99998;";
         overlay.onclick = function() { window.toggleMobileMenu(); };
         document.body.appendChild(overlay);
     }
