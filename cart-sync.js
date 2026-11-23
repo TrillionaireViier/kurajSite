@@ -103,7 +103,7 @@ window._cartSyncWishlistLoaded = true;
       if (content) content.style.display = 'block';
       items.innerHTML = cart.map(item => `
         <div class="cart-item" style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #222;">
-          <img src="${item.image || ''}" alt="${item.name}" style="width:70px;height:70px;object-fit:cover;border-radius:6px;flex-shrink:0;">
+          <img src="${item.image || ''}" alt="${item.name}" onerror="this.onerror=null;this.src='/images/leather-handbag-black.png';" style="width:70px;height:70px;object-fit:cover;border-radius:6px;flex-shrink:0;">
           <div style="flex:1;min-width:0;">
             <div style="font-size:0.9rem;font-weight:600;color:#fff;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${item.name}</div>
             <div style="color:#aaa;font-size:0.85rem;margin-bottom:8px;">$${safeParsePrice(item.price).toFixed(2)}</div>
@@ -141,7 +141,7 @@ window._cartSyncWishlistLoaded = true;
       if (content) content.style.display = 'block';
       items.innerHTML = wl.map((item, idx) => `
         <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #222;align-items:center;">
-          <img src="${item.image || ''}" alt="${item.name}" style="width:70px;height:70px;object-fit:cover;border-radius:6px;flex-shrink:0;">
+          <img src="${item.image || ''}" alt="${item.name}" onerror="this.onerror=null;this.src='/images/leather-handbag-black.png';" style="width:70px;height:70px;object-fit:cover;border-radius:6px;flex-shrink:0;">
           <div style="flex:1;min-width:0;">
             <div style="font-size:0.9rem;font-weight:600;color:#fff;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${item.name}</div>
             <div style="color:#aaa;font-size:0.85rem;margin-bottom:8px;">$${safeParsePrice(item.price).toFixed(2)}</div>

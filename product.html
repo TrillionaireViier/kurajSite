@@ -841,7 +841,7 @@
 <!-- Images -->
 <div class="product-images">
 <div class="main-image">
-<img alt="Product" id="mainProductImage" src=""/>
+<img alt="Product" id="mainProductImage" src="/images/scraped/rolex_muzhskie_chasy_datejust.webp" onerror="this.onerror=null;this.src='/images/scraped/rolex_muzhskie_chasy_datejust.webp';"/>
 </div>
 </div>
 <!-- Info -->
@@ -1133,32 +1133,117 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Image
-  if (image) {
-    document.getElementById('mainProductImage').src = image;
+  // Image with smart fallback
+  function resolveProductImage(prodTitle, prodImg) {
+    const VALID_IMAGES = [
+      '/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona.webp',
+      '/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona_126518ln.webp',
+      '/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona_40_m116500ln_0002.webp',
+      '/images/scraped/rolex_muzhskie_chasy_datejust.webp',
+      '/images/scraped/rolex_muzhskie_chasy_datejust_41_m126333_0012.webp',
+      '/images/scraped/rolex_muzhskie_chasy_datejust_41_m126334_0026.webp',
+      '/images/scraped/rolex_muzhskie_chasy_gmt_master_ll.webp',
+      '/images/scraped/rolex_muzhskie_chasy_submariner_116610lv.webp',
+      '/images/scraped/patek_phillipe_muzhskie_chasy_nautilus_5711.webp',
+      '/images/scraped/patek_phillipe_muzhskie_chasy_nautilus_5811.webp',
+      '/images/scraped/patek_phillipe_muzhskie_chasy_aquanaut_5261r.webp',
+      '/images/scraped/patek_phillipe_muzhskie_chasy_5712_1r_001.webp',
+      '/images/scraped/cartier_muzhskie_chasy_ballon_bleu_42_mm.webp',
+      '/images/scraped/hublot_muzhskie_chasy_classic_fusion.webp',
+      '/images/scraped/vacheron_constantin_muzhskie_chasy_fifty_six_4600e_.webp',
+      '/images/scraped/vacheron_constantin_muzhskie_chasy_patrimony_automatic.webp',
+      '/images/leather-handbag-black.png',
+      '/images/jewelry-womens.jpg',
+      '/images/luxury-accessories.png',
+      '/images/designer-suit-charcoal.png',
+      '/images/cashmere-coat-premium.png',
+      '/images/cotton-shirt-white.png',
+      '/images/silk-dress-elegant.png',
+      '/images/evening-gown-beaded.png',
+      '/images/diamond-luxury-watch.png',
+      '/images/platinum-watch-diamonds.png',
+      '/images/steel-diving-watch.png',
+      '/images/gold-watch-classic.png',
+      '/images/rose-gold-dress-watch.png',
+      '/images/titanium-aviator-watch.png',
+      '/images/rolex-datejust-steel-mop.jpg'
+    ];
+
+    if (prodImg && VALID_IMAGES.includes(prodImg)) {
+      return prodImg;
+    }
+
+    const t = (prodTitle || '').toLowerCase();
+    if (t.includes('rolex')) {
+      if (t.includes('daytona')) return '/images/scraped/rolex_muzhskie_chasy_cosmograph_daytona_126518ln.webp';
+      if (t.includes('submariner')) return '/images/scraped/rolex_muzhskie_chasy_submariner_116610lv.webp';
+      if (t.includes('gmt')) return '/images/scraped/rolex_muzhskie_chasy_gmt_master_ll.webp';
+      if (t.includes('126333')) return '/images/scraped/rolex_muzhskie_chasy_datejust_41_m126333_0012.webp';
+      if (t.includes('126334')) return '/images/scraped/rolex_muzhskie_chasy_datejust_41_m126334_0026.webp';
+      return '/images/scraped/rolex_muzhskie_chasy_datejust.webp';
+    }
+    if (t.includes('patek')) {
+      if (t.includes('aquanaut')) return '/images/scraped/patek_phillipe_muzhskie_chasy_aquanaut_5261r.webp';
+      if (t.includes('5712')) return '/images/scraped/patek_phillipe_muzhskie_chasy_5712_1r_001.webp';
+      if (t.includes('5811')) return '/images/scraped/patek_phillipe_muzhskie_chasy_nautilus_5811.webp';
+      return '/images/scraped/patek_phillipe_muzhskie_chasy_nautilus_5711.webp';
+    }
+    if (t.includes('cartier')) return '/images/scraped/cartier_muzhskie_chasy_ballon_bleu_42_mm.webp';
+    if (t.includes('hublot')) return '/images/scraped/hublot_muzhskie_chasy_classic_fusion.webp';
+    if (t.includes('vacheron')) return '/images/scraped/vacheron_constantin_muzhskie_chasy_patrimony_automatic.webp';
+    if (t.includes('bag') || t.includes('backpack') || t.includes('tote') || t.includes('clutch') || t.includes('hermes') || t.includes('birkin') || t.includes('kelly')) {
+      return '/images/leather-handbag-black.png';
+    }
+    if (t.includes('jewelry') || t.includes('ring') || t.includes('necklace') || t.includes('bracelet') || t.includes('earring')) {
+      return '/images/jewelry-womens.jpg';
+    }
+    if (t.includes('suit') || t.includes('jacket') || t.includes('coat')) {
+      return '/images/designer-suit-charcoal.png';
+    }
+    if (t.includes('dress') || t.includes('gown')) {
+      return '/images/silk-dress-elegant.png';
+    }
+    if (t.includes('shirt')) {
+      return '/images/cotton-shirt-white.png';
+    }
+    if (t.includes('watch') || t.includes('timepiece')) {
+      return '/images/scraped/rolex_muzhskie_chasy_datejust.webp';
+    }
+    return '/images/leather-handbag-black.png';
   }
 
-  // Related products
-  // buildRelated removed
+  const validImage = resolveProductImage(title, image);
+  _productImage = validImage;
+
+  const mainImg = document.getElementById('mainProductImage');
+  mainImg.src = validImage;
+  mainImg.onerror = function() {
+    this.onerror = null;
+    this.src = resolveProductImage(title, '');
+  };
+
+  // Build Related Products
+  buildRelated(cleanTitle, price, validImage);
 });
 
 // ── Related products ─────────────────────────────────────────────────────────
 const ALL_RELATED = [
-  { title: 'ROLEX Submariner 116610LV',          price: 1895, file: 'ROLEX Мужские часы Submariner 116610LV.webp' },
-  { title: 'CARTIER Ballon Bleu 42 мм',          price: 926,  file: 'CARTIER Мужские часы Ballon Bleu 42 мм.webp' },
-  { title: 'PATEK PHILLIPE Nautilus 5811',        price: 1789, file: 'PATEK PHILLIPE Мужские часы Nautilus 5811.webp' },
-  { title: 'HUBLOT Classic Fusion',              price: 1347, file: 'HUBLOT Мужские часы Classic Fusion.webp' },
-  { title: 'ROLEX GMT-Master ll',                price: 2263, file: 'ROLEX Мужские часы GMT-Master ll.webp' },
-  { title: 'VACHERON CONSTANTIN Patrimony Automatic', price: 1316, file: 'VACHERON CONSTANTIN Мужские часы Patrimony Automatic.webp' },
-  { title: 'IWC Pilot Mark 40 IW327010',         price: 926,  file: 'IWC Мужские часы Pilot Mark 40 IW327010.webp' },
-  { title: 'ROLEX Datejust M126333',             price: 1526, file: 'ROLEX Мужские часы Datejust M126333.webp' },
+  { title: 'ROLEX Submariner Date',          price: 1895, file: '/images/scraped/rolex_muzhskie_chasy_submariner_116610lv.webp' },
+  { title: 'CARTIER Ballon Bleu 42 mm',          price: 926,  file: '/images/scraped/cartier_muzhskie_chasy_ballon_bleu_42_mm.webp' },
+  { title: 'PATEK PHILLIPE Nautilus 5811',        price: 1789, file: '/images/scraped/patek_phillipe_muzhskie_chasy_nautilus_5811.webp' },
+  { title: 'HUBLOT Classic Fusion',              price: 1347, file: '/images/scraped/hublot_muzhskie_chasy_classic_fusion.webp' },
+  { title: 'ROLEX GMT-Master II',                price: 2263, file: '/images/scraped/rolex_muzhskie_chasy_gmt_master_ll.webp' },
+  { title: 'VACHERON CONSTANTIN Patrimony Automatic', price: 1316, file: '/images/scraped/vacheron_constantin_muzhskie_chasy_patrimony_automatic.webp' },
+  { title: 'ROLEX Datejust 41',                  price: 1526, file: '/images/scraped/rolex_muzhskie_chasy_datejust_41_m126333_0012.webp' },
+  { title: 'PATEK PHILLIPE Aquanaut',            price: 2150, file: '/images/scraped/patek_phillipe_muzhskie_chasy_aquanaut_5261r.webp' },
 ];
 
 function buildRelated(currentTitle, currentPrice, currentImage) {
   const grid = document.getElementById('relatedGrid');
+  if (!grid) return;
   const picks = ALL_RELATED.filter(p => p.title !== currentTitle).slice(0, 4);
   grid.innerHTML = picks.map(p => {
-    const imgSrc = '/images/watches/' + p.file;
+    const imgSrc = p.file;
     const href   = '/product?title=' + encodeURIComponent(p.title) + '&price=' + p.price + '&image=' + encodeURIComponent(imgSrc);
     const originalPrice = Math.ceil(p.price / 0.3).toLocaleString();
     const cleanTitle = p.title.replace(/'/g, "\\'");
@@ -1167,7 +1252,7 @@ function buildRelated(currentTitle, currentPrice, currentImage) {
     return `
       <div class="product-card" style="background: var(--bg-light, #111); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 1px solid var(--border-color, #333); display: flex; flex-direction: column;">
         <a href="${href}" style="display: block; text-decoration: none;">
-            <img src="${imgSrc}" alt="${p.title}" class="product-image" style="width: 100%; height: 280px; object-fit: cover;" loading="lazy">
+            <img src="${imgSrc}" alt="${p.title}" class="product-image" style="width: 100%; height: 280px; object-fit: cover;" onerror="this.onerror=null;this.src='/images/scraped/rolex_muzhskie_chasy_datejust.webp';" loading="lazy">
         </a>
         <div class="product-info" style="padding: 18px; display: flex; flex-direction: column; flex-grow: 1;">
             <h3 style="margin: 0 0 4px 0; color: #ffffff; font-size: 1rem; font-family: 'Inter', sans-serif;">${p.title}</h3>
