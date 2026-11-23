@@ -3591,56 +3591,6 @@ window.toggleMobileMenu = function(e) {
             if(banner) banner.style.display = 'none';
         }
 
-        // Hide banner if user is logged in
-        function checkBannerVisibility() {
-            const currentUser = localStorage.getItem('currentUser');
-            const stickyBanner = document.getElementById('stickyBanner');
-            if(!stickyBanner) return;
-            
-            if (currentUser) {
-                // User is logged in - hide banner
-                stickyBanner.style.display = 'none';
-            } else {
-                // User is not logged in - show banner
-                stickyBanner.style.display = 'block';
-            }
-        }
-        
-        // Check on page load
-        checkBannerVisibility();
-        
-        // Listen for login/logout changes
-        window.addEventListener('storage', function(e) {
-            if (e.key === 'currentUser') {
-                checkBannerVisibility();
-            }
-        });
-        
-        // Check every second in case of changes in same tab
-        setInterval(checkBannerVisibility, 1000);
-
-        // Make banner stick and hide/show on scroll
-        let lastScrollY = 0;
-        
-        window.addEventListener('scroll', () => {
-            const stickyBanner = document.getElementById('stickyBanner');
-            if(!stickyBanner) return;
-            
-            const currentScrollY = window.scrollY;
-            
-            if (currentScrollY > 300) {
-                // Hide banner when user scrolls down more than 300px
-                stickyBanner.style.opacity = '0';
-                stickyBanner.style.pointerEvents = 'none';
-            } else {
-                // Show banner when user scrolls back to top
-                stickyBanner.style.opacity = '1';
-                stickyBanner.style.pointerEvents = 'auto';
-            }
-            
-            lastScrollY = currentScrollY;
-        }, { passive: true });
-
         function proceedToCheckout() {
             let cartItems = JSON.parse(localStorage.getItem('luxuryCart')) || JSON.parse(localStorage.getItem('cartItems')) || [];
             
@@ -3879,12 +3829,7 @@ window.toggleMobileMenu = function(e) {
 <script src="hash-router.js"></script>
 <script src="router.js"></script>
 <script src="footer-injector.js?v=999"></script>
-<div class="sticky-club-banner" id="stickyBanner">
-<div class="banner-content">
-<a class="banner-cta" href="/#vip">Become a Member — Join Now</a>
-<button class="banner-close" onclick="closeStickyBanner()">×</button>
-</div>
-</div>
+
 <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/kuraj/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
