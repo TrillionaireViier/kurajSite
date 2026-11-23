@@ -111,7 +111,7 @@ window.loadHeader = function() {
 <a class="nav-auth-btn sign-in" href="/dashboard" id="signInBtn">Sign In</a>
 <a class="nav-auth-btn sign-up" href="/dashboard" id="signUpBtn">Sign Up</a>
 </div>
-<div class="nav-toggle" id="mobile-menu" onclick="document.getElementById('navMenu').classList.toggle('active')">
+<div class="nav-toggle" id="mobile-menu" onclick="window.toggleMobileMenu(event)">
 <span class="bar"></span><span class="bar"></span><span class="bar"></span>
 </div>
 </div>
