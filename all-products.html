@@ -98,7 +98,10 @@
         .search-box-wrapper {
             position: relative;
             flex: 1;
-            min-width: 260px;
+            min-width: 280px;
+            max-width: 440px;
+            display: flex;
+            align-items: center;
         }
 
         .search-box-wrapper svg {
@@ -110,11 +113,12 @@
             height: 18px;
             stroke: #888888;
             pointer-events: none;
+            z-index: 2;
         }
 
         .search-input {
             width: 100%;
-            padding: 13px 40px 13px 44px;
+            padding: 13px 44px 13px 44px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 30px;
@@ -137,12 +141,24 @@
             right: 14px;
             top: 50%;
             transform: translateY(-50%);
-            background: none;
+            background: rgba(255, 255, 255, 0.15);
             border: none;
-            color: #888;
-            font-size: 1rem;
+            color: #ffffff;
+            font-size: 0.85rem;
             cursor: pointer;
-            padding: 4px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            z-index: 2;
+        }
+
+        .clear-search-btn:hover {
+            background: #ffffff;
+            color: #000000;
         }
 
         .sort-select {
@@ -247,6 +263,10 @@
             position: relative;
         }
 
+        .product-card.hidden {
+            display: none !important;
+        }
+
         .product-card:hover {
             border-color: var(--border-hover);
             transform: translateY(-6px);
@@ -261,11 +281,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            height: 280px;
+            box-sizing: border-box;
         }
 
         .product-image {
-            width: 100%;
-            height: 260px;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
             object-fit: contain;
             display: block;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -6922,10 +6946,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const matchesSearch = (!q || title.includes(q) || catAttr.includes(q));
 
             if (matchesCategory && matchesSearch) {
-                card.style.display = 'flex';
+                card.classList.remove('hidden');
+                card.style.setProperty('display', 'flex', 'important');
                 visibleCount++;
             } else {
-                card.style.display = 'none';
+                card.classList.add('hidden');
+                card.style.setProperty('display', 'none', 'important');
             }
         });
 

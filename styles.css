@@ -2999,11 +2999,16 @@ button.wishlist-btn-floating {
   align-items: center;
 }
 
-div[style*="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))"] > div,
-.product-card {
+div[style*="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))"] > div:not(.hidden),
+.product-card:not(.hidden) {
     display: flex !important;
     flex-direction: column !important;
     height: 100% !important;
+}
+
+div[style*="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))"] > div.hidden,
+.product-card.hidden {
+    display: none !important;
 }
 
 div[style*="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))"] > div > div[style*="padding: 18px"],
