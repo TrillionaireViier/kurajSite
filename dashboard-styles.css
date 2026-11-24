@@ -35,6 +35,131 @@
   margin: 0;
 }
 
+/* Seen Password Tag & Badges */
+.pass-seen-tag {
+  background: #222222;
+  color: #4ade80 !important;
+  border: 1px solid #333333;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.badge-seen-pass {
+  background: #ffffff;
+  color: #000000;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+/* Admin Portal Integrated inside Member Screen */
+.dash-admin-in-member {
+  background: #141414;
+  border: 1px solid #2a2a2a;
+  border-left: 3px solid #ffffff;
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+}
+
+.dash-admin-in-member-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dash-seen-creds-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d0d0d;
+  border: 1px solid #222;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  font-size: 0.82rem;
+  color: #ccc;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dash-btn-admin-direct {
+  width: 100%;
+  background: #1f1f1f;
+  color: #ffffff;
+  border: 1px solid #444444;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.dash-btn-admin-direct:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+/* Password input with toggle button */
+.dash-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.dash-input-wrap .dash-input {
+  padding-right: 65px;
+}
+
+.dash-eye-btn {
+  position: absolute;
+  right: 10px;
+  background: #252525;
+  border: 1px solid #444;
+  color: #bbb;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.dash-eye-btn:hover {
+  background: #333;
+  color: #fff;
+}
+
+/* Admin bar inside Member Dashboard */
+.dash-member-admin-bar {
+  background: #141414;
+  border: 1px solid #262626;
+  border-radius: 8px;
+  padding: 12px 18px;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 /* Quick credentials banner */
 .dash-quick-creds {
   background: #141414;
