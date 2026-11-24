@@ -119,7 +119,6 @@ window._cartSyncWishlistLoaded = true;
         }
         banner.innerHTML = `
           <span class="banner-text">${welcomeText}</span>
-          <a href="${user.role === 'admin' ? '/admin' : '/dashboard'}" style="color: #fff; text-decoration: underline; margin-left: 15px; font-weight: bold; white-space: nowrap;">My Account</a>
         `;
       }
     } else {
@@ -143,9 +142,6 @@ window._cartSyncWishlistLoaded = true;
       if (banner) {
         banner.innerHTML = `
           <span class="banner-text">Join Our Exclusive Club | Get Up to 90% Off Luxury Items &amp; VIP Benefits</span>
-          <a href="/dashboard?tab=login" style="color: #fff; text-decoration: underline; margin-left: 15px; font-weight: bold; white-space: nowrap;">Sign In to Account</a>
-          <span style="color: #fff; margin: 0 4px;">or</span>
-          <a href="/dashboard?tab=register" style="color: #fff; text-decoration: underline; font-weight: bold; white-space: nowrap;">Sign Up</a>
         `;
       }
     }
