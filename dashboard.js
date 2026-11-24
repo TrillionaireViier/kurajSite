@@ -146,9 +146,13 @@
     }
   }
 
-  // Check URL params for active tab (e.g. ?tab=admin or ?tab=register)
+  // Check URL params for active tab and referral code
   const urlParams = new URLSearchParams(window.location.search);
-  let activeAuthTab = urlParams.get('tab') || 'login';
+  const refParam = urlParams.get('ref');
+  if (refParam) {
+    try { localStorage.setItem('referralSource', refParam); } catch(e) {}
+  }
+  let activeAuthTab = urlParams.get('tab') || (refParam ? 'register' : 'login');
   if (window.location.pathname.includes('/admin')) {
     activeAuthTab = 'admin';
   }
@@ -289,9 +293,9 @@
                 <input type="password" id="regPassword" required placeholder="At least 4 characters" minlength="4" class="dash-input" autocomplete="new-password" />
               </div>
               <div class="dash-form-group">
-                <label>VIP Invitation Code (Optional)</label>
-                <input type="text" id="regCode" value="KURAJ90" class="dash-input" />
-                <small style="color:#aaa; font-size:0.75rem;">Code KURAJ90 unlocks an immediate $200 welcome voucher and 90% VIP club access.</small>
+                <label>VIP Invitation &amp; Referral Code</label>
+                <input type="text" id="regCode" value="${refParam || localStorage.getItem('referralSource') || 'KURAJ90'}" class="dash-input" style="font-family:monospace; font-weight:700; letter-spacing:1px;" />
+                <small style="color:#4ade80; font-size:0.78rem; display:block; margin-top:4px;">🎁 Unlocks an immediate $200 shopping credit and 90% VIP club access.</small>
               </div>
               <button type="submit" class="dash-btn-primary" id="regSubmitBtn">
                 CREATE VIP MEMBERSHIP
@@ -362,6 +366,15 @@
     }
 
     const totalSpent = orders.reduce((acc, o) => acc + (Number(o.total) || 0), 0);
+
+    if (!user.referralCode) {
+      user.referralCode = "KURAJ-" + (user.name ? user.name.substring(0, 4).toUpperCase().replace(/[^A-Z]/g, '') : "VIP") + Math.floor(100 + Math.random() * 900);
+      setCurrentUser(user);
+    }
+    const origin = window.location.origin || 'https://kuraj.vercel.app';
+    const refCode = user.referralCode;
+    const referralLink = `${origin}/dashboard?ref=${encodeURIComponent(refCode)}`;
+    const shareMsg = `Join Kuraj Fashion VIP Club & claim an instant $200 shopping credit + 90% off luxury drops with my VIP invitation code ${refCode}: ${referralLink}`;
 
     container.innerHTML = `
       <div class="dash-view-container">
@@ -448,6 +461,100 @@
             <p style="margin:0; font-size:0.85rem; color:#999;">Your 90% VIP club discount is unlocked on all catalog items.</p>
           </div>
           <a href="/all-products" class="dash-btn-primary" style="padding:10px 24px; text-decoration:none;">BROWSE COLLECTION</a>
+        </div>
+
+        <!-- VIP Referral Program Section -->
+        <div class="dash-section dash-referral-section">
+          <div class="dash-section-header">
+            <div>
+              <h2 style="display:flex; align-items:center; gap:8px;">
+                <span style="color:#eab308;">🎁</span> Exclusive VIP Referral Program
+              </h2>
+              <p class="dash-subtitle" style="margin-top:4px;">
+                Share Kuraj Fashion with your inner circle. <strong>Give $200 shopping credit, Get $100 store balance</strong> for every member who joins with your link.
+              </p>
+            </div>
+            <span class="badge-vip" style="background:#22c55e22; border-color:#22c55e; color:#4ade80;">Active Reward: Give $200, Get $100</span>
+          </div>
+
+          <!-- Referral Metrics Overview -->
+          <div class="referral-metrics-row">
+            <div class="referral-metric-box">
+              <span class="referral-metric-num">${user.referralCount || 0}</span>
+              <span class="referral-metric-lbl">Friends Joined</span>
+            </div>
+            <div class="referral-metric-box">
+              <span class="referral-metric-num" style="color:#4ade80;">$${(user.referralEarnings !== undefined ? user.referralEarnings : ((user.referralCount || 0) * 100))}.00</span>
+              <span class="referral-metric-lbl">Total Referral Credits Earned</span>
+            </div>
+            <div class="referral-metric-box">
+              <span class="referral-metric-num" style="color:#ffffff;">$${user.balance !== undefined ? user.balance : 250}.00</span>
+              <span class="referral-metric-lbl">Available Balance to Spend</span>
+            </div>
+          </div>
+
+          <!-- Share Card -->
+          <div class="referral-share-card">
+            <div class="referral-input-group">
+              <div style="flex:1; min-width:260px;">
+                <label style="display:block; font-size:0.75rem; color:#aaa; margin-bottom:6px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">Your Unique VIP Referral Link</label>
+                <div style="display:flex; gap:8px;">
+                  <input type="text" id="userReferralLinkInput" readonly value="${referralLink}" class="dash-input" style="background:#0a0a0a; color:#fff; font-family:monospace; font-size:0.85rem;" />
+                  <button type="button" class="dash-btn-primary dash-btn-copy" onclick="window.copyReferralLink(this)">
+                    Copy Link
+                  </button>
+                </div>
+              </div>
+              <div style="width:200px; min-width:180px;">
+                <label style="display:block; font-size:0.75rem; color:#aaa; margin-bottom:6px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">Your VIP Code</label>
+                <div style="display:flex; gap:8px;">
+                  <input type="text" readonly value="${refCode}" class="dash-input" style="background:#0a0a0a; color:#4ade80; font-family:monospace; font-weight:700; text-align:center; font-size:0.95rem;" />
+                  <button type="button" class="dash-btn-outline dash-btn-copy" onclick="window.copyReferralCode(this, '${refCode}')">
+                    Copy
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 1-Click Social Share -->
+            <div class="referral-social-share">
+              <span style="font-size:0.82rem; color:#888; font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">Share directly:</span>
+              <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(shareMsg)}" target="_blank" rel="noopener" class="social-share-btn share-whatsapp" title="Share via WhatsApp">
+                <span>💬 WhatsApp</span>
+              </a>
+              <a href="https://t.me/share/url?url=${encodeURIComponent(referralLink)}&text=${encodeURIComponent("Join Kuraj Fashion VIP Club & claim an instant $200 shopping credit + 90% off luxury drops!")}" target="_blank" rel="noopener" class="social-share-btn share-telegram" title="Share via Telegram">
+                <span>✈️ Telegram</span>
+              </a>
+              <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent("Join Kuraj Fashion VIP Club & claim an instant $200 shopping credit with my VIP code " + refCode)}&url=${encodeURIComponent(referralLink)}" target="_blank" rel="noopener" class="social-share-btn share-twitter" title="Share on X">
+                <span>𝕏 X (Twitter)</span>
+              </a>
+              <a href="mailto:?subject=${encodeURIComponent("Exclusive VIP Invitation to Kuraj Fashion ($200 Gift Inside)")}&body=${encodeURIComponent("Hi,\n\nI'm inviting you to join the private Kuraj Fashion VIP Club. Use my VIP invitation link or code (" + refCode + ") to unlock an immediate $200 shopping credit and up to 90% off limited luxury drops (Rolex, Patek Philippe, Cartier, etc.):\n\n" + referralLink + "\n\nEnjoy!")}" class="social-share-btn share-email" title="Share via Email">
+                <span>✉️ Email</span>
+              </a>
+              <button type="button" class="social-share-btn share-native" onclick="window.shareNative('${refCode}', '${referralLink}')" title="Share using device">
+                <span>🔗 Share...</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- How It Works Steps -->
+          <div class="referral-steps-grid">
+            <div class="referral-step-item">
+              <div class="referral-step-badge">1</div>
+              <h4>Share Your VIP Link</h4>
+              <p>Send your unique referral link or invitation code to friends or social followers.</p>
+            </div>
+            <div class="referral-step-item">
+              <div class="referral-step-badge">2</div>
+              <h4>They Get $200 Gift</h4>
+              <p>When they sign up, they immediately receive a $200 welcome voucher and 90% VIP club access.</p>
+            </div>
+            <div class="referral-step-item">
+              <div class="referral-step-badge">3</div>
+              <h4>You Earn $100 Credit</h4>
+              <p>You automatically receive a $100 store credit deposited into your balance for every friend who joins.</p>
+            </div>
+          </div>
         </div>
 
         <!-- Orders Table -->
@@ -811,8 +918,23 @@
     const name = document.getElementById('regName').value.trim();
     const email = document.getElementById('regEmail').value.trim();
     const password = document.getElementById('regPassword').value.trim();
+    const regCodeEl = document.getElementById('regCode');
+    const usedCode = regCodeEl ? regCodeEl.value.trim().toUpperCase() : '';
     const btn = document.getElementById('regSubmitBtn');
     if (btn) btn.disabled = true;
+
+    // Helper to credit referring user
+    function creditReferrerIfAny() {
+      if (!usedCode) return;
+      const allUsers = getStoredUsers();
+      const referrer = allUsers.find(u => u.referralCode && u.referralCode.toUpperCase() === usedCode);
+      if (referrer) {
+        referrer.balance = (Number(referrer.balance) || 0) + 100;
+        referrer.referralCount = (Number(referrer.referralCount) || 0) + 1;
+        referrer.referralEarnings = (Number(referrer.referralEarnings) || 0) + 100;
+        saveStoredUsers(allUsers);
+      }
+    }
 
     try {
       const resp = await fetch('/api/auth?action=register', {
@@ -824,9 +946,14 @@
       const data = await resp.json();
 
       if (resp.ok && data.success) {
+        creditReferrerIfAny();
         const newUser = {
           ...data.user,
-          password: password
+          password: password,
+          balance: 200,
+          referralCount: 0,
+          referralEarnings: 0,
+          referralCode: data.user.referralCode || ("KURAJ-" + (name ? name.substring(0, 4).toUpperCase().replace(/[^A-Z]/g, '') : "VIP") + Math.floor(100 + Math.random() * 900))
         };
         // Save to local pool
         const localUsers = getStoredUsers();
@@ -836,12 +963,13 @@
         }
         setCurrentUser(newUser);
         if (data.token) localStorage.setItem('authToken', data.token);
-        showAlert("Account created successfully! Welcome to Kuraj VIP Club.", true);
+        showAlert("Account created successfully! Welcome to Kuraj VIP Club ($200 credit added).", true);
         setTimeout(() => renderDashboard(), 600);
       } else {
         showAlert(data.message || "Registration failed.");
       }
     } catch (err) {
+      creditReferrerIfAny();
       // Local fallback
       const newUser = {
         id: "usr_" + Date.now().toString(36),
@@ -852,7 +980,9 @@
         vipTier: "VIP Black Diamond",
         discount: "90% Off VIP",
         balance: 200,
-        referralCode: "KURAJ-" + Math.random().toString(36).substring(2, 8).toUpperCase(),
+        referralCount: 0,
+        referralEarnings: 0,
+        referralCode: "KURAJ-" + (name ? name.substring(0, 4).toUpperCase().replace(/[^A-Z]/g, '') : "VIP") + Math.floor(100 + Math.random() * 900),
         joinedDate: new Date().toISOString().split('T')[0],
         purchases: []
       };
@@ -860,9 +990,63 @@
       localUsers.push(newUser);
       saveStoredUsers(localUsers);
       setCurrentUser(newUser);
+      showAlert("Welcome to Kuraj VIP Club! Your $200 welcome credit is active.", true);
       renderDashboard();
     } finally {
       if (btn) btn.disabled = false;
+    }
+  };
+
+  // REFERRAL ACTIONS
+  window.copyReferralLink = function(btn) {
+    const input = document.getElementById('userReferralLinkInput');
+    if (!input) return;
+    const link = input.value;
+    navigator.clipboard.writeText(link).then(() => {
+      const orig = btn.innerHTML;
+      btn.innerHTML = '✓ Copied!';
+      btn.style.background = '#22c55e';
+      btn.style.color = '#000000';
+      btn.style.borderColor = '#22c55e';
+      setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.style.background = '';
+        btn.style.color = '';
+        btn.style.borderColor = '';
+      }, 2500);
+    }).catch(() => {
+      input.select();
+      document.execCommand('copy');
+      showAlert('Referral link copied to clipboard!', true);
+    });
+  };
+
+  window.copyReferralCode = function(btn, code) {
+    navigator.clipboard.writeText(code).then(() => {
+      const orig = btn.innerHTML;
+      btn.innerHTML = '✓ Copied';
+      btn.style.borderColor = '#22c55e';
+      btn.style.color = '#4ade80';
+      setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.style.borderColor = '';
+        btn.style.color = '';
+      }, 2500);
+    }).catch(() => {
+      showAlert('Referral code copied: ' + code, true);
+    });
+  };
+
+  window.shareNative = function(code, link) {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Kuraj Fashion VIP Invitation',
+        text: `Join Kuraj Fashion VIP Club & claim an instant $200 shopping credit with my VIP code ${code}!`,
+        url: link
+      }).catch(() => {});
+    } else {
+      const btn = document.querySelector('.dash-btn-copy');
+      if (btn) window.copyReferralLink(btn);
     }
   };
 

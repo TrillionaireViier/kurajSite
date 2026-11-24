@@ -1,4 +1,4 @@
-/* Optimized header styles without flickering transitions */
+/* Kuraj Fashion - Luxury Header Styles */
 
 /* Universal Box-Sizing & Mobile Overflow Prevention */
 *, *::before, *::after {
@@ -17,6 +17,11 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
 }
 
+body {
+  padding-top: 105px !important;
+}
+
+/* Top Announcement Bar */
 .top-announcement-bar {
   box-sizing: border-box !important;
   background: #000000 !important;
@@ -24,7 +29,7 @@
   text-align: center;
   padding: 6px 15px;
   font-size: 0.8rem;
-  border-bottom: 1px solid rgba(255,255,255,0.15) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
   width: 100% !important;
   position: relative;
   z-index: 10001;
@@ -51,6 +56,7 @@
   color: #cccccc !important;
 }
 
+/* Navbar Base */
 .navbar {
   padding: 0;
   position: relative;
@@ -62,7 +68,7 @@
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 clamp(16px, 2.5vw, 32px);
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
@@ -71,41 +77,52 @@
   box-sizing: border-box;
 }
 
-@media (min-width: 1025px) {
+/* ==========================================================================
+   Desktop Navigation (992px and up) - Perfectly Centralized & Scalable
+   ========================================================================== */
+@media (min-width: 992px) {
   .nav-container {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
   }
 
+  /* 1. Left Column: Brand Logo */
   .nav-logo {
     flex: 0 0 auto !important;
     display: flex !important;
     align-items: center !important;
-    margin-right: 36px !important;
+    margin: 0 !important;
+    padding-right: clamp(14px, 2vw, 32px) !important;
   }
 
   .brand-text {
     font-family: "Playfair Display", Georgia, serif !important;
-    font-size: 1.45rem !important;
+    font-size: clamp(1.15rem, 1.4vw, 1.45rem) !important;
     font-weight: 700 !important;
     color: #ffffff !important;
-    letter-spacing: 2px !important;
+    letter-spacing: clamp(1.2px, 0.2vw, 2px) !important;
     text-decoration: none !important;
     white-space: nowrap !important;
     line-height: 1 !important;
+    display: inline-block;
   }
 
+  /* 2. Center Column: Centralized Navigation Menu */
   .nav-menu {
     flex: 1 1 auto !important;
     display: flex !important;
     list-style: none !important;
-    gap: 1.75rem !important;
+    gap: clamp(8px, 1.25vw, 22px) !important;
     align-items: center !important;
     justify-content: center !important;
     margin: 0 auto !important;
     padding: 0 !important;
     height: 100% !important;
+    position: static !important;
+    background: transparent !important;
+    width: auto !important;
+    box-shadow: none !important;
   }
 
   .nav-item {
@@ -114,12 +131,13 @@
     justify-content: center !important;
     height: 100% !important;
     position: relative !important;
+    flex-shrink: 0 !important;
   }
 
   .nav-link {
     color: #ffffff !important;
     font-weight: 500 !important;
-    font-size: 0.88rem !important;
+    font-size: clamp(0.76rem, 0.82vw, 0.88rem) !important;
     letter-spacing: 0.3px !important;
     text-decoration: none !important;
     display: inline-flex !important;
@@ -135,47 +153,178 @@
     color: #d1d5db !important;
   }
 
+  /* Dropdown Menus */
+  .dropdown {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+  }
+
+  .dropdown::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 100%;
+    height: 25px;
+  }
+
+  .dropdown-menu {
+    display: block !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: -10px !important;
+    background: rgba(10, 10, 10, 0.98) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
+    padding: 0.75rem 0 !important;
+    border-radius: 8px !important;
+    min-width: 210px !important;
+    list-style: none !important;
+    border: 1px solid #262626 !important;
+    margin-top: 0 !important;
+    z-index: 10005 !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-6px) !important;
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease !important;
+  }
+
+  .dropdown:hover > .dropdown-menu {
+    pointer-events: auto !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+  }
+
+  .dropdown-menu li {
+    padding: 0 !important;
+    margin: 0 !important;
+    position: relative !important;
+  }
+
+  .dropdown-menu a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0.7rem 1.4rem !important;
+    color: #cccccc !important;
+    text-decoration: none !important;
+    font-size: 0.88rem !important;
+    transition: all 0.2s ease !important;
+    white-space: nowrap !important;
+  }
+
+  .dropdown-menu a:hover {
+    background: #1a1a1a !important;
+    color: #ffffff !important;
+    padding-left: 1.6rem !important;
+  }
+
+  /* Submenu */
+  .dropdown-submenu {
+    position: relative !important;
+  }
+
+  .dropdown-submenu > .dropdown-menu {
+    top: 0 !important;
+    left: 100% !important;
+    margin-top: -6px !important;
+    transform: translateX(-6px) !important;
+  }
+
+  .dropdown-submenu:hover > .dropdown-menu {
+    pointer-events: auto !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(0) !important;
+  }
+
+  /* 3. Right Column: Actions & Centralized Buttons */
   .nav-actions {
     flex: 0 0 auto !important;
     display: flex !important;
     align-items: center !important;
     justify-content: flex-end !important;
-    gap: 0.9rem !important;
-    margin-left: 36px !important;
+    gap: clamp(6px, 0.8vw, 12px) !important;
+    margin: 0 !important;
+    padding-left: clamp(12px, 1.8vw, 30px) !important;
   }
 
+  /* Icons: Centralized Vertically */
+  .wishlist-icon-container,
+  .cart-icon-container {
+    height: clamp(34px, 2.5vw, 38px) !important;
+    width: clamp(34px, 2.5vw, 38px) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    position: relative !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    transition: background-color 0.2s ease, transform 0.2s ease !important;
+  }
+
+  .wishlist-icon-container:hover,
+  .cart-icon-container:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    transform: scale(1.05) !important;
+  }
+
+  .wishlist-icon,
+  .cart-icon {
+    width: 20px !important;
+    height: 20px !important;
+    color: #ffffff !important;
+    fill: none !important;
+    stroke: #ffffff !important;
+    stroke-width: 2 !important;
+  }
+
+  .wishlist-badge,
+  .cart-badge {
+    position: absolute !important;
+    top: -3px !important;
+    right: -3px !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-radius: 50% !important;
+    width: 17px !important;
+    height: 17px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0.65rem !important;
+    font-weight: 700 !important;
+    border: 1.5px solid #000000 !important;
+    line-height: 1 !important;
+  }
+
+  /* Auth Buttons: Perfectly Aligned, Sleek Luxury Heights & Padding */
   .nav-auth-btn {
-    height: 38px !important;
-    padding: 0 1.2rem !important;
-    display: inline-flex;
+    height: clamp(34px, 2.5vw, 38px) !important;
+    padding: 0 clamp(10px, 1.1vw, 16px) !important;
+    display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
     border-radius: 6px !important;
     font-weight: 600 !important;
-    font-size: 0.88rem !important;
+    font-size: clamp(0.76rem, 0.8vw, 0.86rem) !important;
     letter-spacing: 0.3px !important;
     line-height: 1 !important;
     box-sizing: border-box !important;
     text-decoration: none !important;
     white-space: nowrap !important;
     transition: all 0.2s ease !important;
-  }
-
-  /* When logged in: hide sign in, show profile */
-  html.is-logged-in #signInBtn {
-    display: none !important;
-  }
-  html.is-logged-in #profileBtn {
-    display: inline-flex !important;
-  }
-  html:not(.is-logged-in) #profileBtn {
-    display: none !important;
-  }
-  #signInBtn[style*="none"],
-  #signUpBtn[style*="none"],
-  #profileBtn[style*="none"] {
-    display: none !important;
   }
 
   .nav-auth-btn.sign-in {
@@ -199,328 +348,41 @@
     background: #e5e5e5 !important;
   }
 
-  .wishlist-icon-container,
-  .cart-icon-container {
-    height: 38px !important;
-    width: 38px !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-    border-radius: 6px !important;
-    cursor: pointer !important;
-    transition: background-color 0.2s ease !important;
-  }
-
-  .wishlist-icon-container:hover,
-  .cart-icon-container:hover {
-    background-color: rgba(255, 255, 255, 0.08) !important;
+  /* Hide mobile hamburger on desktop */
+  .nav-toggle {
+    display: none !important;
   }
 }
 
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .nav-container {
-    padding: 0 20px !important;
+/* ==========================================================================
+   Logged-in / Logged-out States for Auth Buttons
+   ========================================================================== */
+html.is-logged-in #signInBtn {
+  display: none !important;
+}
+
+html.is-logged-in #profileBtn {
+  display: inline-flex !important;
+}
+
+html:not(.is-logged-in) #profileBtn {
+  display: none !important;
+}
+
+#signInBtn[style*="none"],
+#signUpBtn[style*="none"],
+#profileBtn[style*="none"] {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Mobile & Tablet Navigation (max-width: 991px)
+   ========================================================================== */
+@media (max-width: 991px) {
+  body {
+    padding-top: 120px !important;
   }
-  .nav-logo {
-    margin-right: 20px !important;
-  }
-  .brand-text {
-    font-size: 1.3rem !important;
-    letter-spacing: 1.5px !important;
-  }
-  .nav-menu {
-    gap: 1.15rem !important;
-  }
-  .nav-link {
-    font-size: 0.83rem !important;
-  }
-  .nav-actions {
-    margin-left: 20px !important;
-    gap: 0.7rem !important;
-  }
-  .nav-auth-btn {
-    padding: 0 0.85rem !important;
-    font-size: 0.82rem !important;
-    height: 36px !important;
-  }
-  .wishlist-icon-container,
-  .cart-icon-container {
-    height: 36px !important;
-    width: 36px !important;
-  }
-}
 
-.brand-text {
-  font-family: "Playfair Display", serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #ffffff !important;
-  letter-spacing: 2px;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.nav-menu {
-  display: flex !important;
-  list-style: none;
-  gap: 2rem;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-.nav-item {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  position: relative;
-}
-
-.nav-link {
-  color: #ffffff !important;
-  font-weight: 500;
-  font-size: 0.95rem;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  height: 70px;
-  line-height: 1;
-  transition: color 0.2s ease;
-  white-space: nowrap;
-}
-
-.nav-link:hover {
-  color: #cccccc !important;
-}
-
-.dropdown {
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-.dropdown::after {
-  content: "";
-  position: absolute;
-  bottom: -15px;
-  left: 0;
-  width: 100%;
-  height: 25px;
-}
-
-.dropdown-menu {
-  display: block;
-  position: absolute;
-  top: 100%;
-  left: -10px;
-  background: rgba(10, 10, 10, 0.98);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-  padding: 0.75rem 0;
-  border-radius: 8px;
-  min-width: 220px;
-  list-style: none;
-  border: 1px solid #262626;
-  margin-top: 0;
-  z-index: 10005;
-  pointer-events: none;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-6px);
-  transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
-}
-
-.dropdown:hover > .dropdown-menu {
-  pointer-events: auto;
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.dropdown-menu li {
-  padding: 0;
-  margin: 0;
-  position: relative;
-}
-
-.dropdown-menu a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.7rem 1.4rem;
-  color: #cccccc !important;
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-}
-
-.dropdown-menu a:hover {
-  background: #1a1a1a;
-  color: #ffffff !important;
-  padding-left: 1.6rem;
-}
-
-/* Dropdown Submenu */
-.dropdown-submenu {
-  position: relative;
-}
-
-.dropdown-submenu > .dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  display: block;
-  pointer-events: none;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(-6px);
-  transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
-}
-
-.dropdown-submenu:hover > .dropdown-menu {
-  pointer-events: auto;
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(0);
-}
-
-.nav-actions {
-  display: flex;
-  gap: 1.25rem;
-  align-items: center;
-}
-
-.wishlist-icon-container,
-.cart-icon-container {
-  position: relative;
-  cursor: pointer;
-  padding: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  outline: none !important;
-  box-shadow: none !important;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.wishlist-icon-container:hover,
-.cart-icon-container:hover {
-  opacity: 0.8;
-  transform: scale(1.05);
-}
-
-.wishlist-icon,
-.cart-icon {
-  width: 22px;
-  height: 22px;
-  color: #ffffff !important;
-  fill: none !important;
-  stroke: #ffffff !important;
-  stroke-width: 2;
-}
-
-.wishlist-badge,
-.cart-badge {
-  position: absolute;
-  top: -4px;
-  right: -4px;
-  background: #ffffff !important;
-  color: #000000 !important;
-  border-radius: 50% !important;
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.65rem;
-  font-weight: 700;
-  border: 1.5px solid #000000 !important;
-  line-height: 1;
-}
-
-/* Mobile Toggle Hamburger */
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  width: 36px;
-  height: 36px;
-  gap: 5px;
-  background: transparent;
-  border: none;
-  padding: 4px;
-}
-
-.bar {
-  width: 24px;
-  height: 2px;
-  background: #ffffff;
-  border-radius: 2px;
-  transition: 0.3s ease;
-}
-
-.nav-toggle.active .bar:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.nav-toggle.active .bar:nth-child(2) {
-  opacity: 0;
-}
-
-.nav-toggle.active .bar:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-/* Auth Buttons */
-.nav-auth-btn {
-  padding: 0.55rem 1.1rem;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  display: inline-block;
-  white-space: nowrap;
-}
-
-.nav-auth-btn.sign-in {
-  background: #111111;
-  color: #ffffff !important;
-  border: 1px solid #333333;
-}
-
-.nav-auth-btn.sign-in:hover {
-  background: #222222;
-  border-color: #666666;
-}
-
-.nav-auth-btn.sign-up {
-  background: #ffffff;
-  color: #000000 !important;
-  border: 1px solid #ffffff;
-}
-
-.nav-auth-btn.sign-up:hover {
-  background: #e2e8f0;
-}
-
-body {
-  padding-top: 105px !important;
-}
-
-/* Mobile Responsive */
-@media (max-width: 1024px) {
   .top-announcement-bar {
     padding: 6px 10px !important;
     font-size: 0.72rem !important;
@@ -535,7 +397,6 @@ body {
     max-width: 100% !important;
     font-size: 0.72rem !important;
     line-height: 1.3 !important;
-    word-break: normal !important;
   }
 
   .top-announcement-bar a {
@@ -555,10 +416,6 @@ body {
     box-sizing: border-box !important;
   }
 
-  body {
-    padding-top: 125px !important;
-  }
-
   .nav-logo {
     display: flex !important;
     align-items: center !important;
@@ -567,9 +424,13 @@ body {
   }
 
   .brand-text {
-    font-size: 1.15rem !important;
-    letter-spacing: 1px !important;
+    font-family: "Playfair Display", Georgia, serif !important;
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    letter-spacing: 1.2px !important;
     white-space: nowrap !important;
+    text-decoration: none !important;
   }
 
   .nav-actions {
@@ -585,42 +446,84 @@ body {
     display: none !important;
   }
 
-  #mobileMenuOverlay {
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
+  .wishlist-icon-container,
+  .cart-icon-container {
+    height: 36px !important;
+    width: 36px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
   }
 
-  .nav-toggle {
+  .wishlist-icon,
+  .cart-icon {
+    width: 20px !important;
+    height: 20px !important;
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+  }
+
+  .wishlist-badge,
+  .cart-badge {
+    position: absolute !important;
+    top: -2px !important;
+    right: -2px !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-radius: 50% !important;
+    width: 16px !important;
+    height: 16px !important;
+    font-size: 0.62rem !important;
+    font-weight: 700 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding: 4px !important;
+  }
+
+  /* Hamburger Toggle */
+  .nav-toggle {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
     cursor: pointer !important;
+    width: 36px !important;
+    height: 36px !important;
+    gap: 5px !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 4px !important;
     flex-shrink: 0 !important;
     order: 99 !important;
     z-index: 100000 !important;
-    background: transparent !important;
-    background-color: transparent !important;
-    border: none !important;
-    outline: none !important;
-    box-shadow: none !important;
     -webkit-tap-highlight-color: transparent !important;
   }
 
-  .nav-toggle:focus,
-  .nav-toggle:active,
-  .nav-toggle:hover {
-    background: transparent !important;
-    background-color: transparent !important;
-    border: none !important;
-    outline: none !important;
-    box-shadow: none !important;
+  .bar {
+    width: 24px !important;
+    height: 2px !important;
+    background: #ffffff !important;
+    border-radius: 2px !important;
+    transition: 0.3s ease !important;
   }
 
+  .nav-toggle.active .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg) !important;
+  }
+
+  .nav-toggle.active .bar:nth-child(2) {
+    opacity: 0 !important;
+  }
+
+  .nav-toggle.active .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg) !important;
+  }
+
+  /* Mobile Slide-Out Drawer */
   .nav-menu {
     position: fixed !important;
     top: 0 !important;
@@ -640,6 +543,7 @@ body {
     transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     z-index: 99999 !important;
     display: flex !important;
+    list-style: none !important;
   }
 
   .nav-menu.active {
@@ -647,26 +551,28 @@ body {
   }
 
   .nav-item {
-    width: 100%;
-    height: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid #1a1a1a;
-    display: block;
+    width: 100% !important;
+    height: auto !important;
+    padding: 10px 0 !important;
+    border-bottom: 1px solid #1a1a1a !important;
+    display: block !important;
   }
 
   .nav-link {
-    height: auto;
-    font-size: 1rem;
-    padding: 6px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    height: auto !important;
+    font-size: 1rem !important;
+    padding: 6px 0 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
   }
 
   .dropdown {
-    display: block;
-    width: 100%;
-    height: auto;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
   }
 
   .dropdown-menu {
@@ -674,7 +580,7 @@ body {
     display: none !important;
     background: #161616 !important;
     border: 1px solid #222 !important;
-    border-radius: 6px;
+    border-radius: 6px !important;
     margin: 8px 0 !important;
     padding: 8px 10px !important;
     box-shadow: none !important;
@@ -683,6 +589,7 @@ body {
     visibility: visible !important;
     transform: none !important;
     pointer-events: auto !important;
+    list-style: none !important;
   }
 
   .dropdown.active > .dropdown-menu {
@@ -703,16 +610,19 @@ body {
 
   .dropdown-menu a {
     padding: 8px 12px !important;
-    font-size: 0.9rem;
+    font-size: 0.9rem !important;
+    color: #cccccc !important;
+    text-decoration: none !important;
   }
 }
 
-/* Fix footer link colors */
+/* Footer Link Colors */
 .footer a {
   color: #999 !important;
   text-decoration: none !important;
   transition: color 0.3s ease;
 }
+
 .footer a:hover {
   color: #fff !important;
 }

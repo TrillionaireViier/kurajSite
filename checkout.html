@@ -503,9 +503,10 @@
                 const allUsersStr = localStorage.getItem('allUsers');
                 if (allUsersStr) {
                     const allUsers = JSON.parse(allUsersStr);
-                    const userObj = allUsers.find(u => u.id === user.id);
+                    const userObj = allUsers.find(u => u.id === user.id || (u.email && u.email.toLowerCase() === (user.email || '').toLowerCase()));
                     if (userObj) {
-                        user.referralBonus = userObj.referralBonus || 0;
+                        user.balance = userObj.balance !== undefined ? userObj.balance : userObj.referralBonus;
+                        user.referralBonus = userObj.referralBonus !== undefined ? userObj.referralBonus : userObj.balance;
                     }
                 }
 
@@ -518,12 +519,13 @@
                 if (user.phone) document.getElementById('phone').value = user.phone;
                 if (user.address) document.getElementById('address').value = user.address;
                 
-                if (user.referralBonus && user.referralBonus > 0) {
+                const availableCredit = (user.balance !== undefined ? user.balance : user.referralBonus) || 0;
+                if (availableCredit > 0) {
                     document.getElementById('bonusSection').style.display = 'block';
-                    document.getElementById('bonusAmountDisplay').textContent = '$' + user.referralBonus.toFixed(2);
+                    document.getElementById('bonusAmountDisplay').textContent = '$' + Number(availableCredit).toFixed(2);
                     const useBonusCheckbox = document.getElementById('useBonus');
                     if (useBonusCheckbox) {
-                        useBonusCheckbox.dataset.amount = user.referralBonus;
+                        useBonusCheckbox.dataset.amount = availableCredit;
                     }
                 }
             }
@@ -720,7 +722,12 @@
                         
                         // Deduct bonus
                         if (bonusApplied > 0) {
-                            currentUser.referralBonus -= bonusApplied;
+                            if (currentUser.balance !== undefined) {
+                                currentUser.balance = Math.max(0, currentUser.balance - bonusApplied);
+                            }
+                            if (currentUser.referralBonus !== undefined) {
+                                currentUser.referralBonus = Math.max(0, currentUser.referralBonus - bonusApplied);
+                            }
                         }
                         
                         localStorage.setItem('currentUser', JSON.stringify(currentUser));
