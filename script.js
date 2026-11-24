@@ -236,18 +236,19 @@ document.addEventListener("DOMContentLoaded", () => {
 //   }
 // })
 
-const parallaxEffect = throttle(() => {
-  requestAnimationFrame(() => {
-    const scrolled = window.pageYOffset
-    const hero = document.querySelector(".hero")
-    if (hero && scrolled < hero.offsetHeight) {
-      // Only apply parallax when hero is visible
-      hero.style.transform = `translateY(${scrolled * 0.3}px)`
-    }
-  })
-}, 16) // ~60fps
+// Parallax effect disabled to prevent hero from sliding down and occluding the featured products on scroll
+// const parallaxEffect = throttle(() => {
+//   requestAnimationFrame(() => {
+//     const scrolled = window.pageYOffset
+//     const hero = document.querySelector(".hero")
+//     if (hero && scrolled < hero.offsetHeight) {
+//       // Only apply parallax when hero is visible
+//       hero.style.transform = `translateY(${scrolled * 0.3}px)`
+//     }
+//   })
+// }, 16) // ~60fps
 
-window.addEventListener("scroll", parallaxEffect, { passive: true })
+// window.addEventListener("scroll", parallaxEffect, { passive: true })
 
 document.querySelectorAll("button, .cta-button, .vip-button, .view-collection").forEach((button) => {
   button.addEventListener("click", function (e) {

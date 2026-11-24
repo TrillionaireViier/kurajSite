@@ -66,6 +66,7 @@ a {
     background-attachment: scroll;
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 
 .hero::before {
@@ -2694,7 +2695,7 @@ window.toggleMobileMenu = function(e) {
 </div>
 </div>
 </section>
-<section class="featured-products" style="padding: 3rem 0; background: var(--bg-light);">
+<section class="featured-products" style="padding: 3rem 0; background: var(--bg-light); position: relative; z-index: 5;">
 <div class="container">
 <div class="section-header-with-cta">
 <div>
