@@ -82,6 +82,11 @@ window._cartSyncWishlistLoaded = true;
     const banner  = document.querySelector('.top-announcement-bar');
 
     if (user) {
+      if (user.name === 'VIP Member') {
+        user.name = 'Client';
+        try { localStorage.setItem('currentUser', JSON.stringify(user)); } catch(e) {}
+      }
+
       document.documentElement.classList.add('is-logged-in');
       if (document.body) document.body.classList.add('is-logged-in');
 
@@ -106,10 +111,15 @@ window._cartSyncWishlistLoaded = true;
         };
       }
       if (banner) {
-        const userName = user.name || (user.role === 'admin' ? 'Administrator' : 'VIP Member');
+        let welcomeText = 'Exclusive Privileges Active (90% Off) &bull; Free Global Insured Shipping';
+        if (user.name && user.name.toLowerCase() !== 'vip member' && user.name.toLowerCase() !== 'client') {
+          welcomeText = `Welcome, <strong>${user.name}</strong> &bull; Exclusive Privileges Active (90% Off)`;
+        } else if (user.role === 'admin') {
+          welcomeText = 'Administrator Portal Active &bull; Store Control Mode';
+        }
         banner.innerHTML = `
-          <span class="banner-text">VIP Member: <strong>${userName}</strong> &bull; Exclusive VIP Privileges Active (90% Off)</span>
-          <a href="/dashboard" style="color: #fff; text-decoration: underline; margin-left: 15px; font-weight: bold; white-space: nowrap;">My VIP Dashboard</a>
+          <span class="banner-text">${welcomeText}</span>
+          <a href="${user.role === 'admin' ? '/admin' : '/dashboard'}" style="color: #fff; text-decoration: underline; margin-left: 15px; font-weight: bold; white-space: nowrap;">My Account</a>
         `;
       }
     } else {

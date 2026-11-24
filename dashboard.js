@@ -53,7 +53,7 @@
   const INITIAL_USERS = [
     {
       id: "usr_vip_demo",
-      name: "VIP Member",
+      name: "VIP Client",
       email: "vip@kuraj.com",
       password: "vip123",
       role: "user",
@@ -202,11 +202,8 @@
 
           <!-- Credentials quick banner with SEEN passwords -->
           <div class="dash-quick-creds">
-            <div class="cred-pill" onclick="window.quickFill('vip')">
-              <strong>VIP Member:</strong> vip@kuraj.com &bull; Password: <span class="pass-seen-tag">vip123</span> <span>(Click to fill)</span>
-            </div>
-            <div class="cred-pill" onclick="window.quickFill('admin')">
-              <strong>Admin Portal:</strong> admin@kuraj.com &bull; Password: <span class="pass-seen-tag">admin123</span> <span>(Click to fill &amp; view)</span>
+            <div class="cred-pill" onclick="window.quickFill('admin')" style="width:100%; justify-content:center;">
+              <strong>Admin Portal:</strong> admin@kuraj.com &bull; Password: <span class="pass-seen-tag">admin123</span> <span>(Click to fill &amp; enter)</span>
             </div>
           </div>
 
@@ -247,7 +244,7 @@
 
             <div style="text-align:center; position:relative; margin:20px 0 15px;">
               <hr style="border:none; border-top:1px solid #222;" />
-              <span style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); background:#0d0d0d; padding:0 12px; font-size:0.75rem; color:#666; text-transform:uppercase; letter-spacing:1px;">Or Sign In as VIP Member</span>
+              <span style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); background:#0d0d0d; padding:0 12px; font-size:0.75rem; color:#666; text-transform:uppercase; letter-spacing:1px;">Or Sign In with Email</span>
             </div>
 
             <form id="loginForm" onsubmit="window.handleUserLogin(event)">

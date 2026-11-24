@@ -47,7 +47,7 @@ const DEFAULT_ORDERS = [
 const DEFAULT_USERS = [
   {
     id: "usr_vip_demo",
-    name: "VIP Member",
+    name: "VIP Client",
     email: "vip@kuraj.com",
     role: "user",
     vipTier: "Black Diamond VIP",

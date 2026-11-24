@@ -11,7 +11,7 @@ const ADMIN_CREDENTIALS = {
 const SEED_USERS = [
   {
     id: "usr_vip_demo",
-    name: "VIP Member",
+    name: "VIP Client",
     email: "vip@kuraj.com",
     password: "vip123",
     role: "user",
