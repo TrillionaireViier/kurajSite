@@ -70,20 +70,29 @@ window._cartSyncWishlistLoaded = true;
 
   // ── Auth ───────────────────────────────────────────────────────────────────
   function updateAuthButtons() {
-    const user = localStorage.getItem('currentUser');
+    let user = null;
+    try {
+      const userStr = localStorage.getItem('currentUser');
+      if (userStr) user = JSON.parse(userStr);
+    } catch(e) {}
+
     const signIn  = document.getElementById('signInBtn');
     const signUp  = document.getElementById('signUpBtn');
     const profile = document.getElementById('profileBtn');
     if (user) {
       if (signIn)  signIn.style.display  = 'none';
       if (signUp)  signUp.style.display  = 'none';
-      if (profile) profile.style.display = 'inline-block';
+      if (profile) {
+        profile.style.display = 'inline-block';
+        profile.textContent = user.role === 'admin' ? 'Admin' : 'My Account';
+      }
     } else {
       if (signIn)  signIn.style.display  = 'inline-block';
       if (signUp)  signUp.style.display  = 'inline-block';
       if (profile) profile.style.display = 'none';
     }
   }
+  window.updateAuthButtons = updateAuthButtons;
 
   // ── Cart sidebar ───────────────────────────────────────────────────────────
   function renderCart() {

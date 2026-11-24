@@ -678,7 +678,27 @@
                 timestamp: new Date().toISOString()
             };
 
-            // Process order locally with guaranteed success
+            // Process order locally and sync with backend
+            try {
+                let allOrders = JSON.parse(localStorage.getItem('kuraj_orders') || '[]');
+                allOrders.unshift({
+                    id: order.id,
+                    customerName: order.customerName,
+                    customerEmail: order.customerEmail,
+                    productName: order.productName,
+                    total: orderTotal,
+                    date: new Date().toISOString().split('T')[0],
+                    status: 'Processing',
+                    shippingAddress: (order.shipping && order.shipping.address) ? `${order.shipping.address}, ${order.shipping.city}, ${order.shipping.country}` : 'Global Priority'
+                });
+                localStorage.setItem('kuraj_orders', JSON.stringify(allOrders));
+                fetch('/api/orders', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(order)
+                }).catch(() => {});
+            } catch(e) {}
+
             setTimeout(() => {
                 const data = { success: true, orderId: order.id };
                 if (data.success) {
