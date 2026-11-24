@@ -79,17 +79,55 @@ window._cartSyncWishlistLoaded = true;
     const signIn  = document.getElementById('signInBtn');
     const signUp  = document.getElementById('signUpBtn');
     const profile = document.getElementById('profileBtn');
+    const banner  = document.querySelector('.top-announcement-bar');
+
     if (user) {
       if (signIn)  signIn.style.display  = 'none';
-      if (signUp)  signUp.style.display  = 'none';
       if (profile) {
         profile.style.display = 'inline-block';
-        profile.textContent = user.role === 'admin' ? 'Admin' : 'My Account';
+        profile.textContent = user.role === 'admin' ? 'Admin Portal' : 'My Account';
+        profile.href = user.role === 'admin' ? '/admin' : '/dashboard';
+      }
+      if (signUp) {
+        signUp.style.display = 'inline-block';
+        signUp.textContent = 'Log Out';
+        signUp.href = 'javascript:void(0)';
+        signUp.onclick = function(e) {
+          e.preventDefault();
+          localStorage.removeItem('currentUser');
+          localStorage.removeItem('authToken');
+          if (typeof window.updateAuthButtons === 'function') window.updateAuthButtons();
+          window.location.href = '/dashboard?tab=login';
+        };
+      }
+      if (banner) {
+        const userName = user.name || (user.role === 'admin' ? 'Administrator' : 'VIP Member');
+        banner.innerHTML = `
+          <span class="banner-text">Welcome back, <strong>${userName}</strong>! Exclusive VIP Privileges Active (90% Off)</span>
+          <a href="/dashboard" style="color: #fff; text-decoration: underline; margin-left: 15px; font-weight: bold; white-space: nowrap;">Go to Dashboard</a>
+        `;
       }
     } else {
-      if (signIn)  signIn.style.display  = 'inline-block';
-      if (signUp)  signUp.style.display  = 'inline-block';
       if (profile) profile.style.display = 'none';
+      if (signIn) {
+        signIn.style.display = 'inline-block';
+        signIn.textContent = 'Sign In';
+        signIn.href = '/dashboard?tab=login';
+      }
+      if (signUp) {
+        signUp.style.display = 'inline-block';
+        signUp.textContent = 'Sign Up';
+        signUp.href = '/dashboard?tab=register';
+        signUp.onclick = null;
+      }
+      if (banner) {
+        banner.innerHTML = `
+          <span class="banner-text">Join Our Exclusive Club | Get Up to 90% Off Luxury Items &amp; VIP Benefits</span>
+          <a href="/dashboard?tab=login" style="color: #fff; text-decoration: underline; margin-left: 15px; font-weight: bold; white-space: nowrap;">Sign In to Account</a>
+          <span style="color: #fff; margin: 0 4px;">or</span>
+          <a href="/dashboard?tab=register" style="color: #fff; text-decoration: underline; font-weight: bold; white-space: nowrap;">Sign Up</a>
+        `;
+      }
     }
   }
   window.updateAuthButtons = updateAuthButtons;

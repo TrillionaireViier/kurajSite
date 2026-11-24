@@ -641,8 +641,39 @@
 
   window.switchTab = function (tab) {
     activeAuthTab = tab;
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.set('tab', tab);
+      window.history.replaceState({}, '', url.toString());
+    } catch(e) {}
     renderDashboard();
   };
+
+  // Listen for browser back/forward buttons
+  window.addEventListener('popstate', function() {
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get('tab') || 'login';
+    if (tab !== activeAuthTab) {
+      activeAuthTab = tab;
+      renderDashboard();
+    }
+  });
+
+  // Intercept any click on header or banner links to /dashboard?tab=...
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href) return;
+
+    if (href.includes('/dashboard?tab=')) {
+      const match = href.match(/tab=([a-zA-Z0-9_-]+)/);
+      if (match && match[1]) {
+        e.preventDefault();
+        window.switchTab(match[1]);
+      }
+    }
+  });
 
   window.toggleEye = function (inputId, btn) {
     const el = document.getElementById(inputId);

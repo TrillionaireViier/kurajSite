@@ -295,7 +295,7 @@
 <header class="header" id="mainHeader">
 <div class="top-announcement-bar" style="background: #000; color: #fff; text-align: center; padding: 4px 15px; font-size: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.2); width: 100%; z-index: 1000; position: relative;">
     <span class="banner-text"> Join Our Exclusive Club | Get Up to 90% Off Luxury Items &amp; VIP Benefits</span>
-    <a href="/dashboard" style="color: #fff; text-decoration: underline; margin-left: 15px; font-weight: bold; white-space: nowrap;">Sign In to Account or Sign Up</a>
+    <a href="/dashboard?tab=login" style="color: #fff; text-decoration: underline; margin-left: 15px; font-weight: bold; white-space: nowrap;">Sign In to Account</a><span style="color: #fff; margin: 0 4px;">or</span><a href="/dashboard?tab=register" style="color: #fff; text-decoration: underline; font-weight: bold; white-space: nowrap;">Sign Up</a>
 </div>
 
 <nav class="navbar">
@@ -394,8 +394,8 @@
 <svg class="cart-icon" fill="none" height="24" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
 <span class="cart-badge" id="cartCount">0</span>
 </div>
-<a class="nav-auth-btn sign-in" href="/dashboard" id="signInBtn">Sign In</a>
-<a class="nav-auth-btn sign-up" href="/dashboard" id="signUpBtn">Sign Up</a>
+<a class="nav-auth-btn sign-in" href="/dashboard?tab=login" id="signInBtn">Sign In</a>
+<a class="nav-auth-btn sign-up" href="/dashboard?tab=register" id="signUpBtn">Sign Up</a>
 </div>
 <div class="nav-toggle" id="mobile-menu" onclick="document.getElementById('navMenu').classList.toggle('active')">
 <span class="bar"></span><span class="bar"></span><span class="bar"></span>
