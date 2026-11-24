@@ -277,6 +277,7 @@ a {
   position: relative;
   z-index: 2;
   max-width: 750px;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -301,9 +302,13 @@ a {
 }
 
 .hero-ctas {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 3rem;
+  display: flex !important;
+  gap: 1.25rem !important;
+  margin-bottom: 3.5rem !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .cta-button {
