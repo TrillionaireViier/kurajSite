@@ -82,14 +82,19 @@ window._cartSyncWishlistLoaded = true;
     const banner  = document.querySelector('.top-announcement-bar');
 
     if (user) {
-      if (signIn)  signIn.style.display  = 'none';
+      document.documentElement.classList.add('is-logged-in');
+      if (document.body) document.body.classList.add('is-logged-in');
+
+      if (signIn) {
+        signIn.style.setProperty('display', 'none', 'important');
+      }
       if (profile) {
-        profile.style.display = 'inline-block';
+        profile.style.setProperty('display', 'inline-flex', 'important');
         profile.textContent = user.role === 'admin' ? 'Admin Portal' : 'My Account';
         profile.href = user.role === 'admin' ? '/admin' : '/dashboard';
       }
       if (signUp) {
-        signUp.style.display = 'inline-block';
+        signUp.style.setProperty('display', 'inline-flex', 'important');
         signUp.textContent = 'Log Out';
         signUp.href = 'javascript:void(0)';
         signUp.onclick = function(e) {
@@ -103,19 +108,24 @@ window._cartSyncWishlistLoaded = true;
       if (banner) {
         const userName = user.name || (user.role === 'admin' ? 'Administrator' : 'VIP Member');
         banner.innerHTML = `
-          <span class="banner-text">Welcome back, <strong>${userName}</strong>! Exclusive VIP Privileges Active (90% Off)</span>
-          <a href="/dashboard" style="color: #fff; text-decoration: underline; margin-left: 15px; font-weight: bold; white-space: nowrap;">Go to Dashboard</a>
+          <span class="banner-text">VIP Member: <strong>${userName}</strong> &bull; Exclusive VIP Privileges Active (90% Off)</span>
+          <a href="/dashboard" style="color: #fff; text-decoration: underline; margin-left: 15px; font-weight: bold; white-space: nowrap;">My VIP Dashboard</a>
         `;
       }
     } else {
-      if (profile) profile.style.display = 'none';
+      document.documentElement.classList.remove('is-logged-in');
+      if (document.body) document.body.classList.remove('is-logged-in');
+
+      if (profile) {
+        profile.style.setProperty('display', 'none', 'important');
+      }
       if (signIn) {
-        signIn.style.display = 'inline-block';
+        signIn.style.setProperty('display', 'inline-flex', 'important');
         signIn.textContent = 'Sign In';
         signIn.href = '/dashboard?tab=login';
       }
       if (signUp) {
-        signUp.style.display = 'inline-block';
+        signUp.style.setProperty('display', 'inline-flex', 'important');
         signUp.textContent = 'Sign Up';
         signUp.href = '/dashboard?tab=register';
         signUp.onclick = null;
@@ -131,6 +141,13 @@ window._cartSyncWishlistLoaded = true;
     }
   }
   window.updateAuthButtons = updateAuthButtons;
+  // Execute immediately so there is zero delay or flicker
+  try {
+    if (localStorage.getItem('currentUser')) {
+      document.documentElement.classList.add('is-logged-in');
+    }
+    updateAuthButtons();
+  } catch(e) {}
 
   // ── Cart sidebar ───────────────────────────────────────────────────────────
   function renderCart() {

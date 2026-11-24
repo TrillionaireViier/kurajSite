@@ -130,50 +130,10 @@ window.loadHeader = function() {
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
 
     // Update auth buttons based on login status
-    const currentUserStr = localStorage.getItem('currentUser');
-    if (currentUserStr) {
-        try {
-            const user = JSON.parse(currentUserStr);
-            const signInBtn = document.getElementById('signInBtn');
-            const signUpBtn = document.getElementById('signUpBtn');
-            if (signInBtn && signUpBtn) {
-                // Change "Sign In" to "Dashboard"
-                signInBtn.textContent = 'Dashboard';
-                signInBtn.href = '/dashboard';
-                
-                // Change "Sign Up" to "Logout"
-                signUpBtn.textContent = 'Logout';
-                signUpBtn.href = '#';
-                signUpBtn.style.backgroundColor = 'transparent';
-                signUpBtn.style.color = '#ff6464';
-                signUpBtn.style.border = '1px solid #ff6464';
-                signUpBtn.onclick = function(e) {
-                    e.preventDefault();
-                    if (window.showConfirm) {
-                        window.showConfirm('Are you sure you want to logout?', () => {
-                            localStorage.removeItem('currentUser');
-                            window.location.href = '/';
-                        });
-                    } else {
-                        if (confirm('Are you sure you want to logout?')) {
-                            localStorage.removeItem('currentUser');
-                            window.location.href = '/';
-                        }
-                    }
-                };
-            }
-            
-            // Update top banner text if logged in
-            const bannerText = document.querySelector('.top-announcement-bar .banner-text');
-            const bannerLink = document.querySelector('.top-announcement-bar a');
-            if (bannerText && bannerLink) {
-                bannerText.textContent = 'Welcome back, ' + (user.name || 'VIP Member') + '! ';
-                bannerLink.textContent = 'Go to Dashboard';
-                bannerLink.href = '/dashboard';
-            }
-        } catch (e) {
-            console.error('Error parsing user data:', e);
-        }
+    if (typeof window.updateAuthButtons === 'function') {
+        window.updateAuthButtons();
+    } else if (localStorage.getItem('currentUser')) {
+        document.documentElement.classList.add('is-logged-in');
     }
 
 

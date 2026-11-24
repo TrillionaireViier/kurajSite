@@ -147,7 +147,7 @@
   .nav-auth-btn {
     height: 38px !important;
     padding: 0 1.2rem !important;
-    display: inline-flex !important;
+    display: inline-flex;
     align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
@@ -160,6 +160,22 @@
     text-decoration: none !important;
     white-space: nowrap !important;
     transition: all 0.2s ease !important;
+  }
+
+  /* When logged in: hide sign in, show profile */
+  html.is-logged-in #signInBtn {
+    display: none !important;
+  }
+  html.is-logged-in #profileBtn {
+    display: inline-flex !important;
+  }
+  html:not(.is-logged-in) #profileBtn {
+    display: none !important;
+  }
+  #signInBtn[style*="none"],
+  #signUpBtn[style*="none"],
+  #profileBtn[style*="none"] {
+    display: none !important;
   }
 
   .nav-auth-btn.sign-in {

@@ -160,6 +160,14 @@
 
     const user = getCurrentUser();
 
+    // Ensure header reflects logged-in state immediately
+    if (user) {
+      document.documentElement.classList.add('is-logged-in');
+    }
+    if (typeof window.updateAuthButtons === 'function') {
+      window.updateAuthButtons();
+    }
+
     // 1. IF LOGGED IN AS ADMIN
     if (user && user.role === 'admin') {
       renderAdminView(container, user);
