@@ -153,8 +153,8 @@
     try { localStorage.setItem('referralSource', refParam); } catch(e) {}
   }
   let activeAuthTab = urlParams.get('tab') || (refParam ? 'register' : 'login');
-  if (activeAuthTab !== 'register' && activeAuthTab !== 'login') {
-    activeAuthTab = 'login';
+  if (window.location.pathname.includes('/admin')) {
+    activeAuthTab = 'admin';
   }
 
   // Main Render Function
@@ -192,15 +192,19 @@
   // 1. AUTH SCREEN (TABS: USER LOGIN, REGISTER, ADMIN LOGIN)
   // ─────────────────────────────────────────────────────────────────────────────
   function renderAuthView(container) {
-    if (activeAuthTab !== 'register' && activeAuthTab !== 'login') {
-      activeAuthTab = 'login';
-    }
     container.innerHTML = `
       <div class="dash-auth-wrapper">
         <div class="dash-auth-container">
           <div class="dash-auth-header">
-            <h1 class="dash-auth-title">VIP CLIENT PORTAL</h1>
-            <p class="dash-auth-subtitle">Exclusive Privileges, Private Discounts &amp; VIP Club Access</p>
+            <h1 class="dash-auth-title">VIP &amp; MANAGEMENT ACCESS</h1>
+            <p class="dash-auth-subtitle">Exclusive Privileges, Private Discounts &amp; Store Administration</p>
+          </div>
+
+          <!-- Credentials quick banner with SEEN passwords -->
+          <div class="dash-quick-creds">
+            <div class="cred-pill" onclick="window.quickFill('admin')" style="width:100%; justify-content:center;">
+              <strong>Admin Portal:</strong> admin@kuraj.com &bull; Password: <span class="pass-seen-tag">admin123</span> <span>(Click to fill &amp; enter)</span>
+            </div>
           </div>
 
           <!-- Auth Tabs -->
@@ -211,30 +215,58 @@
             <button class="dash-tab-btn ${activeAuthTab === 'register' ? 'active' : ''}" onclick="window.switchTab('register')">
               Join VIP Club
             </button>
+            <button class="dash-tab-btn ${activeAuthTab === 'admin' ? 'active' : ''}" onclick="window.switchTab('admin')">
+              Admin Portal
+            </button>
           </div>
 
           <div id="authAlert" class="dash-alert" style="display:none;"></div>
 
-          <!-- TAB 1: USER SIGN IN -->
+          <!-- TAB 1: USER SIGN IN (WITH INTEGRATED ADMIN PORTAL & SEEN PASS) -->
           <div id="tabContentLogin" class="dash-tab-pane" style="display: ${activeAuthTab === 'login' ? 'block' : 'none'};">
+            <!-- ADMIN PORTAL IN MEMBER STUFF -->
+            <div class="dash-admin-in-member">
+              <div class="dash-admin-in-member-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span style="display:inline-block; width:8px; height:8px; background:#4ade80; border-radius:50%;"></span>
+                  <strong style="color:#ffffff; font-size:0.9rem; letter-spacing:0.5px;">ADMIN PORTAL ACCESS</strong>
+                </div>
+                <span class="badge-seen-pass">PASSWORD: admin123</span>
+              </div>
+              <div class="dash-seen-creds-row">
+                <div>Admin: <strong style="color:#fff;">admin@kuraj.com</strong></div>
+                <div>Pass: <span class="pass-seen-tag">admin123</span></div>
+              </div>
+              <button type="button" class="dash-btn-admin-direct" onclick="window.loginAsAdminDirect()">
+                ENTER ADMIN PORTAL (ONE-CLICK) &rarr;
+              </button>
+            </div>
+
+            <div style="text-align:center; position:relative; margin:20px 0 15px;">
+              <hr style="border:none; border-top:1px solid #222;" />
+              <span style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); background:#0d0d0d; padding:0 12px; font-size:0.75rem; color:#666; text-transform:uppercase; letter-spacing:1px;">Or Sign In with Email</span>
+            </div>
+
             <form id="loginForm" onsubmit="window.handleUserLogin(event)">
               <div class="dash-form-group">
                 <label>Email Address / Username</label>
-                <input type="text" id="loginEmail" required placeholder="name@example.com" class="dash-input" autocomplete="username" />
+                <input type="text" id="loginEmail" required placeholder="name@example.com (or admin@kuraj.com)" class="dash-input" autocomplete="username" />
               </div>
               <div class="dash-form-group">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                   <label style="margin:0;">Password</label>
+                  <span style="font-size:0.75rem; color:#888;">Admin pass: <strong style="color:#fff;">admin123</strong></span>
                 </div>
                 <div class="dash-input-wrap">
-                  <input type="password" id="loginPassword" required placeholder="Enter password" class="dash-input" autocomplete="current-password" />
-                  <button type="button" class="dash-eye-btn" onclick="window.toggleEye('loginPassword', this)">Show</button>
+                  <input type="text" id="loginPassword" required placeholder="Enter password (e.g. vip123 or admin123)" class="dash-input" autocomplete="current-password" />
+                  <button type="button" class="dash-eye-btn" onclick="window.toggleEye('loginPassword', this)">Hide</button>
                 </div>
               </div>
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
                 <label style="font-size:0.85rem; color:#888; cursor:pointer;">
                   <input type="checkbox" checked style="accent-color:#fff;"> Remember me
                 </label>
+                <a href="javascript:void(0)" onclick="alert('Admin pass: admin123\nVIP pass: vip123')" style="font-size:0.85rem; color:#bbb; text-decoration:underline;">View All Passwords</a>
               </div>
               <button type="submit" class="dash-btn-primary" id="loginSubmitBtn">
                 SIGN IN TO DASHBOARD
@@ -264,6 +296,39 @@
               </div>
               <button type="submit" class="dash-btn-primary" id="regSubmitBtn">
                 CREATE VIP MEMBERSHIP
+              </button>
+            </form>
+          </div>
+
+          <!-- TAB 3: ADMIN ACCESS -->
+          <div id="tabContentAdmin" class="dash-tab-pane" style="display: ${activeAuthTab === 'admin' ? 'block' : 'none'};">
+            <div style="background:#111; border:1px solid #333; padding:15px; border-radius:6px; margin-bottom:20px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:8px;">
+                <span style="display:inline-flex; align-items:center; gap:6px; font-size:0.85rem; color:#ddd; font-weight:600;">
+                  <span style="display:inline-block; width:8px; height:8px; background:#4ade80; border-radius:50%;"></span>
+                  Kuraj Fashion Back-Office Console
+                </span>
+                <span class="badge-seen-pass">PASSWORD: admin123</span>
+              </div>
+              <p style="margin:5px 0 0; font-size:0.8rem; color:#888;">Executive store control &amp; live orders. Password is shown visibly below.</p>
+            </div>
+            <form id="adminForm" onsubmit="window.handleAdminLogin(event)">
+              <div class="dash-form-group">
+                <label>Administrator Username / Email</label>
+                <input type="text" id="adminEmail" required placeholder="admin@kuraj.com" value="admin@kuraj.com" class="dash-input" autocomplete="username" />
+              </div>
+              <div class="dash-form-group">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                  <label style="margin:0;">Admin Master Password (Seen)</label>
+                  <span style="font-size:0.8rem; color:#4ade80; font-weight:700;">Password: admin123</span>
+                </div>
+                <div class="dash-input-wrap">
+                  <input type="text" id="adminPassword" value="admin123" required placeholder="admin123" class="dash-input" autocomplete="current-password" />
+                  <button type="button" class="dash-eye-btn" onclick="window.toggleEye('adminPassword', this)">Hide</button>
+                </div>
+              </div>
+              <button type="submit" class="dash-btn-primary" id="adminSubmitBtn" style="background:#ffffff; color:#000;">
+                ENTER ADMIN CONSOLE
               </button>
             </form>
           </div>
@@ -317,11 +382,23 @@
             <p class="dash-subtitle">Welcome back, <strong>${escapeHtml(user.name || user.email)}</strong> &bull; <span class="badge-vip">${user.vipTier || 'Black Diamond VIP'}</span></p>
           </div>
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="dash-btn-primary" style="padding:10px 18px; font-size:0.85rem; width:auto;" onclick="window.switchToAdmin()">
+              🛡️ OPEN ADMIN PORTAL
+            </button>
             <button class="dash-btn-outline" onclick="window.handleLogout()">Sign Out</button>
           </div>
         </div>
 
-
+        <!-- Admin Portal in Member Stuff -->
+        <div class="dash-member-admin-bar">
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <span class="badge-seen-pass">ADMIN SHORTCUT</span>
+            <span style="font-size:0.85rem; color:#ccc;">Store Control: <strong style="color:#fff;">admin@kuraj.com</strong> &bull; Password: <strong style="color:#4ade80; background:#222; border:1px solid #444; padding:2px 8px; border-radius:4px; font-family:monospace;">admin123</strong> <span style="color:#aaa;">(Seen)</span></span>
+          </div>
+          <button type="button" class="dash-btn-admin-direct" style="padding:6px 14px; font-size:0.8rem; margin:0; width:auto;" onclick="window.switchToAdmin()">
+            SWITCH TO ADMIN &rarr;
+          </button>
+        </div>
 
         <!-- VIP Membership Card -->
         <div class="vip-card-banner">
