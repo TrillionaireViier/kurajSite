@@ -95,8 +95,8 @@ window._cartSyncWishlistLoaded = true;
       }
       if (profile) {
         profile.style.setProperty('display', 'inline-flex', 'important');
-        profile.textContent = user.role === 'admin' ? 'Admin Portal' : 'My Account';
-        profile.href = user.role === 'admin' ? '/admin' : '/dashboard';
+        profile.textContent = 'My Account';
+        profile.href = '/dashboard';
       }
       if (signUp) {
         signUp.style.setProperty('display', 'inline-flex', 'important');
