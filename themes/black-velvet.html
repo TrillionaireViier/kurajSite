@@ -13,11 +13,13 @@
       --theme-card: #1C191E;
       --theme-surface: #252128;
       --theme-border: rgba(233, 213, 255, 0.15);
-      --theme-accent: #F3E8FF;
+      --theme-accent: #D4AF37;
+      --theme-text: #F4EFE6;
+      --theme-muted: #A8A29E;
     }
     body {
       background: var(--theme-bg) !important;
-      color: #ffffff !important;
+      color: var(--theme-text) !important;
       font-family: 'Inter', sans-serif;
       margin: 0;
     }
@@ -25,7 +27,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(0, 0, 0, 0.55);
+      background: rgba(0, 0, 0, 0.65);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--theme-border);
@@ -47,8 +49,23 @@
       padding-bottom: 4px;
       max-width: 100%;
     }
+    .accent-bar {
+      max-width: 1240px;
+      margin: 24px auto 0;
+      padding: 16px 24px;
+      background: var(--theme-card);
+      border: 1px solid var(--theme-border);
+      border-radius: 14px;
+    }
+    .accent-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      margin-top: 10px;
+    }
     .theme-hero {
-      padding: 88px 24px 64px;
+      padding: 72px 24px 56px;
       text-align: center;
       border-bottom: 1px solid var(--theme-border);
       background: radial-gradient(circle at 50% 0%, var(--theme-surface) 0%, var(--theme-bg) 75%);
@@ -59,8 +76,8 @@
       gap: 10px;
       padding: 8px 18px;
       border-radius: 999px;
-      background: var(--theme-card);
-      border: 1px solid var(--theme-border);
+      background: #132A24;
+      border: 1px solid #8C734B40;
       color: var(--theme-accent);
       font-size: 0.78rem;
       letter-spacing: 2px;
@@ -71,18 +88,18 @@
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.4rem, 5vw, 4rem);
       margin: 0 0 16px;
-      color: #fff;
+      color: var(--theme-text);
     }
     .theme-hero p {
       max-width: 680px;
       margin: 0 auto 32px;
-      color: #c2c2c2;
+      color: var(--theme-muted);
       font-size: 1.1rem;
       line-height: 1.65;
     }
     .theme-specs {
       display: inline-flex;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
       justify-content: center;
     }
@@ -92,13 +109,13 @@
       padding: 10px 18px;
       border-radius: 10px;
       font-size: 0.85rem;
-      color: #d4d4d4;
+      color: var(--theme-muted);
     }
     .spec-pill strong { color: var(--theme-accent); font-family: monospace; margin-left: 6px; }
     .theme-section {
       max-width: 1240px;
       margin: 0 auto;
-      padding: 64px 24px;
+      padding: 56px 24px;
     }
     .section-head {
       display: flex;
@@ -112,7 +129,7 @@
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
       margin: 0;
-      color: #fff;
+      color: var(--theme-text);
     }
     .products-demo-grid {
       display: grid;
@@ -121,7 +138,7 @@
     }
     .demo-card {
       background: var(--theme-card);
-      border: 1px solid var(--theme-border);
+      border: 1px solid #8C734B40;
       border-radius: 14px;
       overflow: hidden;
       transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
@@ -152,14 +169,13 @@
       font-size: 0.72rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--theme-accent);
-      opacity: 0.85;
+      color: var(--theme-muted);
     }
     .demo-body h3 {
       font-family: 'Playfair Display', serif;
       font-size: 1.25rem;
       margin: 8px 0 10px;
-      color: #fff;
+      color: var(--theme-text);
     }
     .demo-price {
       font-size: 1.05rem;
@@ -174,7 +190,7 @@
       padding: 12px;
       border-radius: 8px;
       background: var(--theme-accent);
-      color: #000;
+      color: #0B0C0E;
       font-weight: 700;
       font-size: 0.88rem;
       text-decoration: none;
@@ -184,7 +200,7 @@
     .demo-btn:hover { opacity: 0.9; }
     .active-modal-demo {
       background: var(--theme-surface);
-      border: 1px solid var(--theme-border);
+      border: 1px solid #8C734B40;
       border-radius: 16px;
       padding: 36px;
       display: flex;
@@ -205,8 +221,8 @@
   <div class="theme-topbar">
     <div class="theme-topbar-inner">
       <div style="display:flex; align-items:center; gap:14px;">
-        <a href="/" style="color:#fff; text-decoration:none; font-family:'Playfair Display',serif; font-weight:700; letter-spacing:1.5px;">KURAJ</a>
-        <a href="/themes" style="color:#aaa; text-decoration:none; font-size:0.85rem;">← All Themes</a>
+        <a href="/" style="color:#F4EFE6; text-decoration:none; font-family:'Playfair Display',serif; font-weight:700; letter-spacing:1.5px;">KURAJ</a>
+        <a href="/themes" style="color:#A8A29E; text-decoration:none; font-size:0.85rem;">← All Themes</a>
       </div>
       <div class="theme-switcher">
         <a href="/themes/classic-obsidian" style="display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.14); color:#fff; text-decoration:none; font-size:0.82rem; white-space:nowrap; transition:all 0.2s ease;"><span style="width:12px; height:12px; border-radius:50%; background:#0B0C0E; border:1px solid rgba(255,255,255,0.45); display:inline-block;"></span><span>Classic Obsidian</span><code style="opacity:0.65; font-size:0.75rem;">#0B0C0E</code></a>
@@ -234,9 +250,35 @@
       <div class="spec-pill">Base Background:<strong>#141215</strong></div>
       <div class="spec-pill">Cards:<strong>#1C191E</strong></div>
       <div class="spec-pill">Active Surfaces:<strong>#252128</strong></div>
-      <div class="spec-pill">Accent:<strong>#F3E8FF</strong></div>
+      <div class="spec-pill">Active Accent:<strong id="activeAccentLabel">#D4AF37 (Classic Champagne Gold)</strong></div>
     </div>
   </section>
+
+  <div class="accent-bar">
+    <div style="font-size:0.78rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--theme-muted);">Test Accent &amp; Text Tones Live:</div>
+    <div class="accent-scroll">
+      <button type="button" onclick="applyAccent('#D4AF37', 'Classic Champagne Gold')" title="Classic Champagne Gold: Noble golden accent for badges and lines." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#D4AF37; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Classic Champagne Gold</span></button>
+<button type="button" onclick="applyAccent('#E5D3B3', 'Light Champagne')" title="Light Champagne: Delicate champagne tone with a creamy undertone, highly legible on dark backgrounds." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#E5D3B3; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Light Champagne</span></button>
+<button type="button" onclick="applyAccent('#D8C39E', 'Warm Champagne')" title="Warm Champagne: Soft gold for headings, prices, or icons." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#D8C39E; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Warm Champagne</span></button>
+<button type="button" onclick="applyAccent('#CFC7B8', 'Cool Champagne')" title="Cool Champagne: Restrained, aristocratic shade closer to ivory and metal." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#CFC7B8; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Cool Champagne</span></button>
+<button type="button" onclick="applyAccent('#D9B2A6', 'Champagne Rose')" title="Champagne Rose: Subtle powdery-gold accent for a premium aesthetic." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#D9B2A6; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Champagne Rose</span></button>
+<button type="button" onclick="applyAccent('#B59449', 'Antique Gold')" title="Antique Gold: Muted, vintage gold without excessive shine." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#B59449; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Antique Gold</span></button>
+<button type="button" onclick="applyAccent('#C5A059', 'Liquid Gold')" title="Liquid Gold: Balanced golden tone for buttons, borders, and accent words." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#C5A059; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Liquid Gold</span></button>
+<button type="button" onclick="applyAccent('#CBB89D', 'Sand Gold')" title="Sand Gold: Warm sandy-gold tone for captions and microcopy." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#CBB89D; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Sand Gold</span></button>
+<button type="button" onclick="applyAccent('#DCD6CC', 'Platinum Champagne')" title="Platinum Champagne: Light metallic with a warm undertone, an alternative to pure white." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#DCD6CC; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Platinum Champagne</span></button>
+<button type="button" onclick="applyAccent('#8C734B', 'Dark Bronze / Brass')" title="Dark Bronze / Brass: Calm metallic tone for thin borders (e.g., 1px solid #8C734B40)." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#8C734B; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Dark Bronze / Brass</span></button>
+<button type="button" onclick="applyAccent('#F4EFE6', 'Warm Ivory')" title="Warm Ivory: Softer than #FFFFFF, ideal for primary body text on dark backgrounds." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#F4EFE6; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Warm Ivory</span></button>
+<button type="button" onclick="applyAccent('#A8A29E', 'Muted Pearl')" title="Muted Pearl: For secondary descriptions, categories, and metadata." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#A8A29E; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Muted Pearl</span></button>
+<button type="button" onclick="applyAccent('#6E727B', 'Graphite Smoke')" title="Graphite Smoke: For inactive elements, hints, and thin dividers." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#6E727B; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Graphite Smoke</span></button>
+<button type="button" onclick="applyAccent('#132A24', 'Deep Emerald')" title="Deep Emerald: Dark accent color for 'Authentic / Warranty' badges or VIP status." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#132A24; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Deep Emerald</span></button>
+<button type="button" onclick="applyAccent('#2A1215', 'Dark Merlot (Burgundy)')" title="Dark Merlot (Burgundy): Deep wine shade for featured cards or special offers." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#2A1215; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Dark Merlot (Burgundy)</span></button>
+<button type="button" onclick="applyAccent('#111D33', 'Dark Royal Sapphire')" title="Dark Royal Sapphire: Restrained dark blue accent for UI details." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#111D33; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Dark Royal Sapphire</span></button>
+<button type="button" onclick="applyAccent('#9E6B3B', 'Caramel Amber')" title="Caramel Amber: Warm accent for price tags, timers, or icons." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#9E6B3B; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Caramel Amber</span></button>
+<button type="button" onclick="applyAccent('#9BA3AF', 'Silver Titanium')" title="Silver Titanium: Cool metallic for technical specifications or watchmaking themes." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#9BA3AF; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Silver Titanium</span></button>
+<button type="button" onclick="applyAccent('#25291E', 'Soft Olive')" title="Soft Olive: Deep muted green for unconventional premium accents." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#25291E; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Soft Olive</span></button>
+<button type="button" onclick="applyAccent('#C2B5A3', 'Warm Cashmere')" title="Warm Cashmere: Calm neutral tone for badges, tags, and hover states." style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); color:#F4EFE6; font-size:0.78rem; cursor:pointer; white-space:nowrap;"><span style="width:11px; height:11px; border-radius:50%; background:#C2B5A3; border:1px solid rgba(255,255,255,0.35); display:inline-block;"></span><span>Warm Cashmere</span></button>
+    </div>
+  </div>
 
   <section class="theme-section">
     <div class="section-head">
@@ -253,10 +295,10 @@
           <a href="/collections/timepieces" class="demo-btn">View Collection</a>
         </div>
       </div>
-      <div class="demo-card">
+      <div class="demo-card" style="background:#2A1215;">
         <div class="demo-img"><img src="/images/leather-handbag-black.png" alt="Handbags" /></div>
         <div class="demo-body">
-          <span class="demo-cat">Handbags</span>
+          <span class="demo-cat">Special Edition • Dark Merlot</span>
           <h3>Hermès Birkin Edition</h3>
           <div class="demo-price">$2,450</div>
           <a href="/collections/handbags" class="demo-btn">View Collection</a>
@@ -279,12 +321,19 @@
       <div>
         <span style="font-size:0.75rem; letter-spacing:2px; text-transform:uppercase; color:var(--theme-accent);">ACTIVE SURFACE PREVIEW</span>
         <h3 style="font-family:'Playfair Display',serif; font-size:1.6rem; margin:8px 0;">Highlighted Block / Modal Window</h3>
-        <p style="color:#bdbdbd; margin:0; max-width:560px; line-height:1.6;">Preview of an active container or modal window on a <code>#141215</code> background using the <code>#252128</code> surface tone.</p>
+        <p style="color:var(--theme-muted); margin:0; max-width:560px; line-height:1.6;">Preview of an active container or modal window on a <code>#141215</code> background using the <code>#252128</code> surface tone and Warm Ivory (<code>#F4EFE6</code>) typography.</p>
       </div>
       <a href="/dashboard" class="demo-btn" style="width:auto; padding:14px 28px;">Open VIP Dashboard</a>
     </div>
   </section>
 
+  <script>
+    function applyAccent(hex, name) {
+      document.documentElement.style.setProperty('--theme-accent', hex);
+      var lbl = document.getElementById('activeAccentLabel');
+      if (lbl) lbl.textContent = hex + ' (' + name + ')';
+    }
+  </script>
   <script src="/footer-injector.js?v=1005"></script>
 </body>
 </html>
